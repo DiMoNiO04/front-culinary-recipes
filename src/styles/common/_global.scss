@@ -1,6 +1,7 @@
 a {
   text-decoration: none;
   @include transition(color);
+  line-height: 0;
 }
 
 a:hover {
@@ -62,6 +63,7 @@ button {
   text-align: inherit;
   padding: 0;
   background-color: inherit;
+  line-height: 0;
 }
 
 ul {

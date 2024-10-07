@@ -3,6 +3,7 @@
 import React from 'react';
 import styles from './MainHeader.module.scss';
 import { Button, EButtonClass, EButtonSize, EButtonType, Socials } from '@/components/ui';
+import { SearchIcon } from '@/components/icons';
 
 const MainHeader: React.FC = () => {
   return (
@@ -13,6 +14,9 @@ const MainHeader: React.FC = () => {
             <div className={styles.topContainer}>
               <Socials />
               <div className={styles.topRight}>
+                <button type={EButtonType.BUTTON} className={styles.searchBtn}>
+                  <SearchIcon />
+                </button>
                 <Button
                   text="Login"
                   nameClass={EButtonClass.DEF}
