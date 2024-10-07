@@ -33,3 +33,19 @@
   line-height: 28px;
   letter-spacing: -0.2px;
 }
+
+@mixin medium18Inter {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.78px;
+  letter-spacing: -0.2px;
+}
+
+@mixin medium14Inter {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    letter-spacing: -0.15px;
+}

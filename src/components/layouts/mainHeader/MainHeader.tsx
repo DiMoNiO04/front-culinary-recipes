@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import styles from './MainHeader.module.scss';
-import { Socials } from '@/components/ui';
+import { Button, EButtonClass, EButtonSize, EButtonType, Socials } from '@/components/ui';
 
 const MainHeader: React.FC = () => {
   return (
@@ -10,6 +12,15 @@ const MainHeader: React.FC = () => {
           <div className="container">
             <div className={styles.topContainer}>
               <Socials />
+              <div className={styles.topRight}>
+                <Button
+                  text="Login"
+                  nameClass={EButtonClass.DEF}
+                  size={EButtonSize.SM}
+                  typeBtn={EButtonType.BUTTON}
+                  isLink={false}
+                />
+              </div>
             </div>
           </div>
         </div>
