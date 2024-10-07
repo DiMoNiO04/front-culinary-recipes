@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import { EButtonType, Socials } from '@/components/ui';
+import { LogoIcon, SearchIcon } from '@/components/icons';
+import { MenuHeader, UserProfile } from '@/components/elements';
 import styles from './MainHeader.module.scss';
-import { Button, EButtonClass, EButtonSize, EButtonType, Socials } from '@/components/ui';
-import { SearchIcon } from '@/components/icons';
 
 const MainHeader: React.FC = () => {
   return (
@@ -17,13 +18,7 @@ const MainHeader: React.FC = () => {
                 <button type={EButtonType.BUTTON} className={styles.searchBtn}>
                   <SearchIcon />
                 </button>
-                <Button
-                  text="Login"
-                  nameClass={EButtonClass.DEF}
-                  size={EButtonSize.SM}
-                  typeBtn={EButtonType.BUTTON}
-                  isLink={false}
-                />
+                <UserProfile />
               </div>
             </div>
           </div>
@@ -31,7 +26,12 @@ const MainHeader: React.FC = () => {
 
         <div className={styles.bottom}>
           <div className="container">
-            <div className={styles.bottomContainer}></div>
+            <div className={styles.bottomContainer}>
+              <div className={styles.bottomLogo}>
+                <LogoIcon />
+              </div>
+              <MenuHeader />
+            </div>
           </div>
         </div>
       </div>

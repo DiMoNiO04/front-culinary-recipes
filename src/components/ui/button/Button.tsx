@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import styles from './Button.module.scss';
 
 export enum EButtonClass {
@@ -45,7 +45,7 @@ const Button: React.FC<IButton> = ({
 
   if (isLink && linkUrl) {
     return (
-      <Link to={linkUrl} className={className} target={isExternal ? '_blank' : '_self'}>
+      <Link href={linkUrl} className={className} target={isExternal ? '_blank' : '_self'}>
         {text}
       </Link>
     );

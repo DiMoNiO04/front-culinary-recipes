@@ -1,0 +1,46 @@
+.avatar {
+  @include sizes(32px, 32px);
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    .dropdown {
+      @include visible;
+      z-index: 2;
+    }
+  }
+}
+
+.userProfile {
+  position: relative;
+  line-height: 0;
+}
+
+.dropdown {
+  @include hidden;
+  z-index: -2;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: $white;
+  list-style: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+
+  li {
+    padding: 8px 12px;
+
+    a {
+      @include medium16Inter;
+      @include transition(color);
+      text-decoration: none;
+      color: $black;
+      display: block;
+      white-space: nowrap;
+
+      &:hover {
+        color: $grey;
+      }
+    }
+  }
+}
