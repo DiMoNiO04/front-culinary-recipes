@@ -1,16 +1,22 @@
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { Playfair_Display, Inter } from 'next/font/google';
 import '@/styles/index.scss';
 
-const roboto = Roboto({
+const playfairDisplay = Playfair_Display({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
-  variable: '--font-roboto',
+  variable: '--font-playfair-display',
+});
+
+const inter = Inter({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  title: 'PerfectRecipe',
-  description: 'Идеальный подбор рецептов по ингредиентам | PerfectRecipe',
+  title: 'Tastebite',
+  description: 'Идеальный подбор рецептов по ингредиентам | Tastebite',
 };
 
 export default function RootLayout({
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${roboto.variable}`}>{children}</body>
+      <body className={`${playfairDisplay.variable} ${inter.variable}`}>{children}</body>
     </html>
   );
 }

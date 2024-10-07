@@ -115,17 +115,13 @@ html {
 }
 
 body {
-  font-family: 'Robot', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 24px;
+  @include bold40Playfair;
+  @include flexColumn;
   color: $black;
   margin: 0;
   padding: 0;
   background: $white;
   overflow-x: hidden;
-  @include flexColumn;
   min-height: 100vh;
   position: relative;
 
@@ -139,19 +135,19 @@ main {
 }
 
 .container {
-  max-width: 1472px;
-  padding: 0 16px;
+  max-width: 1140px;
+  padding: 0 15px;
   margin: 0 auto;
 }
 
 .container-no-padding {
-  max-width: 1472px;
+  max-width: 1140px;
   padding: 0;
   margin: 0 auto;
 }
 
 section {
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 textarea {
@@ -166,88 +162,12 @@ svg {
 
 h1,
 .title {
-  @include medium88;
+  @include bold60Playfair;
+  margin-bottom: 30px;
 }
 
 h2,
 .subtitle {
-  @include medium46;
+  @include bold36Playfair;
   margin-bottom: 40px;
-}
-
-.subtitle-flex {
-  @include flexEndBetween;
-  margin-bottom: 40px;
-
-  h2,
-  .subtitle {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: $laptop) {
-  h1,
-  .title {
-    @include medium64;
-  }
-
-  h2,
-  .subtitle {
-    @include medium40;
-    margin-bottom: 32px;
-  }
-
-  .subtitle-flex {
-    margin-bottom: 32px;
-  }
-
-  .container {
-    max-width: 1104px;
-    padding: 0 40px;
-  }
-
-  .container-no-padding {
-    max-width: 1104px;
-  }
-
-  section {
-    margin-bottom: 120px;
-  }
-}
-
-@media (max-width: $tablet) {
-  h1,
-  .title {
-    @include medium60;
-  }
-
-  h2,
-  .subtitle {
-    @include medium32;
-  }
-}
-
-@media (max-width: $mob) {
-  section {
-    margin-bottom: 80px;
-  }
-
-  h1,
-  .title {
-    @include medium32;
-  }
-
-  h2,
-  .subtitle {
-    @include medium28;
-    margin-bottom: 24px;
-  }
-
-  .subtitle-flex {
-    margin-bottom: 24px;
-  }
-
-  .container {
-    padding: 0 16px;
-  }
 }
