@@ -1,3 +1,9 @@
+import { MainHeader } from '@/components/layouts';
+
 export default function Home() {
-  return <div>PerfectRecipe</div>;
+  return (
+    <>
+      <MainHeader />
+    </>
+  );
 }
