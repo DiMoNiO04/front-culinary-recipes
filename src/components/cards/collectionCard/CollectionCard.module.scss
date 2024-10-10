@@ -1,0 +1,46 @@
+.card {
+  @include flexColumn;
+  border-radius: 12px;
+  border: 1px solid $greyLight;
+  overflow: hidden;
+
+  @include hover {
+    .img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.img {
+  border-radius: 12px 12px 0 0;
+  @include sizes(540px, 332px);
+  @include transition(transform);
+}
+
+.info {
+  padding: 32px;
+  @include flexStartBetween;
+  height: 100%;
+  column-gap: 16px;
+}
+
+.title {
+  @include bold36Playfair;
+  color: $black;
+}
+
+.count {
+  @include sizes(128px, 29px);
+  border: 1px solid $black;
+  border-radius: 2px;
+  @include flexCenter;
+  @include medium14Inter;
+  color: $black;
+  margin-top: auto;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  @include hover {
+    color: $white;
+    background-color: $black;
+  }
+}
