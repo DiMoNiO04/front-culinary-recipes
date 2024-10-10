@@ -79,3 +79,24 @@
   font-weight: 500;
   line-height: 21px;
 }
+
+@mixin regular24Inter {
+font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38px;
+}
+
+@mixin regular14Inter {
+  font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+@mixin regular16Inter {
+  font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}

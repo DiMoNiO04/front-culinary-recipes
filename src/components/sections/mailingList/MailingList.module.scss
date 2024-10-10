@@ -1,0 +1,62 @@
+.section {
+  background-color: $pink;
+  margin: 0;
+}
+
+.container {
+  max-width: 530px;
+  margin: 0 auto;
+  padding: 110px 0;
+}
+
+.title {
+  @include bold76Playfair;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.description {
+  text-align: center;
+  @include regular24Inter;
+  margin-bottom: 24px;
+}
+
+.text {
+  @include regular14Inter;
+  text-align: center;
+
+  a {
+    transition: border-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid $orange;
+    @include regular14Inter;
+    color: $black;
+
+    @include hover {
+      border-color: transparent;
+      color: $orange;
+    }
+  }
+}
+
+.form {
+  background-color: $white;
+  padding: 2px;
+  border-radius: 4px;
+  @include flexCenterBetween;
+  column-gap: 12px;
+  margin-bottom: 24px;
+}
+
+.input {
+  border: none;
+  padding: 0;
+  margin: 0;
+  @include regular16Inter;
+  color: $black;
+  padding: 14px 8px;
+  @include fullSize;
+
+  &::placeholder {
+    color: $grey;
+  }
+}
