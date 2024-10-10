@@ -1,0 +1,5 @@
+.title {
+  @include bold36Playfair;
+  color: $black;
+  margin-bottom: 40px;
+}

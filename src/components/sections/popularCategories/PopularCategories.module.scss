@@ -1,0 +1,4 @@
+.cards {
+  @include grid(6);
+  grid-gap: 30px;
+}

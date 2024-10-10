@@ -1,0 +1,23 @@
+.card {
+  @include flexColumn;
+  row-gap: 12px;
+  width: fit-content;
+
+  @include hover {
+    .name {
+      color: $grey;
+    }
+  }
+}
+
+.img {
+  @include sizes(160px, 160px);
+  border-radius: 50%;
+}
+
+.name {
+  @include semibold20Inter;
+  @include transition(color);
+  color: $black;
+  text-align: center;
+}
