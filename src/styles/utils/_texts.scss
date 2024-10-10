@@ -1,3 +1,11 @@
+@mixin bold76Playfair {
+    font-family: 'Playfair Display', serif;
+    font-size: 76px;
+    font-weight: 700;
+    line-height: 86px;
+    letter-spacing: -1px;
+}
+
 @mixin bold60Playfair {
   font-family: 'Playfair Display', serif;
   font-size: 60px;
