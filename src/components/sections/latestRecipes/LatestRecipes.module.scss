@@ -1,0 +1,17 @@
+.cards {
+  @include grid(3);
+  column-gap: 30px;
+  row-gap: 48px;
+  margin-bottom: 60px;
+}
+
+.btnBlock {
+  width: fit-content;
+  margin: 0 auto;
+  @include flexCenter;
+}
+
+.btn {
+  margin: 0 auto;
+}
+

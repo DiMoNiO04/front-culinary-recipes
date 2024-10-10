@@ -1,7 +1,7 @@
 .card {
-  @include flexColumn;
-  row-gap: 12px;
   width: fit-content;
+  @include flexColumn;
+  row-gap: 8px;
 
   @include hover {
     .name {
@@ -9,21 +9,25 @@
     }
 
     .img {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
   }
 }
 
 .img {
-  @include sizes(160px, 160px);
+  @include sizes(350px, 265px);
   @include transition(transform);
-  border-radius: 50%;
+  border-radius: 6px;
+
+  img {
+    border-radius: 6px;
+  }
 }
 
 .name {
-  @include semibold20Inter;
+  @include semibold18Inter;
   @include transition(color);
   @include croppingText(2);
+  text-align: left;
   color: $black;
-  text-align: center;
 }

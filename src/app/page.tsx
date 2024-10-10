@@ -1,5 +1,5 @@
 import { MainHeader } from '@/components/layouts';
-import { PopularCategories, Slider } from '@/components/sections';
+import { LatestRecipes, PopularCategories, Slider } from '@/components/sections';
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <main>
         <Slider />
         <PopularCategories />
+        <LatestRecipes />
       </main>
     </>
   );

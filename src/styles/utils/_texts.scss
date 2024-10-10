@@ -1,9 +1,9 @@
 @mixin bold76Playfair {
-    font-family: 'Playfair Display', serif;
-    font-size: 76px;
-    font-weight: 700;
-    line-height: 86px;
-    letter-spacing: -1px;
+  font-family: 'Playfair Display', serif;
+  font-size: 76px;
+  font-weight: 700;
+  line-height: 86px;
+  letter-spacing: -1px;
 }
 
 @mixin bold60Playfair {
@@ -35,6 +35,14 @@
 }
 
 @mixin semibold20Inter {
+  font-family: 'Inter', serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+}
+
+@mixin semibold18Inter {
   font-family: 'Inter', serif;
   font-size: 20px;
   font-weight: 600;

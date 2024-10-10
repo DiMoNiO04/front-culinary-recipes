@@ -23,6 +23,7 @@ interface IButton {
   nameClass: EButtonClass;
   size: EButtonSize;
   isLink: boolean;
+  customClass?: string;
   linkUrl?: string;
   typeBtn?: EButtonType;
   isExternal?: boolean;
@@ -36,12 +37,13 @@ const Button: React.FC<IButton> = ({
   size,
   isLink,
   linkUrl,
+  customClass,
   typeBtn = EButtonType.BUTTON,
   isExternal = false,
   isDisabled = false,
   handle,
 }) => {
-  const className = `${styles.btn} ${styles[nameClass]} ${styles[size]}`;
+  const className = `${styles.btn} ${styles[nameClass]} ${styles[size]} ${customClass}`;
 
   if (isLink && linkUrl) {
     return (
