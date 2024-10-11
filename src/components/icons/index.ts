@@ -6,3 +6,4 @@ export { default as SearchIcon } from './Search';
 export { default as LogoIcon } from './Logo';
 export { default as ArrowDownIcon } from './ArrowDown';
 export { default as ProfileIcon } from './Profile';
+export { default as StarIcon } from './Star';

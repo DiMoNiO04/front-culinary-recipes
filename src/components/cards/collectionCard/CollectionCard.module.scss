@@ -37,7 +37,9 @@
   @include medium14Inter;
   color: $black;
   margin-top: auto;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 
   @include hover {
     color: $white;

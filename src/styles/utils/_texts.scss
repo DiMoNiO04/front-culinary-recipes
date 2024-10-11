@@ -35,7 +35,7 @@
 }
 
 @mixin semibold20Inter {
-  font-family: 'Inter', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 28px;
@@ -43,7 +43,7 @@
 }
 
 @mixin semibold18Inter {
-  font-family: 'Inter', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 28px;
@@ -81,22 +81,29 @@
 }
 
 @mixin regular24Inter {
-font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 38px;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 38px;
 }
 
 @mixin regular14Inter {
   font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+@mixin regular12Inter {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
 }
 
 @mixin regular16Inter {
   font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }

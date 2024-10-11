@@ -3,3 +3,4 @@ export { default as slides } from './slides';
 export { default as categories } from './categories';
 export { default as recipes } from './recipes';
 export { default as collections } from './collections';
+export { default as superDelicious } from './superDelicious';

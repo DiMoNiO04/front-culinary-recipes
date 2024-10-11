@@ -3,3 +3,4 @@ export { default as PopularCategories } from './popularCategories/PopularCategor
 export { default as LatestRecipes } from './latestRecipes/LatestRecipes';
 export { default as CurratedCollection } from './curratedCollection/CurratedCollection';
 export { default as MailingList } from './mailingList/MailingList';
+export { default as SuperDelicious } from './superDelicious/SuperDelicious';
