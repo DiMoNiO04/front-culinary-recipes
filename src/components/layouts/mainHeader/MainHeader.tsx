@@ -13,7 +13,7 @@ const MainHeader: React.FC = () => {
         <div className={styles.top}>
           <div className="container">
             <div className={styles.topContainer}>
-              <Socials />
+              <Socials color="#000000" />
               <div className={styles.topRight}>
                 <button type={EButtonType.BUTTON} className={styles.searchBtn}>
                   <SearchIcon />

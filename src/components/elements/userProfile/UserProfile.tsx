@@ -5,8 +5,8 @@ import { ProfileIcon } from '@/components/icons';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {
-  const isAuth: boolean = true;
-  const isImageProfile: boolean = true;
+  const isAuth: boolean = false;
+  const isImageProfile: boolean = false;
 
   return (
     <div className={styles.userProfile}>

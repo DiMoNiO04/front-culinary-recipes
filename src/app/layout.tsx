@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import '@/styles/index.scss';
+import { Footer } from '@/components/layouts';
 
 const playfairDisplay = Playfair_Display({
   weight: ['400', '500', '700'],
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${playfairDisplay.variable} ${inter.variable}`}>{children}</body>
+      <body className={`${playfairDisplay.variable} ${inter.variable}`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

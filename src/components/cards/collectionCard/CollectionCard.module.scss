@@ -15,6 +15,10 @@
   border-radius: 12px 12px 0 0;
   @include sizes(540px, 332px);
   @include transition(transform);
+
+    img {
+        object-fit: cover;
+      }
 }
 
 .info {
@@ -22,6 +26,8 @@
   @include flexStartBetween;
   height: 100%;
   column-gap: 16px;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
