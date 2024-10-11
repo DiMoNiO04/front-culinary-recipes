@@ -16,7 +16,7 @@
 
 .year {
   @include regular14Inter;
-  color: $grey ;
+  color: $grey;
 }
 
 .topLeft {
@@ -58,5 +58,49 @@
 
   @include hover {
     color: $black;
+  }
+}
+
+@media (max-width: $tablet) {
+  .top {
+    @include flexColumn;
+    row-gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  .menu {
+    width: 100%;
+  }
+}
+
+@media (max-width: $mob) {
+  .footer {
+    padding: 40px 0 60px;
+  }
+
+  .logo {
+    @include sizes(90px, 30px);
+  }
+
+  .top {
+    padding: 0;
+    margin-bottom: 56px;
+    border: none;
+  }
+
+  .topLeft {
+    @include regular14Inter;
+  }
+
+  .bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    row-gap: 24px;
+    padding: 0;
+  }
+
+  .menu {
+    @include flexColumn;
+    row-gap: 24px;
   }
 }

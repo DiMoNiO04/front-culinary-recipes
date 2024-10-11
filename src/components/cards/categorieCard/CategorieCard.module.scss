@@ -15,7 +15,6 @@
 }
 
 .img {
-  @include sizes(160px, 160px);
   @include transition(transform);
   border-radius: 50%;
 }
@@ -26,4 +25,14 @@
   @include croppingText(2);
   color: $black;
   text-align: center;
+}
+
+@media (max-width: $mob) {
+  .card {
+    row-gap: 8px;
+  }
+
+  .name {
+    @include semibold14Inter;
+  }
 }

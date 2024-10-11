@@ -20,6 +20,13 @@
   line-height: 44px;
 }
 
+@mixin bold30Playfair {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 37px;
+}
+
 @mixin bold40Playfair {
   font-family: 'Playfair Display', serif;
   font-size: 40px;
@@ -31,7 +38,14 @@
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   font-weight: 700;
-  line-height: 37px;
+  line-height: 32px;
+}
+
+@mixin bold18Playfair {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 @mixin semibold20Inter {
@@ -44,10 +58,17 @@
 
 @mixin semibold18Inter {
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 24px;
   letter-spacing: -0.2px;
+}
+
+@mixin semibold14Inter {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
 }
 
 @mixin medium18Inter {

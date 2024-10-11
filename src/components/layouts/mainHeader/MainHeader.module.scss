@@ -37,3 +37,54 @@
   padding: 64px;
   background-color: $white;
 }
+
+.burger,
+.topLogo {
+  display: none;
+}
+
+@media (max-width: $tablet) {
+  .bottomContainer {
+    row-gap: 40px;
+    padding: 32px;
+  }
+
+  .manu {
+    column-gap: 40px;
+  }
+}
+
+@media (max-width: $mob) {
+  .bottom {
+    display: none;
+  }
+
+  .top {
+    padding: 16px 0;
+  }
+
+  .socials {
+    display: none;
+  }
+
+  .topLogo {
+    display: block;
+
+    svg {
+      @include sizes(90px, 30px);
+    }
+  }
+
+  .searchBtn {
+    @include sizes(20px, 20px);
+  }
+
+  .topRight {
+    column-gap: 24px;
+  }
+
+  .burger {
+    @include sizes(20px, 20px);
+    display: block;
+  }
+}

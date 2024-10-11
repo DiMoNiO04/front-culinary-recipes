@@ -44,3 +44,9 @@
     }
   }
 }
+
+@media (max-width: $mob) {
+  .avatar {
+    @include sizes(24px, 24px);
+  }
+}

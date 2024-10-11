@@ -49,16 +49,73 @@
   margin-bottom: 24px;
 }
 
+.inputWrapper {
+  @include flexCenter;
+  position: relative;
+  width: 100%;
+}
+
 .input {
   border: none;
-  padding: 0;
+  padding: 14px 8px 14px 40px;
   margin: 0;
   @include regular16Inter;
   color: $black;
-  padding: 14px 8px;
   @include fullSize;
 
   &::placeholder {
     color: $grey;
+  }
+}
+
+.inputWrapper::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 12px);
+  @include sizes(24px, 24px);
+  background: url('../../../../public/icons/email.svg');
+  background-repeat: no-repeat;
+}
+
+@media (max-width: $mob) {
+  .container {
+    padding: 60px 30px;
+  }
+
+  .title {
+    @include bold40Playfair;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    @include regular16Inter;
+    margin-bottom: 16px;
+  }
+
+  .form {
+    @include flexColumn;
+    background-color: transparent;
+    row-gap: 14px;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .input {
+    @include regular14Inter;
+  }
+
+  .text {
+    @include flexColumn;
+    width: fit-content;
+    margin: 0 auto;
+
+    a {
+      width: fit-content;
+      margin: 0 auto;
+    }
   }
 }

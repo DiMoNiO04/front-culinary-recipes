@@ -13,17 +13,17 @@
 
 .img {
   border-radius: 12px 12px 0 0;
-  @include sizes(540px, 332px);
   @include transition(transform);
 
-    img {
-        object-fit: cover;
-      }
+  img {
+    object-fit: cover;
+  }
 }
 
 .info {
   padding: 32px;
-  @include flexStartBetween;
+  @include flexColumn;
+  row-gap: 24px;
   height: 100%;
   column-gap: 16px;
   position: relative;
@@ -41,6 +41,7 @@
   border-radius: 2px;
   @include flexCenter;
   @include medium14Inter;
+  margin-left: auto;
   color: $black;
   margin-top: auto;
   transition:
@@ -50,5 +51,27 @@
   @include hover {
     color: $white;
     background-color: $black;
+  }
+}
+
+@media (max-width: $tablet) {
+  .title {
+    @include bold30Playfair;
+  }
+}
+
+@media (max-width: $mob) {
+  .info {
+    @include flexColumn;
+    row-gap: 32px;
+    padding: 24px;
+  }
+
+  .title {
+    @include bold24Playfair;
+  }
+
+  .count {
+    margin-left: auto;
   }
 }

@@ -11,7 +11,6 @@
 .img {
   @include fullSize;
   object-fit: cover;
-
   position: relative;
 
   &::before {
@@ -37,7 +36,7 @@
 .info {
   position: absolute;
   max-width: 1140px;
-  padding: 0 15px;
+  padding: 0 40px;
   margin: 0 auto;
   bottom: 80px;
   left: 0;
@@ -65,4 +64,44 @@
   @include bold76Playfair;
   color: $white;
   max-width: 674px;
+  margin: 0;
+}
+
+@media (max-width: $tablet) {
+  .info {
+    padding: 0 80px;
+    bottom: 48px;
+  }
+}
+
+@media (max-width: $mob) {
+  .btns {
+    display: none;
+  }
+
+  .slide {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .description {
+    img {
+      @include sizes(16px, 16px);
+    }
+
+    span {
+      @include regular12Inter;
+    }
+  }
+
+  .info {
+    bottom: 32px;
+    padding: 0 32px;
+  }
+
+  .title {
+    @include bold30Playfair;
+    margin: 0;
+    max-width: 280px;
+  }
 }

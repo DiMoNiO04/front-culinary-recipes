@@ -15,7 +15,6 @@
 }
 
 .img {
-  @include sizes(350px, 265px);
   @include transition(transform);
   border-radius: 6px;
 
@@ -30,4 +29,10 @@
   @include croppingText(2);
   text-align: left;
   color: $black;
+}
+
+@media (max-width: $mob) {
+  .name {
+    @include semibold14Inter;
+  }
 }

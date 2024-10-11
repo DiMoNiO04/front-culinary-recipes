@@ -1,5 +1,5 @@
 .cards {
-  @include grid(3);
+  @include grid(4);
   column-gap: 30px;
   row-gap: 48px;
   margin-bottom: 60px;
@@ -13,4 +13,18 @@
 
 .btn {
   margin: 0 auto;
+}
+
+@media (max-width: $tablet) {
+  .cards {
+    @include grid(3);
+  }
+}
+
+@media (max-width: $mob) {
+  .cards {
+    @include grid(2);
+    grid-gap: 24px;
+    margin-bottom: 40px;
+  }
 }

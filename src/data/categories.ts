@@ -31,15 +31,15 @@ const categories = [
   },
   {
     id: 6,
-    name: 'Less than 30 min',
-    img: '/img/categories/less-than-30-min.webp',
-    link: 'less-than-30-min/',
-  },
-  {
-    id: 7,
     name: 'Pasta',
     img: '/img/categories/pasta.webp',
     link: 'pasta/',
+  },
+  {
+    id: 7,
+    name: 'Less than 30 min',
+    img: '/img/categories/less-than-30-min.webp',
+    link: 'less-than-30-min/',
   },
   {
     id: 8,

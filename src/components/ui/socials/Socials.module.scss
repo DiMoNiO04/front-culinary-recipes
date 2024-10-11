@@ -12,3 +12,9 @@
     transform: scale(1.1);
   }
 }
+
+@media (max-width: $mob) {
+  .icons {
+    column-gap: 40px;
+  }
+}

@@ -173,3 +173,23 @@ h2,
   @include bold36Playfair;
   margin-bottom: 40px;
 }
+
+@media (max-width: $tablet) {
+  section {
+    margin-bottom: 80px;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: $mob) {
+  section {
+    margin-bottom: 60px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}

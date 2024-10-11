@@ -10,7 +10,9 @@ const MailingList: React.FC = () => {
         <h2 className={styles.title}>Deliciousness to your inbox</h2>
         <p className={styles.description}>Enjoy weekly hand picked recipes and recommendations</p>
         <form className={styles.form}>
-          <input type="email" placeholder=" Email Address" className={styles.input} required />
+          <div className={styles.inputWrapper}>
+            <input type="email" placeholder=" Email Address" className={styles.input} required />
+          </div>
           <Button
             nameClass={EButtonClass.SEC}
             size={EButtonSize.LG}
