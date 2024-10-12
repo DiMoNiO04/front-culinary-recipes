@@ -1,10 +1,59 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import styles from './Footer.module.scss';
 import { Socials } from '@/components/ui';
 import { LogoIcon } from '@/components/icons';
 import Link from 'next/link';
 
+const menuBlocksData = [
+  {
+    title: 'Tastebite',
+    links: [
+      { text: 'About us', href: '#' },
+      { text: 'Careers', href: '#' },
+      { text: 'Contact Us', href: '#' },
+      { text: 'Feedback', href: '#' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { text: 'Terms', href: '#' },
+      { text: 'Conditions', href: '#' },
+      { text: 'Cookies', href: '#' },
+      { text: 'Copyright', href: '#' },
+    ],
+  },
+  {
+    title: 'Follow',
+    links: [
+      { text: 'Facebook', href: '#' },
+      { text: 'Twitter', href: '#' },
+      { text: 'Instagram', href: '#' },
+      { text: 'Youtube', href: '#' },
+    ],
+  },
+];
+
 const Footer: React.FC = () => {
+  const [openBlocks, setOpenBlocks] = useState(() =>
+    menuBlocksData.reduce(
+      (acc, block) => {
+        acc[block.title] = false;
+        return acc;
+      },
+      {} as Record<string, boolean>
+    )
+  );
+
+  const toggleBlock = (title: string) => {
+    setOpenBlocks((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -17,57 +66,20 @@ const Footer: React.FC = () => {
             </p>
           </div>
           <ul className={styles.menu}>
-            <li className={styles.menuBlock}>
-              <div className={styles.menuBlockTitle}>Tastebite</div>
-              <ul className={styles.menuBlockList}>
-                <li>
-                  <Link href="#">About us</Link>
-                </li>
-                <li>
-                  <Link href="#">Careers</Link>
-                </li>
-                <li>
-                  <Link href="#">Contact Us</Link>
-                </li>
-                <li>
-                  <Link href="#">Feedback</Link>
-                </li>
-              </ul>
-            </li>
-            <li className={styles.menuBlock}>
-              <div className={styles.menuBlockTitle}>Legal</div>
-              <ul className={styles.menuBlockList}>
-                <li>
-                  <Link href="#">Terms</Link>
-                </li>
-                <li>
-                  <Link href="#">Conditions</Link>
-                </li>
-                <li>
-                  <Link href="#">Cookies</Link>
-                </li>
-                <li>
-                  <Link href="#">Copyright</Link>
-                </li>
-              </ul>
-            </li>
-            <li className={styles.menuBlock}>
-              <div className={styles.menuBlockTitle}>Follow</div>
-              <ul className={styles.menuBlockList}>
-                <li>
-                  <Link href="#">Facebook</Link>
-                </li>
-                <li>
-                  <Link href="#">Twitter</Link>
-                </li>
-                <li>
-                  <Link href="#">Instagram</Link>
-                </li>
-                <li>
-                  <Link href="#">Youtube</Link>
-                </li>
-              </ul>
-            </li>
+            {menuBlocksData.map((block) => (
+              <li key={block.title} className={`${styles.menuBlock} ${openBlocks[block.title] ? styles.open : ''}`}>
+                <div className={styles.menuBlockTitle} onClick={() => toggleBlock(block.title)}>
+                  {block.title}
+                </div>
+                <ul className={`${styles.menuBlockList}`}>
+                  {block.links.map((link) => (
+                    <li key={link.text}>
+                      <Link href={link.href}>{link.text}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
         </div>
         <div className={styles.bottom}>

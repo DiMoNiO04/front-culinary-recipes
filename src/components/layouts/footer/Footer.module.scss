@@ -50,14 +50,18 @@
   color: $black;
 }
 
-.menuBlockList li,
-.menuBlockList li a {
-  @include regular16Inter;
-  color: $grey;
-  @include transition(color);
+.menuBlockList {
+  display: flex;
 
-  @include hover {
-    color: $black;
+  li,
+  a {
+    @include regular16Inter;
+    color: $grey;
+    @include transition(color);
+
+    @include hover {
+      color: $black;
+    }
   }
 }
 
@@ -75,7 +79,7 @@
 
 @media (max-width: $mob) {
   .footer {
-    padding: 40px 0 60px;
+    padding: 40px 0 40px;
   }
 
   .logo {
@@ -84,7 +88,7 @@
 
   .top {
     padding: 0;
-    margin-bottom: 56px;
+    margin-bottom: 40px;
     border: none;
   }
 
@@ -95,12 +99,50 @@
   .bottom {
     flex-direction: column-reverse;
     align-items: flex-start;
-    row-gap: 24px;
+    row-gap: 20px;
     padding: 0;
   }
 
   .menu {
     @include flexColumn;
     row-gap: 24px;
+  }
+
+  .menuBlock {
+    row-gap: 0;
+    border-bottom: 1px solid $greyLight;
+  }
+
+  .menuBlockList {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+  }
+
+  .menuBlockTitle {
+    @include flexCenterBetween;
+    position: relative;
+    @include medium16Inter;
+    cursor: pointer;
+    padding-bottom: 12px;
+
+    &::after {
+      content: '';
+      @include sizes(24px, 24px);
+      display: block;
+      background: url('../../../../public/icons/arrowDown.svg');
+      transition: transform 0.3s;
+    }
+  }
+
+  .open .menuBlockList {
+    max-height: 300px;
+    opacity: 1;
+    padding-bottom: 12px;
+  }
+
+  .open .menuBlockTitle::after {
+    transform: rotate(180deg);
   }
 }
