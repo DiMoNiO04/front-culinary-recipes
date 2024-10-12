@@ -28,7 +28,7 @@ const Socials: React.FC<ISocials> = ({
       {links.map(
         ({ href, icon, key }) =>
           href && (
-            <Link href={href} className={styles.icon} key={key}>
+            <Link href={href} className={styles.icon} key={key} target="_blank">
               {icon}
             </Link>
           )

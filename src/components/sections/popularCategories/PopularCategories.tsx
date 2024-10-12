@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './PopularCategories.module.scss';
 import { TitleSection } from '@/components/ui';
-import { categories } from '@/data';
 import { CategorieCard } from '@/components/cards';
+import { categories } from '@/data';
+import styles from './PopularCategories.module.scss';
 
 const PopularCategories: React.FC = () => {
   return (

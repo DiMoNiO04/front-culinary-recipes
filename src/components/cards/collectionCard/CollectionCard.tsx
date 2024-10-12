@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from './CollectionCard.module.scss';
 import Link from 'next/link';
+import styles from './CollectionCard.module.scss';
 
 interface ICollectionCard {
   name: string;

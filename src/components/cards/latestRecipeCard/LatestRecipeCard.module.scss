@@ -1,6 +1,6 @@
 .card {
-  width: fit-content;
   @include flexColumn;
+  width: fit-content;
   row-gap: 8px;
 
   @include hover {

@@ -56,8 +56,8 @@
   li,
   a {
     @include regular16Inter;
-    color: $grey;
     @include transition(color);
+    color: $grey;
 
     @include hover {
       color: $black;
@@ -124,10 +124,9 @@
   }
 
   .menuBlockTitle {
+    @include medium16Inter;
     @include flexCenterBetween;
     position: relative;
-    @include medium16Inter;
-    cursor: pointer;
     padding-bottom: 12px;
 
     &::after {

@@ -16,8 +16,8 @@
 }
 
 .description {
-  text-align: center;
   @include regular24Inter;
+  text-align: center;
   margin-bottom: 24px;
 }
 
@@ -26,11 +26,11 @@
   text-align: center;
 
   a {
+    @include regular14Inter;
     transition:
       border-color 0.3s ease,
       color 0.3s ease;
     border-bottom: 1px solid $orange;
-    @include regular14Inter;
     color: $black;
 
     @include hover {
@@ -41,10 +41,10 @@
 }
 
 .form {
+  @include flexCenterBetween;
   background-color: $white;
   padding: 2px;
   border-radius: 4px;
-  @include flexCenterBetween;
   column-gap: 12px;
   margin-bottom: 24px;
 }
@@ -56,12 +56,12 @@
 }
 
 .input {
+  @include regular16Inter;
+  @include fullSize;
   border: none;
   padding: 14px 8px 14px 40px;
   margin: 0;
-  @include regular16Inter;
   color: $black;
-  @include fullSize;
 
   &::placeholder {
     color: $grey;
@@ -70,10 +70,10 @@
 
 .inputWrapper::before {
   content: '';
+  @include sizes(24px, 24px);
   position: absolute;
   left: 10px;
   top: calc(50% - 12px);
-  @include sizes(24px, 24px);
   background: url('../../../../public/icons/email.svg');
   background-repeat: no-repeat;
 }

@@ -1,4 +1,3 @@
-import { MainHeader } from '@/components/layouts';
 import {
   CurratedCollection,
   LatestRecipes,
@@ -9,19 +8,18 @@ import {
   SuperDelicious,
 } from '@/components/sections';
 
-export default function Home() {
+export function Home() {
   return (
-    <>
-      <MainHeader />
-      <main>
-        <Slider />
-        <PopularCategories />
-        <SuperDelicious />
-        <ShareYourRecipe />
-        <CurratedCollection />
-        <LatestRecipes />
-        <MailingList />
-      </main>
-    </>
+    <main>
+      <Slider />
+      <PopularCategories />
+      <SuperDelicious />
+      <ShareYourRecipe />
+      <CurratedCollection />
+      <LatestRecipes />
+      <MailingList />
+    </main>
   );
 }
+
+export default Home;

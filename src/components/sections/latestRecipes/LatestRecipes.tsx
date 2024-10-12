@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './LatestRecipes.module.scss';
 import { Button, EButtonClass, EButtonSize, EButtonType, TitleSection } from '@/components/ui';
-import { recipes } from '@/data';
 import { LatestRecipeCard } from '@/components/cards';
+import { recipes } from '@/data';
+import styles from './LatestRecipes.module.scss';
 
 const LatestRecipes: React.FC = () => {
   return (

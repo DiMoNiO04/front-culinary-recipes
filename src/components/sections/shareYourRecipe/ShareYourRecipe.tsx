@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './ShareYourRecipe.module.scss';
-import { Button, EButtonClass, EButtonSize, EButtonType, TitleSection } from '@/components/ui';
 import Image from 'next/image';
+import { Button, EButtonClass, EButtonSize, EButtonType, TitleSection } from '@/components/ui';
+import styles from './ShareYourRecipe.module.scss';
 
 const ShareYourRecipe: React.FC = () => {
   return (

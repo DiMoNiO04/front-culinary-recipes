@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './MailingList.module.scss';
 import Link from 'next/link';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import styles from './MailingList.module.scss';
 
 const MailingList: React.FC = () => {
   return (

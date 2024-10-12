@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './Footer.module.scss';
+import Link from 'next/link';
 import { Socials } from '@/components/ui';
 import { LogoIcon } from '@/components/icons';
-import Link from 'next/link';
+import styles from './Footer.module.scss';
 
 const menuBlocksData = [
   {
@@ -37,21 +37,12 @@ const menuBlocksData = [
 ];
 
 const Footer: React.FC = () => {
-  const [openBlocks, setOpenBlocks] = useState(() =>
-    menuBlocksData.reduce(
-      (acc, block) => {
-        acc[block.title] = false;
-        return acc;
-      },
-      {} as Record<string, boolean>
-    )
+  const [openBlocks, setOpenBlocks] = useState<Record<string, boolean>>(
+    Object.fromEntries(menuBlocksData.map((block) => [block.title, false]))
   );
 
   const toggleBlock = (title: string) => {
-    setOpenBlocks((prev) => ({
-      ...prev,
-      [title]: !prev[title],
-    }));
+    setOpenBlocks((prev) => ({ ...prev, [title]: !prev[title] }));
   };
 
   return (
@@ -62,19 +53,19 @@ const Footer: React.FC = () => {
             <LogoIcon className={styles.logo} />
             <p className={styles.topText}>
               On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and
-              demoralized by the charms of pleasure of the moment
+              demoralized by the charms of pleasure of the moment.
             </p>
           </div>
           <ul className={styles.menu}>
-            {menuBlocksData.map((block) => (
-              <li key={block.title} className={`${styles.menuBlock} ${openBlocks[block.title] ? styles.open : ''}`}>
-                <div className={styles.menuBlockTitle} onClick={() => toggleBlock(block.title)}>
-                  {block.title}
+            {menuBlocksData.map(({ title, links }) => (
+              <li key={title} className={`${styles.menuBlock} ${openBlocks[title] ? styles.open : ''}`}>
+                <div className={styles.menuBlockTitle} onClick={() => toggleBlock(title)}>
+                  {title}
                 </div>
-                <ul className={`${styles.menuBlockList}`}>
-                  {block.links.map((link) => (
-                    <li key={link.text}>
-                      <Link href={link.href}>{link.text}</Link>
+                <ul className={styles.menuBlockList}>
+                  {links.map(({ text, href }) => (
+                    <li key={text}>
+                      <Link href={href}>{text}</Link>
                     </li>
                   ))}
                 </ul>

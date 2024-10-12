@@ -8,37 +8,30 @@ const UserProfile: React.FC = () => {
   const isAuth: boolean = true;
   const isImageProfile: boolean = false;
 
+  const renderProfileLinks = () => (
+    <ul className={styles.dropdown}>
+      <li>
+        <a href="/profile">My Profile</a>
+      </li>
+      <li>
+        <a href="/settings">Settings</a>
+      </li>
+      <li>
+        <a href="/logout">Logout</a>
+      </li>
+    </ul>
+  );
+
   return (
     <div className={styles.userProfile}>
-      {isAuth && isImageProfile ? (
+      {isAuth ? (
         <div className={styles.avatar}>
-          <Image alt="Profile" src="/img/templates/profile.png" width={32} height={32} />
-          <ul className={styles.dropdown}>
-            <li>
-              <a href="/profile">My Profile</a>
-            </li>
-            <li>
-              <a href="/settings">Settings</a>
-            </li>
-            <li>
-              <a href="/logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-      ) : isAuth && !isImageProfile ? (
-        <div className={styles.avatar}>
-          <ProfileIcon />
-          <ul className={styles.dropdown}>
-            <li>
-              <a href="/profile">My Profile</a>
-            </li>
-            <li>
-              <a href="/settings">Settings</a>
-            </li>
-            <li>
-              <a href="/logout">Logout</a>
-            </li>
-          </ul>
+          {isImageProfile ? (
+            <Image alt="Profile" src="/img/templates/profile.png" width={32} height={32} />
+          ) : (
+            <ProfileIcon />
+          )}
+          {renderProfileLinks()}
         </div>
       ) : (
         <Button

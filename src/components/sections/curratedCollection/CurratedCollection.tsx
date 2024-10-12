@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './CurratedCollection.module.scss';
 import { TitleSection } from '@/components/ui';
-import { collections } from '@/data';
 import { CollectionCard } from '@/components/cards';
+import { collections } from '@/data';
+import styles from './CurratedCollection.module.scss';
 
 const CurratedCollection: React.FC = () => {
   return (

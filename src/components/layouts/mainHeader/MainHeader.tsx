@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { EButtonType, Socials } from '@/components/ui';
 import { LogoIcon, SearchIcon } from '@/components/icons';
 import { MenuHeader, UserProfile } from '@/components/elements';
@@ -29,15 +28,17 @@ const MainHeader: React.FC = () => {
                   <SearchIcon />
                 </button>
                 <UserProfile />
-                <div className={styles.burger} onClick={handleBurgerToggle}>
-                  <Image src="/icons/menu.svg" alt={'menu'} width={20} height={20} />
+                <div className={`${styles.burger} ${isOpenBurger ? styles.open : ''}`} onClick={handleBurgerToggle}>
+                  <span className={styles.line}></span>
+                  <span className={styles.line}></span>
+                  <span className={styles.line}></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={`${styles.bottom} ${isOpenBurger && styles.open} `}>
+        <div className={`${styles.bottom} ${isOpenBurger && styles.open}`}>
           <div className={`container ${styles.bottomCont}`}>
             <div className={styles.bottomContainer}>
               <div className={styles.bottomLogo}>

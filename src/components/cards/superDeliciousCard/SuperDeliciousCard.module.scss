@@ -12,9 +12,9 @@
 }
 
 .img {
-  border-radius: 12px 12px 0 0;
   @include sizes(100%, 265px);
   @include transition(transform);
+  border-radius: 12px 12px 0 0;
 
   img {
     object-fit: cover;
@@ -32,11 +32,11 @@
 }
 
 .name {
+  @include croppingText(2);
   @include semibold20Inter;
   color: $black;
   margin-bottom: 16px;
   height: 56px;
-  @include croppingText(2);
 }
 
 .rating {
@@ -72,8 +72,8 @@
 }
 
 .blockItem {
+  @include regular12Inter;
   display: flex;
   column-gap: 6px;
-  @include regular12Inter;
   color: $grey;
 }

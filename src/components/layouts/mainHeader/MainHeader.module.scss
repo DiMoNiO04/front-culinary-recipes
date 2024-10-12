@@ -66,25 +66,24 @@
 
 @media (max-width: $mob) {
   .bottom {
+    @include transition(transform);
+    @include sizes(100%, auto);
     position: fixed;
-    width: 100%;
-    height: auto;
     left: 0;
     top: 0;
-    transition: transform 0.3s ease;
     transform: translateY(-200%);
     z-index: 98;
     overflow: scroll;
-      height: calc(100% - 55px);
+    height: calc(100% - 55px);
 
     &.open {
       transform: translateY(0);
     }
-  }
 
-  .bottomCont {
-    padding: 0;
-    max-width: 100%;
+    .bottomCont {
+      padding: 0;
+      max-width: 100%;
+    }
   }
 
   .bottomLogo {
@@ -106,8 +105,8 @@
   }
 
   .topLogo {
-    display: block;
     @include sizes(90px, 30px);
+    display: block;
 
     svg {
       display: block;
@@ -123,8 +122,31 @@
   }
 
   .burger {
-    @include sizes(20px, 20px);
-    display: block;
+    @include flexColumn;
+    @include sizes(24px, 24px);
+    @include transition(transform);
+    justify-content: space-around;
+
+    .line {
+      @include sizes(100%, 2px);
+      display: block;
+      background-color: $black;
+      transition: all 0.3s ease;
+    }
+
+    &.open {
+      .line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
   }
 
   .bottomSocials {

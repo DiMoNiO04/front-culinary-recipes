@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
-import '@/styles/index.scss';
-import { Footer } from '@/components/layouts';
+import { Footer, MainHeader } from '@/components/layouts';
 import { ScrollBtn } from '@/components/elements';
+import '@/styles/index.scss';
 
 const playfairDisplay = Playfair_Display({
   weight: ['400', '500', '700'],
@@ -18,7 +18,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Tastebite',
-  description: 'Идеальный подбор рецептов по ингредиентам | Tastebite',
+  description: 'Perfect selection of recipes by ingredients | Tastebite',
 };
 
 export default function RootLayout({
@@ -29,10 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfairDisplay.variable} ${inter.variable}`}>
-        <main>
-          {children}
-          <ScrollBtn />
-        </main>
+        <MainHeader />
+        {children}
+        <ScrollBtn />
         <Footer />
       </body>
     </html>

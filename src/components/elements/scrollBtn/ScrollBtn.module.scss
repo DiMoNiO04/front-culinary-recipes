@@ -1,13 +1,13 @@
 .btn {
-  position: fixed;
   @include sizes(40px, 40px);
   @include flexCenter;
+  @include transition(background-color);
+  position: fixed;
   border-radius: 50%;
   bottom: 24px;
   right: 24px;
   z-index: 96;
   background-color: $greyLight;
-  @include transition(background-color);
   cursor: pointer;
 
   @include hover {

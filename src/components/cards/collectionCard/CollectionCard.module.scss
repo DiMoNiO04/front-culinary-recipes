@@ -12,8 +12,8 @@
 }
 
 .img {
-  border-radius: 12px 12px 0 0;
   @include transition(transform);
+  border-radius: 12px 12px 0 0;
 
   img {
     object-fit: cover;
@@ -21,8 +21,8 @@
 }
 
 .info {
-  padding: 32px;
   @include flexColumn;
+  padding: 32px;
   row-gap: 24px;
   height: 100%;
   column-gap: 16px;
@@ -37,10 +37,10 @@
 
 .count {
   @include sizes(128px, 29px);
-  border: 1px solid $black;
-  border-radius: 2px;
   @include flexCenter;
   @include medium14Inter;
+  border: 1px solid $black;
+  border-radius: 2px;
   margin-left: auto;
   color: $black;
   margin-top: auto;

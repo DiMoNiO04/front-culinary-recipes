@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './SuperDeliciousCard.module.scss';
 import { StarIcon } from '@/components/icons';
+import styles from './SuperDeliciousCard.module.scss';
 
 interface ISuperDeliciousCard {
   img: string;

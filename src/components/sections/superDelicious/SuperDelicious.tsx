@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './SuperDelicious.module.scss';
 import { TitleSection } from '@/components/ui';
-import { superDelicious } from '@/data';
 import { SuperDeliciousCard } from '@/components/cards';
+import { superDelicious } from '@/data';
+import styles from './SuperDelicious.module.scss';
 
 const SuperDelicious: React.FC = () => {
   return (
