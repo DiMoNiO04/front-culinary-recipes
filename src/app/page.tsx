@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   CurratedCollection,
   LatestRecipes,
@@ -8,7 +9,7 @@ import {
   SuperDelicious,
 } from '@/components/sections';
 
-export function Home() {
+const Home: React.FC = () => {
   return (
     <main>
       <Slider />
@@ -20,6 +21,6 @@ export function Home() {
       <MailingList />
     </main>
   );
-}
+};
 
 export default Home;
