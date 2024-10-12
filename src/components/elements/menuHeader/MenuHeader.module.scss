@@ -13,31 +13,11 @@
     column-gap: 4px;
     color: $black;
 
-    &:hover,
-    &.active {
+    @include hover {
       color: $grey;
 
       .icon {
         transform: rotate(180deg);
-        color: $grey;
-      }
-    }
-  }
-
-  &:hover {
-    .dropdown {
-      @include visible;
-      z-index: 2;
-    }
-
-    .icon {
-      transform: rotate(180deg);
-    }
-
-    a {
-      color: $grey;
-
-      .icon {
         color: $grey;
       }
     }
@@ -60,9 +40,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
     transition:
-      opacity 0.2s ease,
-      z-index 0.2s ease,
-      visibility 0.2s ease;
+      opacity 0.3s ease,
+      visibility 0.3s ease;
 
     li {
       padding: 8px 12px;
@@ -79,6 +58,64 @@
           color: $grey;
         }
       }
+    }
+  }
+
+  @include hover {
+    .dropdown {
+      @include visible;
+      z-index: 2;
+    }
+  }
+}
+
+@media (max-width: $mob) {
+  .nav {
+    width: 100%;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $greyLight;
+  }
+
+  .menu {
+    @include flexColumn;
+    row-gap: 24px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .menuItem {
+    .dropdown {
+      @include hidden;
+      @include flexColumn;
+      row-gap: 8px;
+      padding: 0 0 0 16px;
+      background-color: transparent;
+      position: static;
+      box-shadow: none;
+      max-height: 0;
+      transition:
+        max-height 0.3s ease,
+        opacity 0.3s ease,
+        padding 0.3s ease;
+
+        li {
+          padding: 0
+        }
+    }
+
+    &.open .dropdown {
+      @include visible;
+      max-height: 500px;
+      padding-top: 12px;
+    }
+
+    .icon {
+      transition: transform 0.3s ease;
+    }
+
+    &.open .icon {
+      transform: rotate(180deg);
     }
   }
 }

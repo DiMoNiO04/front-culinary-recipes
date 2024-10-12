@@ -16,7 +16,7 @@ import Image from 'next/image';
 
 const Slider: React.FC = () => {
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.sliderContainer}>
         <Swiper
           modules={[Autoplay, Navigation]}
