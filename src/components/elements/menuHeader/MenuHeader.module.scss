@@ -69,11 +69,12 @@
   }
 }
 
-@media (max-width: $mob) {
+@media (max-width: $tablet) {
   .nav {
     width: 100%;
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    max-width: 1140px;
+    padding: 0 40px 24px;
+    margin: 0 auto 24px;
     border-bottom: 1px solid $greyLight;
   }
 
@@ -117,5 +118,11 @@
     &.open .icon {
       transform: rotate(180deg);
     }
+  }
+}
+
+@media (max-width: $mob) {
+  .nav {
+    padding: 0 0 24px;
   }
 }

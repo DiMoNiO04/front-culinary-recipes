@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
-import { Footer, MainHeader } from '@/components/layouts';
+import { Footer, Header, MainHeader, SecondHeader } from '@/components/layouts';
 import { ScrollBtn } from '@/components/elements';
 import '@/styles/index.scss';
 
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfairDisplay.variable} ${inter.variable}`}>
-        <MainHeader />
+        <Header />
         {children}
         <ScrollBtn />
         <Footer />

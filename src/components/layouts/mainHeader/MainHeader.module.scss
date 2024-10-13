@@ -1,3 +1,11 @@
+.header {
+  &.scroll {
+    .top {
+      background-color: $whiteDark;
+    }
+  }
+}
+
 .container {
   @include flexColumn;
 }
@@ -44,16 +52,26 @@
   align-items: center;
   row-gap: 56px;
   padding: 64px;
-  background-color: $white;
 }
 
-.burger,
 .topLogo,
 .bottomSocials {
   display: none;
 }
 
 @media (max-width: $tablet) {
+  .header {
+    &.open {
+      .bottom {
+        transform: translateY(0);
+      }
+
+      .top {
+        background-color: $whiteDark;
+      }
+    }
+  }
+
   .bottomContainer {
     row-gap: 40px;
     padding: 32px;
@@ -62,11 +80,8 @@
   .manu {
     column-gap: 40px;
   }
-}
 
-@media (max-width: $mob) {
   .bottom {
-    @include transition(transform);
     @include sizes(100%, auto);
     position: fixed;
     left: 0;
@@ -75,10 +90,7 @@
     z-index: 98;
     overflow: scroll;
     height: calc(100% - 55px);
-
-    &.open {
-      transform: translateY(0);
-    }
+    transition: transform 0.2s ease;
 
     .bottomCont {
       padding: 0;
@@ -86,12 +98,20 @@
     }
   }
 
+  .top {
+    background-color: $white;
+  }
+
+  .socials {
+    display: block;
+  }
+
   .bottomLogo {
     display: none;
   }
 
   .bottomContainer {
-    padding: 24px 16px;
+    padding: 24px 0;
     row-gap: 0;
     background-color: $whiteDark;
   }
@@ -121,36 +141,20 @@
     column-gap: 24px;
   }
 
-  .burger {
-    @include flexColumn;
-    @include sizes(24px, 24px);
-    @include transition(transform);
-    justify-content: space-around;
-
-    .line {
-      @include sizes(100%, 2px);
-      display: block;
-      background-color: $black;
-      transition: all 0.3s ease;
-    }
-
-    &.open {
-      .line:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-
-      .line:nth-child(2) {
-        opacity: 0;
-      }
-
-      .line:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-    }
-  }
-
   .bottomSocials {
     @include flexEnd;
     width: 100%;
+    max-width: 1140px;
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: $mob) {
+  .bottomContainer {
+    padding: 24px 16px;
+  }
+
+  .bottomSocials {
+    padding: 0;
   }
 }

@@ -97,13 +97,13 @@ const categories = [
   },
   {
     id: 17,
-    name: 'Salad',
+    name: 'Sandwiches',
     img: '/img/categories/sandwiches.webp',
     link: 'sandwiches/',
   },
   {
     id: 18,
-    name: 'Salad',
+    name: 'Waffles',
     img: '/img/categories/waffles.webp',
     link: 'waffles/',
   },
@@ -115,7 +115,7 @@ const categories = [
   },
   {
     id: 20,
-    name: 'Ramen',
+    name: 'Dips',
     img: '/img/categories/dips.webp',
     link: 'dips/',
   },

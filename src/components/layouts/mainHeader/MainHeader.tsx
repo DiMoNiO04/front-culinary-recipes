@@ -1,18 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { EButtonType, Socials } from '@/components/ui';
 import { LogoIcon, SearchIcon } from '@/components/icons';
-import { MenuHeader, UserProfile } from '@/components/elements';
+import { MenuHeader, UserProfile, BurgerBtn } from '@/components/elements';
+import { useHeader } from '@/hooks';
 import styles from './MainHeader.module.scss';
 
 const MainHeader: React.FC = () => {
-  const [isOpenBurger, setIsOpenBurger] = useState(false);
-
-  const handleBurgerToggle = () => setIsOpenBurger(!isOpenBurger);
+  const { isScrolled, isOpenBurger, handleBurgerToggle } = useHeader();
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isOpenBurger && styles.open} ${isScrolled && styles.scroll}`}>
       <div className={styles.container}>
         <div className={styles.top}>
           <div className="container">
@@ -28,17 +27,13 @@ const MainHeader: React.FC = () => {
                   <SearchIcon />
                 </button>
                 <UserProfile />
-                <div className={`${styles.burger} ${isOpenBurger ? styles.open : ''}`} onClick={handleBurgerToggle}>
-                  <span className={styles.line}></span>
-                  <span className={styles.line}></span>
-                  <span className={styles.line}></span>
-                </div>
+                <BurgerBtn isOpen={isOpenBurger} onClick={handleBurgerToggle} />
               </div>
             </div>
           </div>
         </div>
 
-        <div className={`${styles.bottom} ${isOpenBurger && styles.open}`}>
+        <div className={styles.bottom}>
           <div className={`container ${styles.bottomCont}`}>
             <div className={styles.bottomContainer}>
               <div className={styles.bottomLogo}>
