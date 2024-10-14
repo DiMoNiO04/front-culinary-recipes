@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { EButtonType, Socials } from '@/components/ui';
-import { LogoIcon, SearchIcon } from '@/components/icons';
-import { MenuHeader, UserProfile, BurgerBtn } from '@/components/elements';
+import { Socials } from '@/components/ui';
+import { LogoIcon } from '@/components/icons';
+import { MenuHeader, UserProfile, BurgerBtn, SearchToggle } from '@/components/elements';
 import { useHeader } from '@/hooks';
 import styles from './MainHeader.module.scss';
 
@@ -23,9 +23,7 @@ const MainHeader: React.FC = () => {
                 <Socials />
               </div>
               <div className={styles.topRight}>
-                <button type={EButtonType.BUTTON} className={styles.searchBtn}>
-                  <SearchIcon />
-                </button>
+                <SearchToggle />
                 <UserProfile />
                 <BurgerBtn isOpen={isOpenBurger} onClick={handleBurgerToggle} />
               </div>

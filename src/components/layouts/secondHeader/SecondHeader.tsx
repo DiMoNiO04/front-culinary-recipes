@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LogoIcon, SearchIcon } from '@/components/icons';
-import { BurgerBtn, MenuHeader, UserProfile } from '@/components/elements';
-import { EButtonType, Socials } from '@/components/ui';
+import { LogoIcon } from '@/components/icons';
+import { BurgerBtn, MenuHeader, SearchToggle, UserProfile } from '@/components/elements';
+import { Socials } from '@/components/ui';
 import { useHeader } from '@/hooks';
 import styles from './SecondHeader.module.scss';
 
@@ -27,9 +27,7 @@ const SecondHeader: React.FC = () => {
             </div>
           </div>
           <div className={styles.panel}>
-            <button type={EButtonType.BUTTON} className={styles.searchBtn}>
-              <SearchIcon />
-            </button>
+            <SearchToggle />
             <UserProfile />
             <BurgerBtn isOpen={isOpenBurger} onClick={handleBurgerToggle} />
           </div>
