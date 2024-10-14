@@ -1,4 +1,4 @@
-const searchCards = [
+const recipesCards = [
   {
     id: 1,
     name: 'Decadent Raspberry and Cream Cake',
@@ -145,4 +145,4 @@ const searchCards = [
   },
 ];
 
-export default searchCards;
+export default recipesCards;

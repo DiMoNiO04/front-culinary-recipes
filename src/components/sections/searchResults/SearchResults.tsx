@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './SearchResults.module.scss';
-import { searchCards } from '@/data';
-import SearchCard from '@/components/cards/searchCard/SearchCard';
+import { recipesCards } from '@/data';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import { RecipeCard } from '@/components/cards';
+import styles from './SearchResults.module.scss';
 
 const SearchResults: React.FC = () => {
   return (
@@ -15,17 +15,17 @@ const SearchResults: React.FC = () => {
           <span>{`(98 recipes)`}</span>
         </div>
 
-        {searchCards.length > 0 ? (
+        {recipesCards.length > 0 ? (
           <div className={styles.cards}>
-            {searchCards.map((card) => (
-              <SearchCard {...card} key={card.id} />
+            {recipesCards.map((card) => (
+              <RecipeCard {...card} key={card.id} />
             ))}
           </div>
         ) : (
           <div className={styles.nothing}>Nothing was found for your request</div>
         )}
 
-        {searchCards.length > 0 && (
+        {recipesCards.length > 0 && (
           <div className={styles.btn}>
             <Button
               text="Load More"

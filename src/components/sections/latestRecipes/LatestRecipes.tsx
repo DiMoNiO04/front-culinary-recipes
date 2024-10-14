@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, EButtonClass, EButtonSize, EButtonType, TitleSection } from '@/components/ui';
-import { LatestRecipeCard } from '@/components/cards';
+import { RecipeCard } from '@/components/cards';
 import { recipes } from '@/data';
 import styles from './LatestRecipes.module.scss';
 
@@ -11,7 +11,7 @@ const LatestRecipes: React.FC = () => {
         <TitleSection title="Latest Recipes" />
         <div className={styles.cards}>
           {recipes.map((recipe) => (
-            <LatestRecipeCard {...recipe} key={recipe.id} />
+            <RecipeCard {...recipe} key={recipe.id} />
           ))}
         </div>
         <div className={styles.btnBlock}>
