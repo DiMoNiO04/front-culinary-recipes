@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { recipesCards } from '@/data';
-import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import { Button, EButtonClass, EButtonSize, EButtonType, Select } from '@/components/ui';
 import { RecipeCard } from '@/components/cards';
 import styles from './CategoryTemplate.module.scss';
 
@@ -25,7 +25,15 @@ const CategoryTemplate: React.FC = () => {
                 Here is a recipe I created after having this dish in a restaurant. Enjoy!
               </div>
             </div>
-            <div>sort</div>
+            <Select
+              name="sort"
+              value={null}
+              options={[
+                { id: 1, name: 'Price' },
+                { id: 2, name: 'Popularity' },
+                { id: 3, name: 'Newest' },
+              ]}
+            />
           </div>
 
           {recipesCards.length > 0 ? (

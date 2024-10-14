@@ -4,8 +4,8 @@
 
 .cards {
   @include grid(4);
-    grid-gap: 30px;
-    margin-bottom: 40px;
+  grid-gap: 30px;
+  margin-bottom: 40px;
 }
 
 .nothing {
@@ -42,8 +42,8 @@
 
 .title {
   @include bold60Playfair;
-    color: $black;
-    margin-bottom: 0;
+  color: $black;
+  margin-bottom: 0;
 }
 
 .subtitle {
@@ -55,26 +55,26 @@
     margin: 64px 0;
   }
 
-        .cards {
-          @include grid(3);
-        }
+  .cards {
+    @include grid(3);
+  }
 
-                .titleBlock {
-                  column-gap: 12px;
-        
-                  span {
-                    @include regular14Inter;
-                    margin-bottom: 8px;
-                  }
-                }
+  .titleBlock {
+    column-gap: 12px;
 
-                .title {
-                  @include bold40Playfair;
-                }
+    span {
+      @include regular14Inter;
+      margin-bottom: 8px;
+    }
+  }
 
-                                .subtitle {
-                                  @include regular16Inter;
-                                }
+  .title {
+    @include bold40Playfair;
+  }
+
+  .subtitle {
+    @include regular16Inter;
+  }
 }
 
 @media (max-width: $mob) {
@@ -82,23 +82,23 @@
     margin-bottom: 16px;
   }
 
-    .cards {
-        @include grid(2);
-        grid-gap: 24px;
-        margin-bottom: 24px;
-      }
+  .cards {
+    @include grid(2);
+    grid-gap: 24px;
+    margin-bottom: 24px;
+  }
 
-      .block {
-        flex-direction: column;
-        row-gap: 24px;
-        margin-bottom: 24px;
-      }
+  .block {
+    flex-direction: column;
+    row-gap: 24px;
+    margin-bottom: 24px;
+  }
 
-                .title {
-                  @include bold30Playfair;
-                }
+  .title {
+    @include bold30Playfair;
+  }
 
-                .subtitle {
-                  @include regular14Inter;
-                }
+  .subtitle {
+    @include regular14Inter;
+  }
 }
