@@ -14,6 +14,20 @@ const CategoryTemplate: React.FC = () => {
 
       <section className={styles.sections}>
         <div className="container">
+          <div className={styles.block}>
+            <div className={styles.titles}>
+              <div className={styles.titleBlock}>
+                <h1 className={styles.title}>Desserts</h1>
+                <span>(98 Recipes)</span>
+              </div>
+              <div className={styles.subtitle}>
+                One thing I learned living in the Canarsie section of Brooklyn, NY was how to cook a good Italian meal.
+                Here is a recipe I created after having this dish in a restaurant. Enjoy!
+              </div>
+            </div>
+            <div>sort</div>
+          </div>
+
           {recipesCards.length > 0 ? (
             <div className={styles.cards}>
               {recipesCards.map((card) => (
