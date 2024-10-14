@@ -5,3 +5,4 @@ export { default as recipes } from './recipes';
 export { default as collections } from './collections';
 export { default as superDelicious } from './superDelicious';
 export { default as searchPanelCards } from './searchPanelCards';
+export { default as searchCards } from './searchCards';

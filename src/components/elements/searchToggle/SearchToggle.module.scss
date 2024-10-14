@@ -12,7 +12,7 @@
 }
 
 @media (max-width: $mob) {
-    .searchBtn {
-        @include sizes(20px, 20px);
-      }
+  .searchBtn {
+    @include sizes(20px, 20px);
+  }
 }

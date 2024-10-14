@@ -6,3 +6,4 @@ export { default as MailingList } from './mailingList/MailingList';
 export { default as SuperDelicious } from './superDelicious/SuperDelicious';
 export { default as ShareYourRecipe } from './shareYourRecipe/ShareYourRecipe';
 export { default as CategoriesContent } from './categoriesContent/CategoriesContent';
+export { default as SearchResults } from './searchResults/SearchResults';

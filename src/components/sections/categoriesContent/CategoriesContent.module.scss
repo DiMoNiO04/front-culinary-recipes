@@ -16,6 +16,10 @@
 }
 
 @media (max-width: $tablet) {
+  .section {
+    margin-top: 120px;
+  }
+
   .cards {
     @include grid(3);
   }
