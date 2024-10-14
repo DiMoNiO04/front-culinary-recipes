@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { recipesCards } from '@/data';
-import { Button, EButtonClass, EButtonSize, EButtonType, Select } from '@/components/ui';
-import { RecipeCard } from '@/components/cards';
+import { Select } from '@/components/ui';
+import { LoadMoreBtn, RecipesCardsList } from '@/components/elements';
 import styles from './CategoryTemplate.module.scss';
 
 const CategoryTemplate: React.FC = () => {
@@ -36,27 +36,9 @@ const CategoryTemplate: React.FC = () => {
             />
           </div>
 
-          {recipesCards.length > 0 ? (
-            <div className={styles.cards}>
-              {recipesCards.map((card) => (
-                <RecipeCard {...card} key={card.id} />
-              ))}
-            </div>
-          ) : (
-            <div className={styles.nothing}>There are no recipes in this category</div>
-          )}
+          <RecipesCardsList cards={recipesCards} msg="There are no recipes in this category" />
 
-          {recipesCards.length > 0 && (
-            <div className={styles.btn}>
-              <Button
-                text="Load More"
-                nameClass={EButtonClass.DEF}
-                size={EButtonSize.LG}
-                typeBtn={EButtonType.BUTTON}
-                isLink={false}
-              />
-            </div>
-          )}
+          {recipesCards.length > 0 && <LoadMoreBtn />}
         </div>
       </section>
     </>

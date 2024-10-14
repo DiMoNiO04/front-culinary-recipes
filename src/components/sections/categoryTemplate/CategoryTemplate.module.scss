@@ -2,22 +2,6 @@
   margin-top: 100px;
 }
 
-.cards {
-  @include grid(4);
-  grid-gap: 30px;
-  margin-bottom: 40px;
-}
-
-.nothing {
-  @include regular24Inter;
-  color: $black;
-}
-
-.btn {
-  @include flexCenter;
-  width: 100%;
-}
-
 .block {
   @include flexEndBetween;
   column-gap: 40px;
@@ -55,10 +39,6 @@
     margin: 64px 0;
   }
 
-  .cards {
-    @include grid(3);
-  }
-
   .titleBlock {
     column-gap: 12px;
 
@@ -80,12 +60,6 @@
 @media (max-width: $mob) {
   .sectionFirst {
     margin-bottom: 16px;
-  }
-
-  .cards {
-    @include grid(2);
-    grid-gap: 24px;
-    margin-bottom: 24px;
   }
 
   .block {

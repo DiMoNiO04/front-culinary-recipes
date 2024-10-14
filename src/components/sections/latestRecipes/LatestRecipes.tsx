@@ -1,29 +1,15 @@
 import React from 'react';
-import { Button, EButtonClass, EButtonSize, EButtonType, TitleSection } from '@/components/ui';
-import { RecipeCard } from '@/components/cards';
+import { TitleSection } from '@/components/ui';
 import { recipes } from '@/data';
-import styles from './LatestRecipes.module.scss';
+import { LoadMoreBtn, RecipesCardsList } from '@/components/elements';
 
 const LatestRecipes: React.FC = () => {
   return (
     <section>
       <div className="container">
         <TitleSection title="Latest Recipes" />
-        <div className={styles.cards}>
-          {recipes.map((recipe) => (
-            <RecipeCard {...recipe} key={recipe.id} />
-          ))}
-        </div>
-        <div className={styles.btnBlock}>
-          <Button
-            text="Load More"
-            nameClass={EButtonClass.DEF}
-            size={EButtonSize.LG}
-            typeBtn={EButtonType.BUTTON}
-            isLink={false}
-            customClass={styles.btn}
-          />
-        </div>
+        <RecipesCardsList cards={recipes} />
+        <LoadMoreBtn />
       </div>
     </section>
   );

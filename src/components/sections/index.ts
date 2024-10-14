@@ -8,3 +8,4 @@ export { default as ShareYourRecipe } from './shareYourRecipe/ShareYourRecipe';
 export { default as CategoriesContent } from './categoriesContent/CategoriesContent';
 export { default as SearchResults } from './searchResults/SearchResults';
 export { default as CategoryTemplate } from './categoryTemplate/CategoryTemplate';
+export { default as FavoritesContent } from './favoritesContent/FavoritesContent';
