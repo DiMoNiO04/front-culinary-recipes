@@ -1,0 +1,41 @@
+.inputWrapper {
+  @include flexCenterStart;
+  column-gap: 8px;
+  position: relative;
+  padding:  0 12px 12px;
+  border-bottom: 2px solid $greyLight;
+  @include mb(32px);
+
+  .icon svg {
+    display: block;
+    @include sizes(24px, 24px);
+  }
+}
+
+.inputField {
+  @include regular14Inter;
+  width: 100%;
+  color: $black;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.toggleButton {
+  @include sizes(32px, 32px);
+
+  img {
+    @include fullSize;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: $mob) {
+  .inputWrapper {
+    @include mb(24px);
+  }
+
+    .toggleButton {
+      @include sizes(20px, 20px);
+    }
+}

@@ -8,3 +8,6 @@ export { default as ArrowDownIcon } from './ArrowDown';
 export { default as ProfileIcon } from './Profile';
 export { default as StarIcon } from './Star';
 export { default as CloseIcon } from './Close';
+export { default as EmailIcon } from './Email';
+export { default as PasswordIcon } from './Password';
+export { default as UserIcon } from './User';

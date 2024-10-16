@@ -3,3 +3,4 @@ export { default as MainHeader } from './mainHeader/MainHeader';
 export { default as Footer } from './footer/Footer';
 export { default as Header } from './header/Header';
 export { default as SearchPanel } from './searchPanel/SearchPanel';
+export { default as Auth } from './auth/Auth';

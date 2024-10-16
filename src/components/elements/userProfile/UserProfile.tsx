@@ -1,12 +1,22 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
 import { ProfileIcon } from '@/components/icons';
+import { Auth } from '@/components/layouts';
+import { useOverflow } from '@/hooks';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {
-  const isAuth: boolean = true;
-  const isImageProfile: boolean = false;
+  const [isAuth, setIsAuth] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isImageProfile = false;
+
+  const handleLoginClick = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  useOverflow(isModalOpen);
 
   const renderProfileLinks = () => (
     <ul className={styles.dropdown}>
@@ -34,13 +44,17 @@ const UserProfile: React.FC = () => {
           {renderProfileLinks()}
         </div>
       ) : (
-        <Button
-          text="Login"
-          nameClass={EButtonClass.DEF}
-          size={EButtonSize.SM}
-          typeBtn={EButtonType.BUTTON}
-          isLink={false}
-        />
+        <>
+          <Button
+            text="Login"
+            nameClass={EButtonClass.DEF}
+            size={EButtonSize.SM}
+            typeBtn={EButtonType.BUTTON}
+            isLink={false}
+            handle={handleLoginClick}
+          />
+          <Auth onClose={handleCloseModal} isModalOpen={isModalOpen} />
+        </>
       )}
     </div>
   );
