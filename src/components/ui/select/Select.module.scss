@@ -99,8 +99,20 @@
     margin-bottom: 4px;
   }
 
+  .container {
+    min-width: 108px;
+  }
+
+  .dropdown {
+    padding: 4px 8px;
+  }
+
   .optionLabel {
     @include regular12Inter;
+  }
+
+  .icon {
+    @include sizes(20px, 20px);
   }
 
   .optionCont {
