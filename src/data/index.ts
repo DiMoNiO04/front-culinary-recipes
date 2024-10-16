@@ -6,3 +6,4 @@ export { default as collections } from './collections';
 export { default as superDelicious } from './superDelicious';
 export { default as searchPanelCards } from './searchPanelCards';
 export { default as recipesCards } from './recipesCards';
+export { default as team } from './team';

@@ -13,7 +13,7 @@
   padding-bottom: 32px;
   border-bottom: 1px solid $greyLight;
   row-gap: 20px;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .titleBlock {
@@ -61,25 +61,25 @@
 
 @media (max-width: $tablet) {
   .section {
-      margin-top: 120px;
+    margin-top: 120px;
+  }
+
+  .block {
+    margin-bottom: 40px;
+  }
+
+  .titles {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    h1 {
+      @include bold40Playfair;
     }
 
-    .block {
-      margin-bottom: 40px;
+    img {
+      @include sizes(32px, 32px);
     }
-
-    .titles {
-      padding-bottom: 24px;
-        margin-bottom: 24px;
-
-        h1 {
-          @include bold40Playfair;
-        }
-
-        img {
-          @include sizes(32px, 32px);
-        }
-    }
+  }
 }
 
 @media (max-width: $mob) {
@@ -108,16 +108,15 @@
     }
   }
 
-    .btnDel {
-      column-gap: 4px;
-  
-      img {
-        @include sizes(16px, 16px);
-      }
-  
-      span {
-        @include regular14Inter;
-      }
+  .btnDel {
+    column-gap: 4px;
 
+    img {
+      @include sizes(16px, 16px);
     }
+
+    span {
+      @include regular14Inter;
+    }
+  }
 }

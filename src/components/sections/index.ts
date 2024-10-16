@@ -9,3 +9,7 @@ export { default as CategoriesContent } from './categoriesContent/CategoriesCont
 export { default as SearchResults } from './searchResults/SearchResults';
 export { default as CategoryTemplate } from './categoryTemplate/CategoryTemplate';
 export { default as FavoritesContent } from './favoritesContent/FavoritesContent';
+export { default as AboutMain } from './aboutMain/AboutMain';
+export { default as SimpleRecipes } from './simpleRecipes/SimpleRecipes';
+export { default as TalentTeam } from './talentTeam/TalentTeam';
+export { default as Operating } from './operating/Operating';
