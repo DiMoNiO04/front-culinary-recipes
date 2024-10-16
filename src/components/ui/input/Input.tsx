@@ -1,45 +1,47 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './Input.module.scss';
 import Image from 'next/image';
-import { EButtonType } from '../button/Button';
 import { EInputType } from '@/utils';
+import { EButtonType } from '../button/Button';
+import styles from './Input.module.scss';
 
-interface IInput {
-  type: string;
+interface IInputProps {
+  type: EInputType;
   placeholder?: string;
   icon?: React.ReactNode;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  register: any;
+  name: string;
+  errors?: any;
 }
 
-const Input: React.FC<IInput> = ({ type, placeholder, icon, value, onChange }) => {
+const Input: React.FC<IInputProps> = ({ type, placeholder, icon, register, name, errors }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
-  };
+  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   return (
-    <div className={styles.inputWrapper}>
-      {icon && <div className={styles.icon}>{icon}</div>}
-      <input
-        type={type === EInputType.PASSWORD && showPassword ? EInputType.TEXT : type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className={styles.inputField}
-      />
-      {type === EInputType.PASSWORD && (
-        <button type={EButtonType.BUTTON} className={styles.toggleButton} onClick={togglePasswordVisibility}>
-          {showPassword ? (
-            <Image src="/icons/passwordHide.svg" alt="Hide" width={24} height={24} />
-          ) : (
-            <Image src="/icons/passwordShow.svg" alt="Show" width={24} height={24} />
-          )}
-        </button>
-      )}
+    <div className={styles.input}>
+      <div className={styles.wrapper}>
+        <div className={styles.icon}>{icon}</div>
+        <input
+          type={type === EInputType.PASSWORD && showPassword ? EInputType.TEXT : type}
+          placeholder={placeholder}
+          autoComplete="off"
+          {...register(name)}
+          className={styles.field}
+        />
+        {type === EInputType.PASSWORD && (
+          <button type={EButtonType.BUTTON} onClick={togglePasswordVisibility} className={styles.toggleBtn}>
+            {showPassword ? (
+              <Image src="/icons/passwordHide.svg" alt="Hide" width={24} height={24} />
+            ) : (
+              <Image src="/icons/passwordShow.svg" alt="Show" width={24} height={24} />
+            )}
+          </button>
+        )}
+      </div>
+      {errors[name] && <span className={styles.error}>{errors[name].message}</span>}
     </div>
   );
 };
