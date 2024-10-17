@@ -1,0 +1,4 @@
+.form {
+  @include grid(2);
+  grid-gap: 30px;
+}

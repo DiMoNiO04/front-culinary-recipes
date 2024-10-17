@@ -11,3 +11,4 @@ export { default as CloseIcon } from './Close';
 export { default as EmailIcon } from './Email';
 export { default as PasswordIcon } from './Password';
 export { default as UserIcon } from './User';
+export { default as LogOutIcon } from './LogOut';

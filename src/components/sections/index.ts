@@ -13,3 +13,4 @@ export { default as AboutMain } from './aboutMain/AboutMain';
 export { default as SimpleRecipes } from './simpleRecipes/SimpleRecipes';
 export { default as TalentTeam } from './talentTeam/TalentTeam';
 export { default as Operating } from './operating/Operating';
+export { default as ProfileContent } from './profileContent/ProfileContent';

@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
 import { ProfileIcon } from '@/components/icons';
-import { Auth } from '@/components/layouts';
 import { useOverflow } from '@/hooks';
+import { Auth } from '@/components/modals';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {

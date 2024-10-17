@@ -20,9 +20,9 @@
 
   &:not(:disabled) {
     @include hover {
-        color: $white;
-        background-color: $black;
-      }
+      color: $white;
+      background-color: $black;
+    }
   }
 }
 
@@ -34,9 +34,9 @@
 
   &:not(:disabled) {
     @include hover {
-        color: $orange;
-        background-color: $white;
-      }
+      color: $orange;
+      background-color: $white;
+    }
   }
 }
 

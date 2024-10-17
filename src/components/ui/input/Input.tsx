@@ -10,12 +10,13 @@ interface IInputProps {
   type: EInputType;
   placeholder?: string;
   icon?: React.ReactNode;
+  isReadonly?: boolean;
   register: any;
   name: string;
   errors?: any;
 }
 
-const Input: React.FC<IInputProps> = ({ type, placeholder, icon, register, name, errors }) => {
+const Input: React.FC<IInputProps> = ({ type, placeholder, icon, register, name, errors, isReadonly = false }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
@@ -27,6 +28,7 @@ const Input: React.FC<IInputProps> = ({ type, placeholder, icon, register, name,
         <input
           type={type === EInputType.PASSWORD && showPassword ? EInputType.TEXT : type}
           placeholder={placeholder}
+          readOnly={isReadonly}
           autoComplete="off"
           {...register(name)}
           className={styles.field}
