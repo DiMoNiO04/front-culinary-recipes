@@ -1,18 +1,14 @@
 import * as yup from 'yup';
-
-const REQUIRED_FIELD = 'Required field';
+import { VALIDATE_FORM } from '@/utils';
 
 const schemaSignUp = yup.object().shape({
-  fullName: yup
-    .string()
-    .matches(/^[A-Z]/, 'The first letter must be capitalized')
-    .required(REQUIRED_FIELD),
-  email: yup.string().email('Invalid email address').required('Email is required'),
-  password: yup.string().min(6, 'Password must be at least 6 characters long').required(REQUIRED_FIELD),
+  fullName: yup.string().required(VALIDATE_FORM.REQUIRED_FIELD),
+  email: yup.string().email(VALIDATE_FORM.INVALID_EMAIL).required(VALIDATE_FORM.REQUIRED_FIELD),
+  password: yup.string().min(6, VALIDATE_FORM.MIN_PASSWORD).required(VALIDATE_FORM.REQUIRED_FIELD),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password')], 'Passwords must match')
-    .required(REQUIRED_FIELD),
+    .oneOf([yup.ref('password')], VALIDATE_FORM.PASSWORD_MUTCH)
+    .required(VALIDATE_FORM.REQUIRED_FIELD),
 });
 
 export default schemaSignUp;

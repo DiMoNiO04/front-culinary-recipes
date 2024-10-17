@@ -10,28 +10,27 @@ import schemaSignUp from './schema';
 import styles from './SignUpForm.module.scss';
 
 interface ISignupForm {
-  onClose: () => void;
-  onSubmit: (data: ISignupInput) => void;
+  onSubmit: (data: ISignupInputs) => void;
 }
 
-interface ISignupInput {
+interface ISignupInputs {
   fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
-const SignupForm: React.FC<ISignupForm> = ({ onClose, onSubmit }) => {
+const SignupForm: React.FC<ISignupForm> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<ISignupInput>({
+    formState: { errors, isValid },
+  } = useForm<ISignupInputs>({
     mode: 'onChange',
     resolver: yupResolver(schemaSignUp),
   });
 
-  const handleSignup: SubmitHandler<ISignupInput> = (data) => onSubmit(data);
+  const handleSignup: SubmitHandler<ISignupInputs> = (data) => onSubmit(data);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(handleSignup)}>
@@ -78,6 +77,7 @@ const SignupForm: React.FC<ISignupForm> = ({ onClose, onSubmit }) => {
           typeBtn={EButtonType.SUBMIT}
           size={EButtonSize.LG}
           isLink={false}
+          isDisabled={!isValid}
         />
       </div>
     </form>

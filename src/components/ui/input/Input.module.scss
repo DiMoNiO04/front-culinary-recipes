@@ -1,5 +1,6 @@
 .input {
   margin-bottom: 32px;
+  position: relative;
 }
 
 .wrapper {
@@ -13,6 +14,9 @@
 .error {
   @include regular12Inter;
   color: red;
+  position: absolute;
+  left: 12px;
+  bottom: -16px;
 }
 
 .field {

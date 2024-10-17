@@ -8,6 +8,7 @@
     border-color: $grey;
     color: $white;
     background-color: $grey;
+    cursor: default;
   }
 }
 
@@ -17,9 +18,11 @@
   background-color: $white;
   text-align: center;
 
-  &:hover {
-    color: $white;
-    background-color: $black;
+  &:not(:disabled) {
+    @include hover {
+        color: $white;
+        background-color: $black;
+      }
   }
 }
 
@@ -29,9 +32,11 @@
   background-color: $orange;
   text-align: center;
 
-  &:hover {
-    color: $orange;
-    background-color: $white;
+  &:not(:disabled) {
+    @include hover {
+        color: $orange;
+        background-color: $white;
+      }
   }
 }
 

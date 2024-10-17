@@ -10,26 +10,25 @@ import styles from './LoginForm.module.scss';
 import { EInputType } from '@/utils';
 
 interface ILoginForm {
-  onClose: () => void;
-  onSubmit: (data: ILoginInput) => void;
+  onSubmit: (data: ILoginInputs) => void;
 }
 
-interface ILoginInput {
+interface ILoginInputs {
   email: string;
   password: string;
 }
 
-const LoginForm: React.FC<ILoginForm> = ({ onClose, onSubmit }) => {
+const LoginForm: React.FC<ILoginForm> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<ILoginInput>({
+    formState: { errors, isValid },
+  } = useForm<ILoginInputs>({
     mode: 'onChange',
     resolver: yupResolver(schemaLogin),
   });
 
-  const handleLogin: SubmitHandler<ILoginInput> = (data) => onSubmit(data);
+  const handleLogin: SubmitHandler<ILoginInputs> = (data) => onSubmit(data);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
@@ -58,6 +57,7 @@ const LoginForm: React.FC<ILoginForm> = ({ onClose, onSubmit }) => {
           typeBtn={EButtonType.SUBMIT}
           size={EButtonSize.LG}
           isLink={false}
+          isDisabled={!isValid}
         />
       </div>
     </form>

@@ -15,8 +15,13 @@ const Auth: React.FC<IAuth> = ({ onClose, isModalOpen }) => {
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      handleClose();
     }
+  };
+
+  const handleClose = () => {
+    setIsLogin(true);
+    onClose();
   };
 
   const handleLogin = (data: any) => console.log('Login Data:', data);
@@ -25,17 +30,13 @@ const Auth: React.FC<IAuth> = ({ onClose, isModalOpen }) => {
   return (
     <div className={`${styles.modal} ${isModalOpen ? styles.open : ''}`} onClick={handleOverlayClick}>
       <div className={styles.modalInner}>
-        <button type="button" className={styles.closeBtn} onClick={onClose}>
+        <button type="button" className={styles.closeBtn} onClick={handleClose}>
           <CloseIcon />
         </button>
 
         <h2 className={styles.title}>{isLogin ? 'LOGIN' : 'SIGN UP'}</h2>
 
-        {isLogin ? (
-          <LoginForm onClose={() => setIsLogin(false)} onSubmit={handleLogin} />
-        ) : (
-          <SignupForm onClose={() => setIsLogin(true)} onSubmit={handleSignup} />
-        )}
+        {isLogin ? <LoginForm onSubmit={handleLogin} /> : <SignupForm onSubmit={handleSignup} />}
 
         <div className={styles.analog}>
           {isLogin ? (
