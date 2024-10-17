@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
-import { Footer, Header, MainHeader, SecondHeader } from '@/components/layouts';
+import { Footer, Header } from '@/components/layouts';
 import { ScrollBtn } from '@/components/elements';
 import '@/styles/index.scss';
 

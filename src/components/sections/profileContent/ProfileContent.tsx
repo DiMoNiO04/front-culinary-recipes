@@ -5,12 +5,13 @@ import Image from 'next/image';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
 import { LogOutIcon } from '@/components/icons';
 import { ProfileForm } from '@/components/forms';
-import { ChangePasswordModal } from '@/components/modals';
+import { ChangePasswordModal, ConfirmDeleteAccount } from '@/components/modals';
 import styles from './ProfileContent.module.scss';
 
 const ProfileContent: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>('/img/templates/profile.png');
   const [isModalChangePassOpen, setIsModalChangePassOpen] = useState<boolean>(false);
+  const [isModalDelAccOpen, setIsModalDelAccOpen] = useState<boolean>(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -26,6 +27,8 @@ const ProfileContent: React.FC = () => {
 
   const openModalChangePass = () => setIsModalChangePassOpen(true);
   const closeModalChangePass = () => setIsModalChangePassOpen(false);
+  const openDelAcc = () => setIsModalDelAccOpen(true);
+  const closeDelAcc = () => setIsModalDelAccOpen(false);
 
   return (
     <section className={styles.section}>
@@ -91,7 +94,7 @@ const ProfileContent: React.FC = () => {
               <LogOutIcon />
               Sign out
             </button>
-            <button type={EButtonType.BUTTON} className={styles.delete}>
+            <button type={EButtonType.BUTTON} className={styles.delete} onClick={openDelAcc}>
               Delete Account
             </button>
           </div>
@@ -99,6 +102,7 @@ const ProfileContent: React.FC = () => {
       </div>
 
       <ChangePasswordModal isModalOpen={isModalChangePassOpen} onClose={closeModalChangePass} />
+      <ConfirmDeleteAccount isModalOpen={isModalDelAccOpen} onClose={closeDelAcc} />
     </section>
   );
 };

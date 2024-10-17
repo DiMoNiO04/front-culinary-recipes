@@ -2,14 +2,9 @@
 
 import React from 'react';
 import { ChangePasswordForm } from '@/components/forms';
-import { Modal } from '..';
+import { IModalProps, Modal } from '..';
 
-interface IChangePasswordModal {
-  isModalOpen: boolean;
-  onClose: () => void;
-}
-
-const ChangePasswordModal: React.FC<IChangePasswordModal> = ({ isModalOpen, onClose }) => {
+const ChangePasswordModal: React.FC<IModalProps> = ({ isModalOpen, onClose }) => {
   const handleChangePassword = (data: any) => {
     console.log('Change Password Data:', data);
     onClose();

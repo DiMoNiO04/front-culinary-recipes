@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { SearchIcon } from '@/components/icons';
 import { EButtonType } from '@/components/ui';
 import { SearchPanel } from '@/components/layouts';

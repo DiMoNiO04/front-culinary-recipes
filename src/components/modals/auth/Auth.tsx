@@ -2,15 +2,10 @@
 
 import React from 'react';
 import { LoginForm, SignupForm } from '@/components/forms';
-import { Modal } from '..';
+import { IModalProps, Modal } from '..';
 import styles from './Auth.module.scss';
 
-interface IAuth {
-  onClose: () => void;
-  isModalOpen: boolean;
-}
-
-const Auth: React.FC<IAuth> = ({ onClose, isModalOpen }) => {
+const Auth: React.FC<IModalProps> = ({ onClose, isModalOpen }) => {
   const [isLogin, setIsLogin] = React.useState(true);
 
   const handleLogin = (data: any) => console.log('Login Data:', data);

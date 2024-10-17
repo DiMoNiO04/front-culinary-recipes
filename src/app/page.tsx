@@ -8,7 +8,6 @@ import {
   Slider,
   SuperDelicious,
 } from '@/components/sections';
-import { Auth } from '@/components/layouts';
 
 const Home: React.FC = () => {
   return (
@@ -20,7 +19,6 @@ const Home: React.FC = () => {
       <CurratedCollection />
       <LatestRecipes />
       <MailingList />
-      <Auth />
     </main>
   );
 };

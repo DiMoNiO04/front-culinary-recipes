@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './AboutMain.module.scss';
 import Image from 'next/image';
-import { TitleSection } from '@/components/ui';
+import styles from './AboutMain.module.scss';
 
 const AboutMain: React.FC = () => {
   return (

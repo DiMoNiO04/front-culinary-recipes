@@ -4,6 +4,11 @@ import React from 'react';
 import { CloseIcon } from '@/components/icons';
 import styles from './Modal.module.scss';
 
+export interface IModalProps {
+  onClose: () => void;
+  isModalOpen: boolean;
+}
+
 interface IModal {
   isModalOpen: boolean;
   onClose: () => void;

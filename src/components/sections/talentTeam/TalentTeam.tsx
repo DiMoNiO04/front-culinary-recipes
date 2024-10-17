@@ -1,8 +1,7 @@
 import React from 'react';
-import styles from './TalentTeam.module.scss';
-import { TitleSection } from '@/components/ui';
 import { team } from '@/data';
 import { TeamCard } from '@/components/cards';
+import styles from './TalentTeam.module.scss';
 
 const TalentTeam: React.FC = () => {
   return (

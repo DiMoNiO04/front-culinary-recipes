@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './SimpleRecipes.module.scss';
 import Image from 'next/image';
-import { TitleSection } from '@/components/ui';
+import styles from './SimpleRecipes.module.scss';
 
 const SimpleRecipes: React.FC = () => {
   return (

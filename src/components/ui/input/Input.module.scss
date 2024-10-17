@@ -50,8 +50,7 @@
     @include mb(24px);
   }
 
-
-    .icon svg,
+  .icon svg,
   .toggleBtn {
     @include sizes(20px, 20px);
   }
