@@ -3,6 +3,15 @@
   position: relative;
 }
 
+.errorInput {
+  .icon svg path {
+    fill: red;
+  }
+
+  .wrapper {
+    border-color:red;
+  }
+}
 .wrapper {
   @include flexCenterStart;
   column-gap: 8px;
@@ -35,7 +44,7 @@
 }
 
 .toggleBtn {
-  @include sizes(32px, 32px);
+  @include sizes(24px, 24px);
   flex-shrink: 0;
 
   img {

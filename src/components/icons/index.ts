@@ -12,3 +12,4 @@ export { default as EmailIcon } from './Email';
 export { default as PasswordIcon } from './Password';
 export { default as UserIcon } from './User';
 export { default as LogOutIcon } from './LogOut';
+export { default as PhoneIcon } from './Phone';

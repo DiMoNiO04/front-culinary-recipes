@@ -50,29 +50,31 @@ const ProfileContent: React.FC = () => {
             <div className={styles.foto}>
               <Image src={selectedImage} alt="Profile Image" width={128} height={128} />
             </div>
-            <input
-              type="file"
-              accept="image/*"
-              id="fileInput"
-              style={{ display: 'none' }}
-              onChange={handleImageChange}
-            />
-            <Button
-              text="Change photo"
-              nameClass={EButtonClass.SEC}
-              typeBtn={EButtonType.BUTTON}
-              size={EButtonSize.LG}
-              isLink={false}
-              handle={() => document.getElementById('fileInput')?.click()}
-            />
-            <Button
-              text="Delete"
-              nameClass={EButtonClass.DEF}
-              typeBtn={EButtonType.BUTTON}
-              size={EButtonSize.LG}
-              isLink={false}
-              handle={() => setSelectedImage('/img/templates/profile.svg')}
-            />
+            <div className={styles.fotoBtns}>
+              <input
+                type="file"
+                accept="image/*"
+                id="fileInput"
+                style={{ display: 'none' }}
+                onChange={handleImageChange}
+              />
+              <Button
+                text="Change photo"
+                nameClass={EButtonClass.SEC}
+                typeBtn={EButtonType.BUTTON}
+                size={EButtonSize.SM}
+                isLink={false}
+                handle={() => document.getElementById('fileInput')?.click()}
+              />
+              <Button
+                text="Delete"
+                nameClass={EButtonClass.DEF}
+                typeBtn={EButtonType.BUTTON}
+                size={EButtonSize.SM}
+                isLink={false}
+                handle={() => setSelectedImage('/img/templates/profile.svg')}
+              />
+            </div>
           </div>
 
           <div className={styles.form}>

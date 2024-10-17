@@ -35,6 +35,7 @@ const LoginForm: React.FC<ILoginForm> = ({ onSubmit }) => {
       <Input
         type={EInputType.EMAIL}
         placeholder="Email"
+        isRequired={true}
         icon={<EmailIcon />}
         register={register}
         name="email"
@@ -44,6 +45,7 @@ const LoginForm: React.FC<ILoginForm> = ({ onSubmit }) => {
       <Input
         type={EInputType.PASSWORD}
         placeholder="Password"
+        isRequired={true}
         icon={<PasswordIcon />}
         register={register}
         name="password"

@@ -14,7 +14,8 @@ interface ISignupForm {
 }
 
 interface ISignupInputs {
-  fullName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -36,16 +37,28 @@ const SignupForm: React.FC<ISignupForm> = ({ onSubmit }) => {
     <form className={styles.form} onSubmit={handleSubmit(handleSignup)}>
       <Input
         type={EInputType.TEXT}
-        placeholder="Full Name"
+        placeholder="First Name"
         icon={<UserIcon />}
+        isRequired={true}
         register={register}
-        name="fullName"
+        name="firstName"
+        errors={errors}
+      />
+
+      <Input
+        type={EInputType.TEXT}
+        placeholder="Last Name"
+        icon={<UserIcon />}
+        isRequired={true}
+        register={register}
+        name="lastName"
         errors={errors}
       />
 
       <Input
         type={EInputType.EMAIL}
         placeholder="Email"
+        isRequired={true}
         icon={<EmailIcon />}
         register={register}
         name="email"
@@ -55,6 +68,7 @@ const SignupForm: React.FC<ISignupForm> = ({ onSubmit }) => {
       <Input
         type={EInputType.PASSWORD}
         placeholder="Password"
+        isRequired={true}
         icon={<PasswordIcon />}
         register={register}
         name="password"
@@ -64,6 +78,7 @@ const SignupForm: React.FC<ISignupForm> = ({ onSubmit }) => {
       <Input
         type={EInputType.PASSWORD}
         placeholder="Confirm Password"
+        isRequired={true}
         icon={<PasswordIcon />}
         register={register}
         name="confirmPassword"

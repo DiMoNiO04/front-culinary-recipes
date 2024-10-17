@@ -2,3 +2,10 @@
   @include grid(2);
   grid-gap: 30px;
 }
+
+@media (max-width: $mob) {
+  .form {
+      @include grid(1);
+      grid-gap: 8px;
+    }
+}

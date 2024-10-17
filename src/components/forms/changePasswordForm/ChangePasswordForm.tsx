@@ -35,6 +35,7 @@ const ChangePasswordForm: React.FC<IChangePasswordFormProps> = ({ onSubmit }) =>
       <Input
         type={EInputType.PASSWORD}
         placeholder="Current Password"
+        isRequired={true}
         icon={<PasswordIcon />}
         register={register}
         name="currentPassword"
@@ -44,6 +45,7 @@ const ChangePasswordForm: React.FC<IChangePasswordFormProps> = ({ onSubmit }) =>
       <Input
         type={EInputType.PASSWORD}
         placeholder="New Password"
+        isRequired={true}
         icon={<PasswordIcon />}
         register={register}
         name="newPassword"
@@ -53,6 +55,7 @@ const ChangePasswordForm: React.FC<IChangePasswordFormProps> = ({ onSubmit }) =>
       <Input
         type={EInputType.PASSWORD}
         placeholder="Confirm New Password"
+        isRequired={true}
         icon={<PasswordIcon />}
         register={register}
         name="confirmPassword"

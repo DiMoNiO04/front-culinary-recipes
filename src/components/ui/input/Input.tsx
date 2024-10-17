@@ -11,24 +11,37 @@ interface IInputProps {
   placeholder?: string;
   icon?: React.ReactNode;
   isReadonly?: boolean;
+  isRequired?: boolean;
   register: any;
   name: string;
   errors?: any;
 }
 
-const Input: React.FC<IInputProps> = ({ type, placeholder, icon, register, name, errors, isReadonly = false }) => {
+const Input: React.FC<IInputProps> = ({
+  type,
+  placeholder,
+  icon,
+  register,
+  name,
+  errors,
+  isReadonly = false,
+  isRequired = false,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
+  const hasError = Boolean(errors[name]);
+
   return (
-    <div className={styles.input}>
+    <div className={`${styles.input} ${hasError && styles.errorInput}`}>
       <div className={styles.wrapper}>
         <div className={styles.icon}>{icon}</div>
         <input
           type={type === EInputType.PASSWORD && showPassword ? EInputType.TEXT : type}
-          placeholder={placeholder}
+          placeholder={isRequired ? `${placeholder}*` : placeholder}
           readOnly={isReadonly}
+          required={isRequired}
           autoComplete="off"
           {...register(name)}
           className={styles.field}
@@ -43,7 +56,7 @@ const Input: React.FC<IInputProps> = ({ type, placeholder, icon, register, name,
           </button>
         )}
       </div>
-      {errors[name] && <span className={styles.error}>{errors[name].message}</span>}
+      {hasError && <span className={styles.error}>{errors[name].message}</span>}
     </div>
   );
 };
