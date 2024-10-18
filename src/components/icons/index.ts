@@ -15,3 +15,4 @@ export { default as LogOutIcon } from './LogOut';
 export { default as PhoneIcon } from './Phone';
 export { default as LikeIcon } from './Like';
 export { default as ShareIcon } from './Share';
+export { default as PrinterIcon } from './Printer';
