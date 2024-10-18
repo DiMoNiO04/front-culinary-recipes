@@ -1,22 +1,33 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useCookies } from 'react-cookie';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
 import { ProfileIcon } from '@/components/icons';
 import { useOverflow } from '@/hooks';
 import { Auth } from '@/components/modals';
+import { TOKEN_KEY } from '@/utils';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [cookies] = useCookies([TOKEN_KEY]);
+  const [isAuth, setIsAuth] = useState(!!cookies[TOKEN_KEY]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isImageProfile = false;
 
+  useOverflow(isModalOpen);
+
+  useEffect(() => {
+    setIsAuth(!!cookies[TOKEN_KEY]);
+  }, [cookies]);
+
   const handleLoginClick = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
-
-  useOverflow(isModalOpen);
+  const handleAuthSuccess = () => {
+    setIsAuth(true);
+    setIsModalOpen(false);
+  };
 
   const renderProfileLinks = () => (
     <ul className={styles.dropdown}>
@@ -36,11 +47,7 @@ const UserProfile: React.FC = () => {
     <div className={styles.userProfile}>
       {isAuth ? (
         <div className={styles.avatar}>
-          {isImageProfile ? (
-            <Image alt="Profile" src="/img/templates/profile.png" width={32} height={32} />
-          ) : (
-            <ProfileIcon />
-          )}
+          {isImageProfile ? <Image alt="" src="/img/templates/profile.png" width={32} height={32} /> : <ProfileIcon />}
           {renderProfileLinks()}
         </div>
       ) : (
@@ -53,7 +60,7 @@ const UserProfile: React.FC = () => {
             isLink={false}
             handle={handleLoginClick}
           />
-          <Auth onClose={handleCloseModal} isModalOpen={isModalOpen} />
+          <Auth onClose={handleCloseModal} isModalOpen={isModalOpen} onAuthSuccess={handleAuthSuccess} />
         </>
       )}
     </div>

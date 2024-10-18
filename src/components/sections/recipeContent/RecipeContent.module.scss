@@ -29,10 +29,10 @@
 
 @media (max-width: $mob) {
   .section {
-      margin-top: 96px;
-    }
-    .content {
-      @include grid(1);
-      row-gap: 32px;
-    }
+    margin-top: 96px;
+  }
+  .content {
+    @include grid(1);
+    row-gap: 32px;
+  }
 }

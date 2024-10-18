@@ -5,15 +5,21 @@ import { LoginForm, SignupForm } from '@/components/forms';
 import { IModalProps, Modal } from '..';
 import styles from './Auth.module.scss';
 
-const Auth: React.FC<IModalProps> = ({ onClose, isModalOpen }) => {
+interface IAuthProps extends IModalProps {
+  onAuthSuccess: () => void;
+}
+
+const Auth: React.FC<IAuthProps> = ({ onClose, isModalOpen, onAuthSuccess }) => {
   const [isLogin, setIsLogin] = React.useState(true);
 
-  const handleLogin = (data: any) => console.log('Login Data:', data);
-  const handleSignup = (data: any) => console.log('Signup Data:', data);
+  const handleAuthSuccess = () => {
+    onAuthSuccess();
+    onClose();
+  };
 
   return (
     <Modal isModalOpen={isModalOpen} onClose={onClose} title={isLogin ? 'LOGIN' : 'SIGN UP'}>
-      {isLogin ? <LoginForm onSubmit={handleLogin} /> : <SignupForm onSubmit={handleSignup} />}
+      {isLogin ? <LoginForm onSuccess={handleAuthSuccess} /> : <SignupForm onSuccess={handleAuthSuccess} />}
 
       <div className={styles.analog}>
         {isLogin ? (

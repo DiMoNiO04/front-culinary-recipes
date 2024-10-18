@@ -10,7 +10,7 @@ import schemaSignUp from './schema';
 import styles from './SignUpForm.module.scss';
 
 interface ISignupForm {
-  onSubmit: (data: ISignupInputs) => void;
+  onSuccess: () => void;
 }
 
 interface ISignupInputs {
@@ -21,7 +21,7 @@ interface ISignupInputs {
   confirmPassword: string;
 }
 
-const SignupForm: React.FC<ISignupForm> = ({ onSubmit }) => {
+const SignupForm: React.FC<ISignupForm> = ({ onSuccess }) => {
   const {
     register,
     handleSubmit,
@@ -31,10 +31,10 @@ const SignupForm: React.FC<ISignupForm> = ({ onSubmit }) => {
     resolver: yupResolver(schemaSignUp),
   });
 
-  const handleSignup: SubmitHandler<ISignupInputs> = (data) => onSubmit(data);
+  // const handleSignup: SubmitHandler<ISignupInputs> = (data) => onSubmit(data);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(handleSignup)}>
+    <form className={styles.form}>
       <Input
         type={EInputType.TEXT}
         placeholder="First Name"

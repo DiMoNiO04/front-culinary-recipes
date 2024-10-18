@@ -36,7 +36,7 @@
   column-gap: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid $greyLight;
-  margin-bottom: 24px
+  margin-bottom: 24px;
 }
 
 .author,
@@ -78,80 +78,79 @@
   }
 }
 
-@media (max-width: $tablet) {  
+@media (max-width: $tablet) {
+  .panelBnts {
+    column-gap: 34px;
+  }
 
-    .panelBnts {
-      column-gap: 34px;
-    }
-  
-    .btnLike {
+  .btnLike {
+    @include sizes(24px, 24px);
+  }
+
+  .title {
+    @include bold40Playfair;
+    margin-bottom: 20px;
+  }
+
+  .desc {
+    @include flexCenterStart;
+    column-gap: 24px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .author {
+    img {
       @include sizes(24px, 24px);
     }
-  
-    .title {
-      @include bold40Playfair;
-      margin-bottom: 20px;
-    }
-  
-    .desc {
-      @include flexCenterStart;
-      column-gap: 24px;
-      padding-bottom: 20px;
-      margin-bottom: 20px
-    }
-  
-    .author {
-      img {
-        @include sizes(24px, 24px);
-      }
-    }
-    
-    .description {
-      @include regular16Inter;
-    }
-  
-    .img {
-      margin: 32px 0 48px;
-      height: 380px;
-    }
+  }
+
+  .description {
+    @include regular16Inter;
+  }
+
+  .img {
+    margin: 32px 0 48px;
+    height: 380px;
+  }
 }
 
-@media (max-width: $mob) {  
-    .panelBnts {
-      column-gap: 16px;
+@media (max-width: $mob) {
+  .panelBnts {
+    column-gap: 16px;
+  }
+
+  .btnLike {
+    @include sizes(16px, 16px);
+  }
+
+  .title {
+    @include bold30Playfair;
+    margin-bottom: 16px;
+  }
+
+  .desc {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .author,
+  .calendar {
+    column-gap: 4px;
+
+    span {
+      @include regular12Inter;
     }
-  
-    .btnLike {
-      @include sizes(16px, 16px);
-    }
-  
-    .title {
-      @include bold30Playfair;
-      margin-bottom: 16px;
-    }
-  
-    .desc {
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      row-gap: 8px;
-    }
-  
-    .author,
-    .calendar {
-      column-gap: 4px;
-  
-      span {
-        @include regular12Inter;
-      }
-    }
-  
-    .description {
-      @include regular14Inter;
-    }
-  
-    .img {
-      margin: 24px 0 16px;
-      @include sizes(100%, 280px);
-    }
+  }
+
+  .description {
+    @include regular14Inter;
+  }
+
+  .img {
+    margin: 24px 0 16px;
+    @include sizes(100%, 280px);
+  }
 }

@@ -5,7 +5,7 @@
 
 .item {
   @include flexColumn;
-  
+
   &:not(:last-child) {
     padding-right: 24px;
     border-right: 1px solid $grey;
@@ -38,36 +38,36 @@
 
 @media (max-width: $tablet) {
   .items {
-      column-gap: 20px;
+    column-gap: 20px;
+  }
+
+  .item {
+    &:not(:last-child) {
+      padding-right: 20px;
     }
-  
-    .item {
-      &:not(:last-child) {
-        padding-right: 20px;
-      }
-    }
-  
-    .print {
-      @include sizes(20px, 20px);
-    }
+  }
+
+  .print {
+    @include sizes(20px, 20px);
+  }
 }
 
 @media (max-width: $mob) {
   .items {
-      column-gap: 16px;
+    column-gap: 16px;
+  }
+
+  .item {
+    &:not(:last-child) {
+      padding-right: 16px;
     }
-  
-    .item {
-      &:not(:last-child) {
-        padding-right: 16px;
-      }
-  
-      b {
-        @include regular12Inter;
-      }
-  
-      span {
-        @include regular14Inter;
-      }
+
+    b {
+      @include regular12Inter;
     }
+
+    span {
+      @include regular14Inter;
+    }
+  }
 }

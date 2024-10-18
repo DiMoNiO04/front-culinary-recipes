@@ -1,24 +1,25 @@
 'use client';
 
 import React from 'react';
-import { EmailIcon, PasswordIcon } from '@/components/icons';
-import { Button, EButtonClass, EButtonSize, EButtonType, Input } from '@/components/ui';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schemaLogin from './schema';
-import styles from './LoginForm.module.scss';
+import { EmailIcon, PasswordIcon } from '@/components/icons';
+import { Button, EButtonClass, EButtonSize, EButtonType, Input } from '@/components/ui';
 import { EInputType } from '@/utils';
+import { useLogin } from '@/api/hooks';
+import styles from './LoginForm.module.scss';
 
 interface ILoginForm {
-  onSubmit: (data: ILoginInputs) => void;
+  onSuccess: () => void;
 }
 
-interface ILoginInputs {
+export interface ILoginInputs {
   email: string;
   password: string;
 }
 
-const LoginForm: React.FC<ILoginForm> = ({ onSubmit }) => {
+const LoginForm: React.FC<ILoginForm> = ({ onSuccess }) => {
   const {
     register,
     handleSubmit,
@@ -28,7 +29,7 @@ const LoginForm: React.FC<ILoginForm> = ({ onSubmit }) => {
     resolver: yupResolver(schemaLogin),
   });
 
-  const handleLogin: SubmitHandler<ILoginInputs> = (data) => onSubmit(data);
+  const { handleLogin, authError } = useLogin(onSuccess);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
@@ -51,6 +52,8 @@ const LoginForm: React.FC<ILoginForm> = ({ onSubmit }) => {
         name="password"
         errors={errors}
       />
+
+      {authError && <p className={styles.error}>{authError}</p>}
 
       <div className={styles.btn}>
         <Button

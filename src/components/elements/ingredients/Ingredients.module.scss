@@ -14,7 +14,7 @@
     position: relative;
 
     &::before {
-      content: "";
+      content: '';
       @include sizes(12px, 12px);
       border-radius: 50%;
       border: 1.5px solid $black;
@@ -28,21 +28,21 @@
 
 @media (max-width: $tablet) {
   .title {
-      @include bold24Playfair;
-      margin-bottom: 24px;
+    @include bold24Playfair;
+    margin-bottom: 24px;
+  }
+
+  .list {
+    row-gap: 16px;
+
+    li {
+      @include regular16Inter;
     }
-  
-    .list {
-      row-gap: 16px;
-  
-      li {
-        @include regular16Inter;
-      }
-    }
+  }
 }
 
 @media (max-width: $mob) {
   .title {
-      margin-bottom: 16px;
-    }
+    margin-bottom: 16px;
+  }
 }
