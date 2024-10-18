@@ -25,3 +25,24 @@
     }
   }
 }
+
+@media (max-width: $tablet) {
+  .title {
+      @include bold24Playfair;
+      margin-bottom: 24px;
+    }
+  
+    .list {
+      row-gap: 16px;
+  
+      li {
+        @include regular16Inter;
+      }
+    }
+}
+
+@media (max-width: $mob) {
+  .title {
+      margin-bottom: 16px;
+    }
+}

@@ -29,3 +29,42 @@
     }
   }
 }
+
+@media (max-width: $tablet) {
+  .title {
+      @include bold24Playfair;
+      margin-bottom: 30px;
+    }
+  
+    .list {
+      row-gap: 20px;
+  
+      li {
+        @include regular16Inter;
+  
+        &::before {
+          @include sizes(20px, 20px);
+          @include regular12Inter;
+          top: 2px;
+        }
+      }
+    }
+}
+
+@media (max-width: $mob) {
+  .title {
+      margin-bottom: 16px;
+    }
+  
+    .list {
+      row-gap: 16px;
+  
+      li {
+        @include regular16Inter;
+  
+        &::before {
+          @include regular12Inter;
+        }
+      }
+    }
+}
