@@ -39,16 +39,6 @@
   height: 56px;
 }
 
-.rating {
-  @include flexCenterStart;
-  column-gap: 4px;
-  margin-bottom: 8px;
-
-  svg {
-    @include sizes(16px, 16px);
-  }
-}
-
 .author {
   @include flexCenterStart;
   column-gap: 6px;

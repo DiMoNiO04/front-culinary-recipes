@@ -1,0 +1,37 @@
+.items {
+  @include flexCenterStart;
+  column-gap: 24px;
+}
+
+.item {
+  @include flexColumn;
+  
+  &:not(:last-child) {
+    padding-right: 24px;
+    border-right: 1px solid $grey;
+  }
+
+  b {
+    @include regular14Inter;
+    color: $grey;
+  }
+
+  span {
+    @include regular16Inter;
+    color: $black;
+  }
+}
+
+.print {
+  @include sizes(24px, 24px);
+
+  svg path {
+    @include transition(fill);
+  }
+
+  @include hover {
+    svg path {
+      fill: $grey;
+    }
+  }
+}

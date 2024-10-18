@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { StarIcon } from '@/components/icons';
 import styles from './SuperDeliciousCard.module.scss';
+import { Rating } from '@/components/elements';
 
 interface ISuperDeliciousCard {
   img: string;
@@ -25,11 +25,7 @@ const SuperDeliciousCard: React.FC<ISuperDeliciousCard> = ({ img, comments, link
       </div>
       <div className={styles.info}>
         <div className={styles.content}>
-          <div className={styles.rating}>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <StarIcon key={index} color={index < rating ? '#FF642F' : '#7f7f7f'} />
-            ))}
-          </div>
+          <Rating rating={rating} />
           <div className={styles.name}>{name}</div>
           <div className={styles.author}>
             <div className={styles.authorIcon}>

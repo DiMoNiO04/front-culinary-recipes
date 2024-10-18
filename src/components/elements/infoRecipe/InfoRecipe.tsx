@@ -5,7 +5,7 @@ import styles from './InfoRecipe.module.scss';
 
 const InfoRecipe: React.FC = () => {
   return (
-    <div className={styles.block}>
+    <div className={styles.items}>
       <div className={styles.item}>
         <b>PREP TIME</b>
         <span>15 MIN</span>

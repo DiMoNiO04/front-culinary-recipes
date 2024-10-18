@@ -1,0 +1,31 @@
+.title {
+  @include bold30Playfair;
+  margin-bottom: 36px;
+}
+
+.list {
+  @include flexColumn;
+  row-gap: 24px;
+  counter-reset: list-counter;
+
+  li {
+    @include regular18Inter;
+    @include flexStart;
+    column-gap: 8px;
+    position: relative;
+    counter-increment: list-counter; 
+
+    &::before {
+      content: counter(list-counter);
+      @include sizes(24px, 24px);
+      @include regular14Inter;
+      @include flexCenter;
+      border-radius: 50%;
+      background-color: $orange;
+      position: relative;
+      top: 0;
+      flex-shrink: 0;
+      color: $white;
+    }
+  }
+}

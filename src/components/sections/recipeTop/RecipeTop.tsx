@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { LikeIcon, ShareIcon } from '@/components/icons';
 import { EButtonType } from '@/components/ui';
 import styles from './RecipeTop.module.scss';
+import { Rating } from '@/components/elements';
 
 const RecipeTop: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const RecipeTop: React.FC = () => {
           <Image src={'/icons/calendar.svg'} width={16} height={16} alt="" />
           <span>Yesterday</span>
         </div>
+        <Rating rating={5} />
       </div>
       <p className={styles.description}>
         One thing I learned living in the Canarsie section of Brooklyn, NY was how to cook a good Italian meal. Here is
