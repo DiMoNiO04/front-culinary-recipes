@@ -13,3 +13,5 @@ export { default as PasswordIcon } from './Password';
 export { default as UserIcon } from './User';
 export { default as LogOutIcon } from './LogOut';
 export { default as PhoneIcon } from './Phone';
+export { default as LikeIcon } from './Like';
+export { default as ShareIcon } from './Share';

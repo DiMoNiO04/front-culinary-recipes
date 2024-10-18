@@ -14,3 +14,6 @@ export { default as SimpleRecipes } from './simpleRecipes/SimpleRecipes';
 export { default as TalentTeam } from './talentTeam/TalentTeam';
 export { default as Operating } from './operating/Operating';
 export { default as ProfileContent } from './profileContent/ProfileContent';
+export { default as AlsoLike } from './alsoLike/AlsoLike';
+export { default as RecipeContent } from './recipeContent/RecipeContent';
+export { default as RecipeTop } from './recipeTop/RecipeTop';

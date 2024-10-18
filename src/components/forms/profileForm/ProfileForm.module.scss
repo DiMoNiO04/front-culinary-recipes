@@ -5,7 +5,7 @@
 
 @media (max-width: $mob) {
   .form {
-      @include grid(1);
-      grid-gap: 8px;
-    }
+    @include grid(1);
+    grid-gap: 8px;
+  }
 }
