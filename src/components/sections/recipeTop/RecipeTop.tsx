@@ -9,10 +9,7 @@ const RecipeTop: React.FC = () => {
   return (
     <div className={styles.top}>
       <div className={styles.panel}>
-        <p className={styles.panelDesc}>
-          <Image src={'/icons/trendingUp.svg'} alt="" width={20} height={20} />
-          85% would make this again
-        </p>
+        <h1 className={styles.title}>Strawberry Cream Cheesecake</h1>
         <div className={styles.panelBnts}>
           <button className={styles.btnLike} type={EButtonType.BUTTON}>
             <ShareIcon />
@@ -22,7 +19,6 @@ const RecipeTop: React.FC = () => {
           </button>
         </div>
       </div>
-      <h1 className={styles.title}>Strawberry Cream Cheesecake</h1>
       <div className={styles.desc}>
         <div className={styles.author}>
           <Image src={'/img/templates/profile.svg'} width={32} height={32} alt="" />

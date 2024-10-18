@@ -1,25 +1,19 @@
 .panel {
-  @include flexCenterBetween;
+  @include flexStartBetween;
   margin-bottom: 8px;
-}
-
-.panelDesc {
-  @include flexCenterStart;
-  @include medium14Inter;
-  column-gap: 8px;
-
-  img {
-    @include sizes(20px, 20px);
-  }
+  column-gap: 32px;
 }
 
 .panelBnts {
   @include flexCenterBetween;
   column-gap: 32px;
+  margin-top: 12px;
+  flex-shrink: 0;
 }
 
 .btnLike {
   @include sizes(32px, 32px);
+  flex-shrink: 0;
 
   svg path {
     @include transition(fill);
@@ -122,15 +116,7 @@
     }
 }
 
-@media (max-width: $mob) {
-    .panelDesc {
-      @include regular10Inter;
-  
-      img {
-        @include sizes(16px, 16px);
-      }
-    }
-  
+@media (max-width: $mob) {  
     .panelBnts {
       column-gap: 16px;
     }

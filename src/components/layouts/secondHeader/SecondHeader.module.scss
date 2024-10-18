@@ -80,6 +80,10 @@
     background-color: $whiteDark;
     padding: 24px 0;
   }
+
+  .panel {
+    column-gap: 24px;
+  }
 }
 
 @media (max-width: $mob) {
@@ -90,4 +94,8 @@
   .contentContainer {
     padding: 24px 16px;
   }
+
+        .panel {
+          column-gap: 20px;
+        }
 }
