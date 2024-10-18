@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { LoginForm, SignupForm } from '@/components/forms';
 import { IModalProps, Modal } from '..';
@@ -7,9 +5,10 @@ import styles from './Auth.module.scss';
 
 interface IAuthProps extends IModalProps {
   onAuthSuccess: () => void;
+  onAuthError: (errorMessage: string) => void;
 }
 
-const Auth: React.FC<IAuthProps> = ({ onClose, isModalOpen, onAuthSuccess }) => {
+const Auth: React.FC<IAuthProps> = ({ onClose, isModalOpen, onAuthSuccess, onAuthError }) => {
   const [isLogin, setIsLogin] = React.useState(true);
 
   const handleAuthSuccess = () => {
@@ -19,7 +18,11 @@ const Auth: React.FC<IAuthProps> = ({ onClose, isModalOpen, onAuthSuccess }) => 
 
   return (
     <Modal isModalOpen={isModalOpen} onClose={onClose} title={isLogin ? 'LOGIN' : 'SIGN UP'}>
-      {isLogin ? <LoginForm onSuccess={handleAuthSuccess} /> : <SignupForm onSuccess={handleAuthSuccess} />}
+      {isLogin ? (
+        <LoginForm onSuccess={handleAuthSuccess} onAuthError={onAuthError} />
+      ) : (
+        <SignupForm onSuccess={handleAuthSuccess} />
+      )}
 
       <div className={styles.analog}>
         {isLogin ? (

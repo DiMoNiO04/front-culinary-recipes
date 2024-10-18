@@ -5,11 +5,11 @@
 
 .errorInput {
   .icon svg path {
-    fill: red;
+    fill: $red;
   }
 
   .wrapper {
-    border-color: red;
+    border-color: $red;
   }
 }
 .wrapper {
@@ -22,7 +22,7 @@
 
 .error {
   @include regular12Inter;
-  color: red;
+  color: $red;
   position: absolute;
   left: 12px;
   bottom: -16px;

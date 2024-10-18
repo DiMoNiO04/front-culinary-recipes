@@ -9,7 +9,7 @@
 
 .error {
   @include regular16Inter;
-  color: red;
+  color: $red;
 }
 
 @media (max-width: $mob) {

@@ -4,7 +4,7 @@ import { FAIL_FETCH, TOKEN_KEY } from '@/utils';
 import { ApiEndpoints, EMethods } from '@/api';
 import { ILoginInputs } from '@/components/forms';
 
-const useLogin = (onSuccess: () => void) => {
+const useLogin = (onSuccess: () => void, onAuthError: (errorMessage: string) => void) => {
   const [authError, setAuthError] = useState<string | null>(null);
   const [cookies, setCookie] = useCookies([TOKEN_KEY]);
 
@@ -21,6 +21,7 @@ const useLogin = (onSuccess: () => void) => {
       if (!response.ok) {
         const errorData = await response.json();
         setAuthError(errorData.message);
+        onAuthError(errorData.message);
         return;
       }
 
@@ -37,6 +38,7 @@ const useLogin = (onSuccess: () => void) => {
       onSuccess();
     } catch (error) {
       setAuthError(FAIL_FETCH);
+      onAuthError(FAIL_FETCH);
     }
   };
 
