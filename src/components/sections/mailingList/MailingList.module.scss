@@ -1,0 +1,121 @@
+.section {
+  background-color: $pink;
+  margin: 0;
+}
+
+.container {
+  max-width: 530px;
+  margin: 0 auto;
+  padding: 110px 0;
+}
+
+.title {
+  @include bold76Playfair;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.description {
+  @include regular24Inter;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.text {
+  @include regular14Inter;
+  text-align: center;
+
+  a {
+    @include regular14Inter;
+    transition:
+      border-color 0.3s ease,
+      color 0.3s ease;
+    border-bottom: 1px solid $orange;
+    color: $black;
+
+    @include hover {
+      border-color: transparent;
+      color: $orange;
+    }
+  }
+}
+
+.form {
+  @include flexCenterBetween;
+  background-color: $white;
+  padding: 2px;
+  border-radius: 4px;
+  column-gap: 12px;
+  margin-bottom: 24px;
+}
+
+.inputWrapper {
+  @include flexCenter;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  @include regular16Inter;
+  @include fullSize;
+  border: none;
+  padding: 14px 8px 14px 40px;
+  margin: 0;
+  color: $black;
+
+  &::placeholder {
+    color: $grey;
+  }
+}
+
+.inputWrapper::before {
+  content: '';
+  @include sizes(24px, 24px);
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 12px);
+  background: url('../../../../public/icons/email.svg');
+  background-repeat: no-repeat;
+}
+
+@media (max-width: $mob) {
+  .container {
+    padding: 60px 30px;
+  }
+
+  .title {
+    @include bold40Playfair;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    @include regular16Inter;
+    margin-bottom: 16px;
+  }
+
+  .form {
+    @include flexColumn;
+    background-color: transparent;
+    row-gap: 14px;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .input {
+    @include regular14Inter;
+  }
+
+  .text {
+    @include flexColumn;
+    width: fit-content;
+    margin: 0 auto;
+
+    a {
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+}

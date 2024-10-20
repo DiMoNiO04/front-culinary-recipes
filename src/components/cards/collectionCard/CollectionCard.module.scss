@@ -1,0 +1,77 @@
+.card {
+  @include flexColumn;
+  border-radius: 12px;
+  border: 1px solid $greyLight;
+  overflow: hidden;
+
+  @include hover {
+    .img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.img {
+  @include transition(transform);
+  border-radius: 12px 12px 0 0;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.info {
+  @include flexColumn;
+  padding: 32px;
+  row-gap: 24px;
+  height: 100%;
+  column-gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  @include bold36Playfair;
+  color: $black;
+}
+
+.count {
+  @include sizes(128px, 29px);
+  @include flexCenter;
+  @include medium14Inter;
+  border: 1px solid $black;
+  border-radius: 2px;
+  margin-left: auto;
+  color: $black;
+  margin-top: auto;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+
+  @include hover {
+    color: $white;
+    background-color: $black;
+  }
+}
+
+@media (max-width: $tablet) {
+  .title {
+    @include bold30Playfair;
+  }
+}
+
+@media (max-width: $mob) {
+  .info {
+    @include flexColumn;
+    row-gap: 32px;
+    padding: 24px;
+  }
+
+  .title {
+    @include bold24Playfair;
+  }
+
+  .count {
+    margin-left: auto;
+  }
+}

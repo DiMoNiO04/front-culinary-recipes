@@ -1,0 +1,12 @@
+.title {
+  @include bold36Playfair;
+  color: $black;
+  margin-bottom: 40px;
+}
+
+@media (max-width: $mob) {
+  .title {
+    @include bold30Playfair;
+    margin-bottom: 24px;
+  }
+}

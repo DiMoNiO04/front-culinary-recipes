@@ -1,0 +1,166 @@
+.section {
+  margin-top: 160px;
+  position: relative;
+}
+
+.titleBlock {
+  @include flexCenterBetween;
+  padding-bottom: 32px;
+  margin-bottom: 80px;
+  border-bottom: 1px solid $greyLight;
+}
+
+.title {
+  @include bold60Playfair;
+  margin: 0;
+}
+
+.content {
+  max-width: 730px;
+}
+
+.out {
+  @include flexCenterBetween;
+}
+
+.logOut {
+  display: flex;
+  column-gap: 8px;
+  @include regular16Inter;
+  @include transition(color);
+  color: $black;
+
+  img {
+    @include sizes(24px, 24px);
+  }
+
+  svg {
+    @include sizes(24px, 24px);
+  }
+
+  svg path {
+    @include transition(fill);
+  }
+
+  @include hover {
+    color: $orange;
+
+    svg path {
+      fill: $orange;
+    }
+  }
+}
+
+.delete {
+  @include medium16Inter;
+  @include transition(color);
+  color: $orange;
+
+  @include hover {
+    color: $black;
+  }
+}
+
+.fotoBlock {
+  @include flexCenterStart;
+  column-gap: 24px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid $greyLight;
+}
+
+.fotoBtns {
+  @include flexCenterStart;
+  column-gap: 24px;
+}
+
+.foto {
+  @include sizes(128px, 128px);
+  border-radius: 50%;
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.form {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid $greyLight;
+}
+
+.passBtn {
+  @include flexEnd;
+  width: 100%;
+}
+
+@media (max-width: $tablet) {
+  .section {
+    margin-top: 120px;
+  }
+
+  .titleBlock {
+    padding-bottom: 34px;
+    margin-bottom: 50px;
+  }
+
+  .title {
+    @include bold40Playfair;
+  }
+
+  .fotoBlock {
+    column-gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+  }
+
+  .fotoBtns {
+    column-gap: 20px;
+  }
+
+  .foto {
+    @include sizes(100px, 100px);
+  }
+
+  .form {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+@media (max-width: $mob) {
+  .section {
+    margin-top: 96px;
+  }
+
+  .titleBlock {
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+  }
+
+  .title {
+    @include bold30Playfair;
+  }
+
+  .logOut {
+    @include regular14Inter;
+
+    img,
+    svg {
+      @include sizes(20px, 20px);
+    }
+  }
+
+  .delete {
+    @include medium14Inter;
+  }
+
+  .fotoBlock {
+    column-gap: 16px;
+  }
+
+  .fotoBtns {
+    row-gap: 16px;
+    @include grid(1);
+  }
+}

@@ -1,0 +1,73 @@
+.items {
+  @include flexCenterStart;
+  column-gap: 24px;
+}
+
+.item {
+  @include flexColumn;
+
+  &:not(:last-child) {
+    padding-right: 24px;
+    border-right: 1px solid $grey;
+  }
+
+  b {
+    @include regular14Inter;
+    color: $grey;
+  }
+
+  span {
+    @include regular16Inter;
+    color: $black;
+  }
+}
+
+.print {
+  @include sizes(24px, 24px);
+
+  svg path {
+    @include transition(fill);
+  }
+
+  @include hover {
+    svg path {
+      fill: $grey;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .items {
+    column-gap: 20px;
+  }
+
+  .item {
+    &:not(:last-child) {
+      padding-right: 20px;
+    }
+  }
+
+  .print {
+    @include sizes(20px, 20px);
+  }
+}
+
+@media (max-width: $mob) {
+  .items {
+    column-gap: 16px;
+  }
+
+  .item {
+    &:not(:last-child) {
+      padding-right: 16px;
+    }
+
+    b {
+      @include regular12Inter;
+    }
+
+    span {
+      @include regular14Inter;
+    }
+  }
+}
