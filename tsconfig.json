@@ -13,8 +13,9 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/styles/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@app/*": ["src/app/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

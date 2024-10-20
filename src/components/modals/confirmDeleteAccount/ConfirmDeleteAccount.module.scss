@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .description {
   @include regular16Inter;
   color: $black;

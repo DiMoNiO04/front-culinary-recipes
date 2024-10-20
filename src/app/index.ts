@@ -1,3 +1,4 @@
+export { default as MainPage } from './Main';
 export { default as AboutPage } from './About';
 export { default as CategoriesPage } from './Categories';
 export { default as FavoritesPage } from './Favorites';

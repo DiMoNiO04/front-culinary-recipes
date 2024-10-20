@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .items {
   @include flexCenterStart;
   column-gap: 24px;

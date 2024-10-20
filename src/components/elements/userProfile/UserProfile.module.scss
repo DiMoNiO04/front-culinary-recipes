@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .avatar {
   @include sizes(32px, 32px);
   cursor: pointer;
@@ -33,7 +35,8 @@
   li {
     padding: 8px 12px;
 
-    a, button {
+    a,
+    button {
       @include medium16Inter;
       @include transition(color);
       text-decoration: none;

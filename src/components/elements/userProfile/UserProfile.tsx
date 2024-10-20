@@ -25,7 +25,7 @@ const UserProfile: React.FC = () => {
     } else {
       setIsOpenNotification(false);
     }
-  }, [cookies]);
+  }, [cookies, hasLoggedIn]);
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
 

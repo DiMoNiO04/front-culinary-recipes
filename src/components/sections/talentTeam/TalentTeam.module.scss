@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .title {
   @include bold60Playfair;
   color: $black;

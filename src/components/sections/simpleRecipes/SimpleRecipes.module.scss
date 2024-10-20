@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .container {
   @include grid(2);
   column-gap: 40px;

@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .menu {
   @include flexCenter;
   column-gap: 48px;

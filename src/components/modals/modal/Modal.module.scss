@@ -1,3 +1,5 @@
+@import '../../../styles/utils/index.scss';
+
 .modal {
   @include fullSize;
   @include flexCenter;
