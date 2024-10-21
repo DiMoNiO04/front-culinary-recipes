@@ -11,11 +11,12 @@ import FavoritesPage from './app/Favorites';
 import CategoryPage from './app/templates/Category';
 import RecipePage from './app/templates/Recipe';
 import ProfilePage from './app/Profile';
-import { ProtectedUser } from './components/protected';
+import { ProtectedUser, ScrollToTop } from './components';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path={URLS.MAIN} element={<MainPage />} />
