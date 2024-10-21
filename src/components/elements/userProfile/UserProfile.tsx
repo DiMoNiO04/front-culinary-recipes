@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, EButtonClass, EButtonSize, EButtonType, Notification } from '@/components/ui';
 import { Auth, ConfirmAction } from '@/components/modals';
-import { SUCCESS_AUTH, SUCCESS_LOGOUT, TOKEN_KEY, URLS } from '@/utils';
+import { SUCCESS_AUTH, TOKEN_KEY, URLS } from '@/utils';
+import { useLogout } from '@/hooks';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {
-  const [cookies, , removeCookie] = useCookies([TOKEN_KEY]);
-  const [isAuth, setIsAuth] = useState(!!cookies[TOKEN_KEY]);
+  const [cookies] = useCookies([TOKEN_KEY]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [notification, setNotification] = useState<{ isOpen: boolean; message: string }>({
@@ -16,12 +15,10 @@ const UserProfile: React.FC = () => {
     message: '',
   });
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { isAuth, handleLogout } = useLogout();
 
   useEffect(() => {
     if (cookies[TOKEN_KEY] && !isAuth) {
-      setIsAuth(true);
       setNotification({ isOpen: true, message: SUCCESS_AUTH });
     }
   }, [cookies, isAuth]);
@@ -29,16 +26,11 @@ const UserProfile: React.FC = () => {
   const toggleModal = () => setIsModalOpen((prev) => !prev);
   const toggleLogoutModal = () => setIsLogoutModalOpen((prev) => !prev);
 
-  const handleLogout = () => {
-    removeCookie(TOKEN_KEY, { path: '/' });
-    setIsAuth(false);
-    setIsModalOpen(false);
+  const handleLogOut = () => {
+    const message = handleLogout();
+    setNotification({ isOpen: true, message });
     setIsLogoutModalOpen(false);
-    setNotification({ isOpen: true, message: SUCCESS_LOGOUT });
-
-    if (location.pathname === URLS.PROFILE || location.pathname === URLS.FAVORITES) {
-      navigate(URLS.MAIN, { replace: true });
-    }
+    setIsModalOpen(false);
   };
 
   const renderProfileLinks = () => (
@@ -87,7 +79,7 @@ const UserProfile: React.FC = () => {
         title="Are you sure you want to log out of your account?"
         isModalOpen={isLogoutModalOpen}
         onClose={toggleLogoutModal}
-        onConfirm={handleLogout}
+        onConfirm={handleLogOut}
         confirmText="Yes"
         cancelText="Cancel"
       />

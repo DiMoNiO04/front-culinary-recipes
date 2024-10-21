@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import { Button, EButtonClass, EButtonSize, EButtonType, Notification } from '@/components/ui';
 import { LogOutIcon } from '@/components/icons';
 import { ProfileForm } from '@/components/forms';
-import { ChangePasswordModal } from '@/components/modals';
+import { ChangePasswordModal, ConfirmAction } from '@/components/modals';
+import { useDeleteAccount } from '@/api/hooks';
+import { useLogout } from '@/hooks';
 import styles from './ProfileContent.module.scss';
 
 const ProfileContent: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>('/img/templates/profile.png');
   const [isModalChangePassOpen, setIsModalChangePassOpen] = useState<boolean>(false);
   const [isModalDelAccOpen, setIsModalDelAccOpen] = useState<boolean>(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState<boolean>(false); // State for logout confirmation modal
+
+  const { handleDeleteAccount, notificationMsg, isError } = useDeleteAccount();
+  const { handleLogout } = useLogout();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -26,6 +32,13 @@ const ProfileContent: React.FC = () => {
   const closeModalChangePass = () => setIsModalChangePassOpen(false);
   const openDelAcc = () => setIsModalDelAccOpen(true);
   const closeDelAcc = () => setIsModalDelAccOpen(false);
+  const openLogoutModal = () => setIsLogoutModalOpen(true); // Open logout confirmation modal
+  const closeLogoutModal = () => setIsLogoutModalOpen(false); // Close logout confirmation modal
+
+  const handleConfirmLogout = () => {
+    handleLogout(); // Call the logout function
+    closeLogoutModal(); // Close the modal after logout
+  };
 
   return (
     <section className={styles.section}>
@@ -89,7 +102,7 @@ const ProfileContent: React.FC = () => {
           </div>
 
           <div className={styles.out}>
-            <button type={EButtonType.BUTTON} className={styles.logOut}>
+            <button type={EButtonType.BUTTON} className={styles.logOut} onClick={openLogoutModal}>
               <LogOutIcon />
               Sign out
             </button>
@@ -101,7 +114,20 @@ const ProfileContent: React.FC = () => {
       </div>
 
       <ChangePasswordModal isModalOpen={isModalChangePassOpen} onClose={closeModalChangePass} />
-      {/* <ConfirmDeleteAccount isModalOpen={isModalDelAccOpen} onClose={closeDelAcc} /> */}
+      <ConfirmAction
+        isModalOpen={isModalDelAccOpen}
+        onClose={closeDelAcc}
+        onConfirm={handleDeleteAccount}
+        title="Are you sure you want to delete your account?"
+      />
+      <ConfirmAction
+        isModalOpen={isLogoutModalOpen}
+        onClose={closeLogoutModal}
+        onConfirm={handleConfirmLogout}
+        title="Are you sure you want to log out of your account?"
+      />
+
+      {notificationMsg && <Notification isSuccess={!isError} msg={notificationMsg} />}
     </section>
   );
 };
