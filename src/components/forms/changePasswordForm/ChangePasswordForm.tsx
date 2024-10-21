@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PasswordIcon } from '@/components/icons';
 import { Button, EButtonClass, EButtonSize, EButtonType, Input } from '@/components/ui';
 import { EInputType } from '@/utils';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaChangePassword } from './schema';
+import { useChangePassword } from '@/api/hooks';
 
 interface IChangePasswordInputs {
   currentPassword: string;
@@ -13,23 +14,42 @@ interface IChangePasswordInputs {
 }
 
 interface IChangePasswordFormProps {
-  onSubmit: SubmitHandler<IChangePasswordInputs>;
+  setError: (value: boolean) => void;
+  setNotificationMessage: (msg: string, isSuccess: boolean) => void;
+  onSuccess: () => void;
 }
 
-const ChangePasswordForm: React.FC<IChangePasswordFormProps> = ({ onSubmit }) => {
+const ChangePasswordForm: React.FC<IChangePasswordFormProps> = ({ setError, setNotificationMessage, onSuccess }) => {
+  const { handleChangePassword, isError, notificationMsg } = useChangePassword();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset,
   } = useForm<IChangePasswordInputs>({
     mode: 'onChange',
     resolver: yupResolver(schemaChangePassword),
   });
 
-  const handleChangePassword: SubmitHandler<IChangePasswordInputs> = (data) => onSubmit(data);
+  useEffect(() => {
+    if (notificationMsg) {
+      setNotificationMessage(notificationMsg, !isError);
+      setError(isError);
+      if (!isError) {
+        reset();
+        onSuccess();
+      }
+    }
+  }, [isError, notificationMsg]);
+
+  const handleChangePasswordSubmit = async (data: IChangePasswordInputs) => {
+    const { currentPassword, newPassword, confirmPassword } = data;
+    await handleChangePassword(currentPassword, newPassword, confirmPassword);
+  };
 
   return (
-    <form onSubmit={handleSubmit(handleChangePassword)}>
+    <form onSubmit={handleSubmit(handleChangePasswordSubmit)}>
       <Input
         type={EInputType.PASSWORD}
         placeholder="Current Password"

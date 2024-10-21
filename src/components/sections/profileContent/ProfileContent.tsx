@@ -11,7 +11,7 @@ const ProfileContent: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>('/img/templates/profile.png');
   const [isModalChangePassOpen, setIsModalChangePassOpen] = useState<boolean>(false);
   const [isModalDelAccOpen, setIsModalDelAccOpen] = useState<boolean>(false);
-  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState<boolean>(false); // State for logout confirmation modal
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState<boolean>(false);
 
   const { handleDeleteAccount, notificationMsg, isError } = useDeleteAccount();
   const { handleLogout } = useLogout();
@@ -32,12 +32,12 @@ const ProfileContent: React.FC = () => {
   const closeModalChangePass = () => setIsModalChangePassOpen(false);
   const openDelAcc = () => setIsModalDelAccOpen(true);
   const closeDelAcc = () => setIsModalDelAccOpen(false);
-  const openLogoutModal = () => setIsLogoutModalOpen(true); // Open logout confirmation modal
-  const closeLogoutModal = () => setIsLogoutModalOpen(false); // Close logout confirmation modal
+  const openLogoutModal = () => setIsLogoutModalOpen(true);
+  const closeLogoutModal = () => setIsLogoutModalOpen(false);
 
   const handleConfirmLogout = () => {
-    handleLogout(); // Call the logout function
-    closeLogoutModal(); // Close the modal after logout
+    handleLogout();
+    closeLogoutModal();
   };
 
   return (

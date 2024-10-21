@@ -4,12 +4,12 @@ import { TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
 import { ApiEndpoints, EMethods } from '@/api';
 import { IErrorResponse } from './interfaces';
 
-const useDeleteAccount = () => {
-  const [cookies, , removeCookie] = useCookies([TOKEN_KEY]);
+const useChangePassword = () => {
+  const [cookies] = useCookies([TOKEN_KEY]);
   const [isError, setIsError] = useState<boolean>(false);
   const [notificationMsg, setNotificationMsg] = useState<string>('');
 
-  const handleDeleteAccount = async () => {
+  const handleChangePassword = async (currentPassword: string, newPassword: string, confirmPassword: string) => {
     setIsError(false);
 
     try {
@@ -19,12 +19,13 @@ const useDeleteAccount = () => {
         throw new Error(TOKEN_NOT_FOUND);
       }
 
-      const response = await fetch(ApiEndpoints.DELETE_MY_ACC, {
-        method: EMethods.DELETE,
+      const response = await fetch(ApiEndpoints.CHANGE_PASSWORD, {
+        method: EMethods.PATCH,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ currentPassword, newPassword, confirmPassword }),
       });
 
       if (!response.ok) {
@@ -35,7 +36,6 @@ const useDeleteAccount = () => {
       }
 
       const result = await response.json();
-      removeCookie(TOKEN_KEY, { path: '/' });
       setNotificationMsg(result.message);
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ const useDeleteAccount = () => {
     }
   };
 
-  return { handleDeleteAccount, isError, notificationMsg };
+  return { handleChangePassword, isError, notificationMsg };
 };
 
-export default useDeleteAccount;
+export default useChangePassword;

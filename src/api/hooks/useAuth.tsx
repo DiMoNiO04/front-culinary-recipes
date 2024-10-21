@@ -48,6 +48,7 @@ const useAuth = ({ onSuccess }: IAuthCallbacks) => {
       setNotificationMsg(result.message);
       if (onSuccess) onSuccess();
     } catch (error) {
+      console.error(error);
       setIsFail(true);
       setNotificationMsg(TRY_AGAIN);
     }

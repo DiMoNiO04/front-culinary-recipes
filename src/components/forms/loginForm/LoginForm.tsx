@@ -22,6 +22,7 @@ const LoginForm: React.FC<ILoginForm> = ({ setError, setNotificationMessage }) =
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm<ILoginInputs>({
     mode: 'onChange',
@@ -34,6 +35,9 @@ const LoginForm: React.FC<ILoginForm> = ({ setError, setNotificationMessage }) =
     if (notificationMsg) {
       setNotificationMessage(notificationMsg, !isFail);
       setError(isFail);
+      if (!isFail) {
+        reset();
+      }
     }
   }, [isFail, notificationMsg]);
 

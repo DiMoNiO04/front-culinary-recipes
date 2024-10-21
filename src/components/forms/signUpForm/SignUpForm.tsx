@@ -26,6 +26,7 @@ const SignupForm: React.FC<ISignupForm> = ({ onSuccess, setError, setNotificatio
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm<ISignupInputs>({
     mode: 'onChange',
@@ -37,6 +38,9 @@ const SignupForm: React.FC<ISignupForm> = ({ onSuccess, setError, setNotificatio
   useEffect(() => {
     if (notificationMsg) {
       setNotificationMessage(notificationMsg, !isFail);
+      if (!isFail) {
+        reset();
+      }
     }
     setError(isFail);
   }, [isFail, notificationMsg]);
