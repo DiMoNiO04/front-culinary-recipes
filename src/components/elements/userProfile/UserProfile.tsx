@@ -1,50 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, EButtonClass, EButtonSize, EButtonType, Notification } from '@/components/ui';
-import { useOverflow } from '@/hooks';
-import { Auth } from '@/components/modals';
-import { SUCCESS_AUTH, TOKEN_KEY } from '@/utils';
+import { Auth, ConfirmAction } from '@/components/modals';
+import { SUCCESS_AUTH, SUCCESS_LOGOUT, TOKEN_KEY, URLS } from '@/utils';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {
   const [cookies, , removeCookie] = useCookies([TOKEN_KEY]);
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(!!cookies[TOKEN_KEY]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasLoggedIn, setHasLoggedIn] = useState(false);
-  const [isOpenNotification, setIsOpenNotification] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [notification, setNotification] = useState<{ isOpen: boolean; message: string }>({
+    isOpen: false,
+    message: '',
+  });
 
-  useOverflow(isModalOpen);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const isLoggedIn = !!cookies[TOKEN_KEY];
-    setIsAuth(isLoggedIn);
-
-    if (isLoggedIn && hasLoggedIn) {
-      setIsOpenNotification(true);
-      setHasLoggedIn(true);
-    } else {
-      setIsOpenNotification(false);
+    if (cookies[TOKEN_KEY] && !isAuth) {
+      setIsAuth(true);
+      setNotification({ isOpen: true, message: SUCCESS_AUTH });
     }
-  }, [cookies, hasLoggedIn]);
+  }, [cookies, isAuth]);
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
+  const toggleLogoutModal = () => setIsLogoutModalOpen((prev) => !prev);
 
   const handleLogout = () => {
     removeCookie(TOKEN_KEY, { path: '/' });
     setIsAuth(false);
     setIsModalOpen(false);
+    setIsLogoutModalOpen(false);
+    setNotification({ isOpen: true, message: SUCCESS_LOGOUT });
+
+    if (location.pathname === URLS.PROFILE || location.pathname === URLS.FAVORITES) {
+      navigate(URLS.MAIN, { replace: true });
+    }
   };
 
   const renderProfileLinks = () => (
     <ul className={styles.dropdown}>
       <li>
-        <a href="/profile">My Profile</a>
+        <a href={URLS.PROFILE}>Profile</a>
       </li>
       <li>
-        <a href="/settings">Settings</a>
+        <a href={URLS.FAVORITES}>Favorites</a>
       </li>
       <li>
-        <button type="button" onClick={handleLogout}>
+        <a href={'#'}>Recipes</a>
+      </li>
+      <li>
+        <button type="button" onClick={toggleLogoutModal}>
           Logout
         </button>
       </li>
@@ -53,7 +62,7 @@ const UserProfile: React.FC = () => {
 
   return (
     <div className={styles.userProfile}>
-      {isOpenNotification && <Notification isSuccess={true} msg={SUCCESS_AUTH} />}
+      {notification.isOpen && <Notification isSuccess={true} msg={notification.message} />}
 
       {isAuth ? (
         <div className={styles.avatar}>
@@ -73,6 +82,15 @@ const UserProfile: React.FC = () => {
           <Auth isModalOpen={isModalOpen} onClose={toggleModal} />
         </>
       )}
+
+      <ConfirmAction
+        title="Are you sure you want to log out of your account?"
+        isModalOpen={isLogoutModalOpen}
+        onClose={toggleLogoutModal}
+        onConfirm={handleLogout}
+        confirmText="Yes"
+        cancelText="Cancel"
+      />
     </div>
   );
 };

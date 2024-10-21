@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
 import { LogOutIcon } from '@/components/icons';
 import { ProfileForm } from '@/components/forms';
-import { ChangePasswordModal, ConfirmDeleteAccount } from '@/components/modals';
+import { ChangePasswordModal } from '@/components/modals';
 import styles from './ProfileContent.module.scss';
 
 const ProfileContent: React.FC = () => {
@@ -101,7 +101,7 @@ const ProfileContent: React.FC = () => {
       </div>
 
       <ChangePasswordModal isModalOpen={isModalChangePassOpen} onClose={closeModalChangePass} />
-      <ConfirmDeleteAccount isModalOpen={isModalDelAccOpen} onClose={closeDelAcc} />
+      {/* <ConfirmDeleteAccount isModalOpen={isModalDelAccOpen} onClose={closeDelAcc} /> */}
     </section>
   );
 };

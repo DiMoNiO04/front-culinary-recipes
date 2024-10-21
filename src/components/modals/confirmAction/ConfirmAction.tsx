@@ -1,25 +1,36 @@
 import React from 'react';
-import styles from './ConfirmDeleteAccount.module.scss';
 import Modal, { IModalProps } from '../modal/Modal';
 import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import styles from './ConfirmAction.module.scss';
 
-const ConfirmDeleteAccount: React.FC<IModalProps> = ({ isModalOpen, onClose }) => {
+interface IConfirmActionProps extends IModalProps {
+  onConfirm: () => void;
+  title: string;
+  confirmText?: string;
+  cancelText?: string;
+}
+
+const ConfirmAction: React.FC<IConfirmActionProps> = ({
+  isModalOpen,
+  onClose,
+  onConfirm,
+  title,
+  confirmText = 'Yes',
+  cancelText = 'Cancel',
+}) => {
   return (
-    <Modal isModalOpen={isModalOpen} onClose={onClose} title="Are you sure you want to delete your account?">
-      <div className={styles.description}>
-        To ensure an optimum user experience, we use cookies to collect some user data for advertising and analytics
-        purposes read more
-      </div>
+    <Modal isModalOpen={isModalOpen} onClose={onClose} title={title}>
       <div className={styles.btns}>
         <Button
-          text="Delete"
+          text={confirmText}
           nameClass={EButtonClass.SEC}
           typeBtn={EButtonType.BUTTON}
           size={EButtonSize.LG}
           isLink={false}
+          handle={onConfirm}
         />
         <Button
-          text="Cancel"
+          text={cancelText}
           nameClass={EButtonClass.DEF}
           typeBtn={EButtonType.BUTTON}
           size={EButtonSize.LG}
@@ -31,4 +42,4 @@ const ConfirmDeleteAccount: React.FC<IModalProps> = ({ isModalOpen, onClose }) =
   );
 };
 
-export default ConfirmDeleteAccount;
+export default ConfirmAction;

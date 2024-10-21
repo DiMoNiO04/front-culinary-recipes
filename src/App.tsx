@@ -11,6 +11,7 @@ import FavoritesPage from './app/Favorites';
 import CategoryPage from './app/templates/Category';
 import RecipePage from './app/templates/Recipe';
 import ProfilePage from './app/Profile';
+import { ProtectedUser } from './components/protected';
 
 const App: React.FC = () => {
   return (
@@ -21,10 +22,10 @@ const App: React.FC = () => {
         <Route path={URLS.ABOUT} element={<AboutPage />} />
         <Route path={URLS.CATEGORIES} element={<CategoriesPage />} />
         <Route path={URLS.SEARCH} element={<SearchPage />} />
-        <Route path={URLS.FAVORITES} element={<FavoritesPage />} />
         <Route path={URLS.CATEGORY} element={<CategoryPage />} />
         <Route path={URLS.RECIPE} element={<RecipePage />} />
-        <Route path={URLS.PROFILE} element={<ProfilePage />} />
+        <Route path={URLS.FAVORITES} element={<ProtectedUser element={<FavoritesPage />} />} />
+        <Route path={URLS.PROFILE} element={<ProtectedUser element={<ProfilePage />} />} />
         <Route path="*" element={<MainPage />} />
       </Routes>
       <Footer />
