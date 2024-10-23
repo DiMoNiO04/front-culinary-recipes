@@ -1,2 +1,2 @@
-export * from './endpoints';
-export * from './methods';
+export * from './fetcher';
+export * from './interfaces';

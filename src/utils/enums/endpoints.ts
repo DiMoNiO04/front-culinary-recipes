@@ -5,4 +5,5 @@ export const ApiEndpoints = {
   REGISTRATION: `${API_URL}/auth/registration`,
   DELETE_MY_ACC: `${API_URL}/users/self/delete`,
   CHANGE_PASSWORD: `${API_URL}/users/self/change-password`,
+  GET_PERSONAL_DATA: `${API_URL}/users/self/personal-data`,
 } as const;

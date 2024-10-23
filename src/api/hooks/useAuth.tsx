@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { TOKEN_KEY, TRY_AGAIN } from '@/utils';
-import { ApiEndpoints, EMethods } from '@/api';
-import { IAuthCallbacks, IAuthResponse, IErrorResponse } from './interfaces';
+import { ApiEndpoints, EMethods, TOKEN_KEY, TRY_AGAIN } from '@/utils';
 import { ILoginInputs } from '@/components/forms';
 import { ISignupInputs } from '@/components/forms/signUpForm/SignUpForm';
+import { IAuthCallbacks, IAuthResponse, IErrorResponse } from '..';
 
 const useAuth = ({ onSuccess }: IAuthCallbacks) => {
   const [, setCookie] = useCookies([TOKEN_KEY]);

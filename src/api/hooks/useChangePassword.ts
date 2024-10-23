@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
-import { ApiEndpoints, EMethods } from '@/api';
-import { IErrorResponse } from './interfaces';
+import { ApiEndpoints, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
+import { IErrorResponse } from '..';
 
 const useChangePassword = () => {
   const [cookies] = useCookies([TOKEN_KEY]);
