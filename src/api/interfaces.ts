@@ -45,12 +45,7 @@ export interface IUser {
   id: number;
   firstName: string;
   lastName: string;
-  surname: string | null;
   email: string;
-  phone: string | null;
-  country: string | null;
-  city: string | null;
-  dateBirth: string | null;
   password: string;
   banned: boolean;
   banReasong: string | null;

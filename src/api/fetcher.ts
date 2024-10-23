@@ -1,9 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { EFetchErrors, EStatusCode } from '../utils';
 
-export const fetcher = async <T>(url: string, mockData?: T): Promise<T | null> => {
+export const fetcher = async <T>(url: string, token?: string, mockData?: T): Promise<T | null> => {
   try {
-    const response = await fetch(url, { cache: 'force-cache', credentials: 'include' });
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
+    }
+
+    const response = await fetch(url, {
+      cache: 'force-cache',
+      credentials: 'include',
+      headers,
+    });
 
     if (!response.ok) {
       const error = new Error(`${EFetchErrors.ERROR_HTTP}${response.status}`);

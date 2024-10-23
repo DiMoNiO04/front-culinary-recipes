@@ -37,6 +37,11 @@
   padding: 0;
   margin: 0;
   border: none;
+
+  &:read-only {
+    color: $greyLight;
+    cursor: default;
+  }
 }
 
 .icon svg {

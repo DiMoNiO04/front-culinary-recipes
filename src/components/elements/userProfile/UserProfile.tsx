@@ -58,7 +58,7 @@ const UserProfile: React.FC = () => {
 
       {isAuth ? (
         <div className={styles.avatar}>
-          <img alt="Profile" src="/img/templates/profile.png" width={32} height={32} />
+          <img alt="Profile" src="/icons/profile.svg" width={32} height={32} />
           {renderProfileLinks()}
         </div>
       ) : (
