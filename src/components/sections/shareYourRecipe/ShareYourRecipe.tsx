@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, EButtonClass, EButtonSize, EButtonType, TitleSection } from '@/components/ui'; // Убедитесь, что этот путь корректен для вашего проекта
+import { Button, TitleSection } from '@/components/ui';
+import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import styles from './ShareYourRecipe.module.scss';
 
 const ShareYourRecipe: React.FC = () => {

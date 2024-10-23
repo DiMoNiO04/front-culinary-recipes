@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Button, EButtonClass, EButtonSize, EButtonType, Notification } from '@/components/ui';
+import { Button, Notification } from '@/components/ui';
 import { LogOutIcon } from '@/components/icons';
 import { ProfileForm } from '@/components/forms';
 import { ChangePasswordModal, ConfirmAction } from '@/components/modals';
 import { useDeleteAccount } from '@/api/hooks';
 import { useLogout } from '@/hooks';
+import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import styles from './ProfileContent.module.scss';
 
 const ProfileContent: React.FC = () => {

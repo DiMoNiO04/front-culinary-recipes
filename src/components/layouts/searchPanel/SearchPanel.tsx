@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { CloseIcon } from '@/components/icons';
 import { searchPanelCards } from '@/data';
 import { SearchPanelCard } from '@/components/cards';
+import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import styles from './SearchPanel.module.scss';
 
 interface ISearchPanel {

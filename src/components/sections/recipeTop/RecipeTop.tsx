@@ -1,8 +1,8 @@
 import React from 'react';
 import { LikeIcon, ShareIcon } from '@/components/icons';
-import { EButtonType } from '@/components/ui';
-import styles from './RecipeTop.module.scss';
 import { Rating } from '@/components/elements';
+import { EButtonType } from '@/utils';
+import styles from './RecipeTop.module.scss';
 
 const RecipeTop: React.FC = () => {
   return (

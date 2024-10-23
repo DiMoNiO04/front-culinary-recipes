@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { LoginForm, SignupForm } from '@/components/forms';
 import { IModalProps, Modal } from '..';
-import styles from './Auth.module.scss';
 import { Notification } from '@/components/ui';
 import { SUCCESS_REG } from '@/utils';
+import styles from './Auth.module.scss';
 
 const Auth: React.FC<IModalProps> = ({ onClose, isModalOpen }) => {
   const [isLogin, setIsLogin] = useState(true);

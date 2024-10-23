@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Footer, Header } from './components/layouts';
 import { ScrollBtn } from './components/elements';
-import { URLS } from './utils';
+import { EUrls } from './utils';
 import MainPage from './app/Main';
 import AboutPage from './app/About';
 import CategoriesPage from './app/Categories';
@@ -19,14 +19,14 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Header />
       <Routes>
-        <Route path={URLS.MAIN} element={<MainPage />} />
-        <Route path={URLS.ABOUT} element={<AboutPage />} />
-        <Route path={URLS.CATEGORIES} element={<CategoriesPage />} />
-        <Route path={URLS.SEARCH} element={<SearchPage />} />
-        <Route path={URLS.CATEGORY} element={<CategoryPage />} />
-        <Route path={URLS.RECIPE} element={<RecipePage />} />
-        <Route path={URLS.FAVORITES} element={<ProtectedUser element={<FavoritesPage />} />} />
-        <Route path={URLS.PROFILE} element={<ProtectedUser element={<ProfilePage />} />} />
+        <Route path={EUrls.MAIN} element={<MainPage />} />
+        <Route path={EUrls.ABOUT} element={<AboutPage />} />
+        <Route path={EUrls.CATEGORIES} element={<CategoriesPage />} />
+        <Route path={EUrls.SEARCH} element={<SearchPage />} />
+        <Route path={EUrls.CATEGORY} element={<CategoryPage />} />
+        <Route path={EUrls.RECIPE} element={<RecipePage />} />
+        <Route path={EUrls.FAVORITES} element={<ProtectedUser element={<FavoritesPage />} />} />
+        <Route path={EUrls.PROFILE} element={<ProtectedUser element={<ProfilePage />} />} />
         <Route path="*" element={<MainPage />} />
       </Routes>
       <Footer />

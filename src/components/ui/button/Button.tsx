@@ -1,22 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import styles from './Button.module.scss';
-
-export enum EButtonClass {
-  DEF = 'def',
-  SEC = 'sec',
-}
-
-export enum EButtonSize {
-  LG = 'lg',
-  SM = 'sm',
-}
-
-export enum EButtonType {
-  BUTTON = 'button',
-  SUBMIT = 'submit',
-  RESET = 'reset',
-}
 
 interface IButton {
   text: string;

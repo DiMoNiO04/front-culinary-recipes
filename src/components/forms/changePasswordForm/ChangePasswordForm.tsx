@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { PasswordIcon } from '@/components/icons';
-import { Button, EButtonClass, EButtonSize, EButtonType, Input } from '@/components/ui';
-import { EInputType } from '@/utils';
+import { Button, Input } from '@/components/ui';
+import { EButtonClass, EButtonSize, EButtonType, EInputType } from '@/utils';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaChangePassword } from './schema';

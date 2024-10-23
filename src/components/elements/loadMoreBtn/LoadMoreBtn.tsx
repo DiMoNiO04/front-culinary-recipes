@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import { Button } from '@/components/ui';
+import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import styles from './LoadMoreBtn.module.scss';
 
 const LoadMoreBtn: React.FC = () => {

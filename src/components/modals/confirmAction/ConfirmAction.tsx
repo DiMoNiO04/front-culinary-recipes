@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal, { IModalProps } from '../modal/Modal';
-import { Button, EButtonClass, EButtonSize, EButtonType } from '@/components/ui';
+import { Button } from '@/components/ui';
+import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import styles from './ConfirmAction.module.scss';
 
 interface IConfirmActionProps extends IModalProps {

@@ -1,4 +1,4 @@
-export enum VALIDATE_FORM {
+export enum EValidateForm {
   REQUIRED_FIELD = 'Required field',
   PASSWORD_MUTCH = 'Passwords must match',
   INVALID_EMAIL = 'Invalid email address',

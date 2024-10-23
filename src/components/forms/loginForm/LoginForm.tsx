@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { EmailIcon, PasswordIcon } from '@/components/icons';
-import { Button, EButtonClass, EButtonSize, EButtonType, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schemaLogin from './schema';
-import { EInputType } from '@/utils';
+import { EButtonClass, EButtonSize, EButtonType, EInputType } from '@/utils';
 import { useAuth } from '@/api/hooks';
 import styles from './LoginForm.module.scss';
 

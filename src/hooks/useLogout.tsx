@@ -1,6 +1,6 @@
 import { useCookies } from 'react-cookie';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { SUCCESS_LOGOUT, TOKEN_KEY, URLS } from '@/utils';
+import { SUCCESS_LOGOUT, TOKEN_KEY, EUrls } from '@/utils';
 
 const useLogout = () => {
   const [cookies, , removeCookie] = useCookies([TOKEN_KEY]);
@@ -10,8 +10,8 @@ const useLogout = () => {
   const handleLogout = () => {
     removeCookie(TOKEN_KEY, { path: '/' });
 
-    if (location.pathname === URLS.PROFILE || location.pathname === URLS.FAVORITES) {
-      navigate(URLS.MAIN, { replace: true });
+    if (location.pathname === EUrls.PROFILE || location.pathname === EUrls.FAVORITES) {
+      navigate(EUrls.MAIN, { replace: true });
     }
 
     return SUCCESS_LOGOUT;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { Button, EButtonClass, EButtonSize, EButtonType, Notification } from '@/components/ui';
+import { Button, Notification } from '@/components/ui';
 import { Auth, ConfirmAction } from '@/components/modals';
-import { SUCCESS_AUTH, TOKEN_KEY, URLS } from '@/utils';
+import { SUCCESS_AUTH, TOKEN_KEY, EUrls, EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import { useLogout } from '@/hooks';
 import styles from './UserProfile.module.scss';
 
@@ -36,10 +36,10 @@ const UserProfile: React.FC = () => {
   const renderProfileLinks = () => (
     <ul className={styles.dropdown}>
       <li>
-        <a href={URLS.PROFILE}>Profile</a>
+        <a href={EUrls.PROFILE}>Profile</a>
       </li>
       <li>
-        <a href={URLS.FAVORITES}>Favorites</a>
+        <a href={EUrls.FAVORITES}>Favorites</a>
       </li>
       <li>
         <a href={'#'}>Recipes</a>

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
-import { EInputType } from '@/utils';
-import { EButtonType } from '../button/Button';
+import { EButtonType, EInputType } from '@/utils';
 import styles from './Input.module.scss';
 
 interface IInputProps {

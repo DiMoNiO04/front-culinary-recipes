@@ -1,6 +1,6 @@
 import React from 'react';
-import { EButtonType } from '@/components/ui';
 import { PrinterIcon } from '@/components/icons';
+import { EButtonType } from '@/utils';
 import styles from './InfoRecipe.module.scss';
 
 const InfoRecipe: React.FC = () => {

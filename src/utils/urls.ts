@@ -1,4 +1,4 @@
-export enum URLS {
+export enum EUrls {
   MAIN = '/',
   ABOUT = '/about',
   CATEGORIES = '/categories',

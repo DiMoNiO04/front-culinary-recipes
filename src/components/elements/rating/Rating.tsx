@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Rating.module.scss';
 import { StarIcon } from '@/components/icons';
+import styles from './Rating.module.scss';
 
 interface IRating {
   rating: number;
