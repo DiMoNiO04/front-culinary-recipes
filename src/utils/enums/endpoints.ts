@@ -6,4 +6,5 @@ export const ApiEndpoints = {
   DELETE_MY_ACC: `${API_URL}/users/self/delete`,
   CHANGE_PASSWORD: `${API_URL}/users/self/change-password`,
   GET_PERSONAL_DATA: `${API_URL}/users/self/personal-data`,
+  UPDATE_PERSONAL_DATA: `${API_URL}/users/self/update-profile`,
 } as const;

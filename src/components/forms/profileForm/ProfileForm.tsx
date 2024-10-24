@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Input } from '@/components/ui';
+import { Button, Input, Notification } from '@/components/ui';
 import { EmailIcon, UserIcon } from '@/components/icons';
 import { EButtonClass, EButtonSize, EButtonType, EInputType } from '@/utils';
 import styles from './ProfileForm.module.scss';
 import schemaProfile from './schema';
 import useGetUserInfo from '@/api/hooks/useGetUserInfo';
+import { useUpdateProfile } from '@/api/hooks';
 
 export interface IProfileInputs {
   firstName: string;
@@ -25,7 +26,10 @@ const ProfileForm: React.FC = () => {
     resolver: yupResolver(schemaProfile),
   });
 
-  const { data: userData, isLoading, isError } = useGetUserInfo();
+  const { data: userData, isLoading } = useGetUserInfo();
+  const { handleUpdateUser, isError: isUpdateError, notificationMsg } = useUpdateProfile();
+
+  const [notification, setNotification] = useState<{ isSuccess: boolean; msg: string } | null>(null);
 
   useEffect(() => {
     if (userData) {
@@ -35,56 +39,65 @@ const ProfileForm: React.FC = () => {
     }
   }, [userData, setValue]);
 
-  const onSubmit = (data: IProfileInputs) => {
-    console.log('Form Data:', data);
+  useEffect(() => {
+    if (notificationMsg) {
+      setNotification({ isSuccess: !isUpdateError, msg: notificationMsg });
+    }
+  }, [isUpdateError, notificationMsg]);
+
+  const onSubmit = async (data: IProfileInputs) => {
+    await handleUpdateUser(data.firstName, data.lastName);
   };
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error fetching user data.</div>;
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        type={EInputType.TEXT}
-        placeholder="First Name"
-        icon={<UserIcon />}
-        isRequired={true}
-        register={register}
-        name="firstName"
-        errors={errors}
-      />
+    <>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          type={EInputType.TEXT}
+          placeholder="First Name"
+          icon={<UserIcon />}
+          isRequired={true}
+          register={register}
+          name="firstName"
+          errors={errors}
+        />
 
-      <Input
-        type={EInputType.TEXT}
-        placeholder="Last Name"
-        icon={<UserIcon />}
-        isRequired={true}
-        register={register}
-        name="lastName"
-        errors={errors}
-      />
+        <Input
+          type={EInputType.TEXT}
+          placeholder="Last Name"
+          icon={<UserIcon />}
+          isRequired={true}
+          register={register}
+          name="lastName"
+          errors={errors}
+        />
 
-      <Input
-        type={EInputType.EMAIL}
-        icon={<EmailIcon />}
-        isReadonly={true}
-        isRequired={true}
-        placeholder="Email"
-        register={register}
-        name="email"
-        errors={errors}
-      />
+        <Input
+          type={EInputType.EMAIL}
+          icon={<EmailIcon />}
+          isReadonly={true}
+          isRequired={true}
+          placeholder="Email"
+          register={register}
+          name="email"
+          errors={errors}
+        />
 
-      <Button
-        text="SAVE"
-        nameClass={EButtonClass.SEC}
-        typeBtn={EButtonType.SUBMIT}
-        size={EButtonSize.SM}
-        isLink={false}
-        handle={handleSubmit(onSubmit)}
-        customClass={styles.btnSubmit}
-      />
-    </form>
+        <Button
+          text="SAVE"
+          nameClass={EButtonClass.SEC}
+          typeBtn={EButtonType.SUBMIT}
+          size={EButtonSize.SM}
+          isLink={false}
+          handle={handleSubmit(onSubmit)}
+          customClass={styles.btnSubmit}
+        />
+      </form>
+
+      {notification && <Notification isSuccess={notification.isSuccess} msg={notification.msg} />}
+    </>
   );
 };
 

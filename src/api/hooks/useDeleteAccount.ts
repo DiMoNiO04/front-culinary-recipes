@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { ApiEndpoints, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
-import { IErrorResponse } from '..';
+import apiRequest from '../apiRequest';
 
 const useDeleteAccount = () => {
   const [cookies, , removeCookie] = useCookies([TOKEN_KEY]);
@@ -18,22 +18,7 @@ const useDeleteAccount = () => {
         throw new Error(TOKEN_NOT_FOUND);
       }
 
-      const response = await fetch(ApiEndpoints.DELETE_MY_ACC, {
-        method: EMethods.DELETE,
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        const errorData: IErrorResponse = await response.json();
-        setIsError(true);
-        setNotificationMsg(errorData.message);
-        return;
-      }
-
-      const result = await response.json();
+      const result = await apiRequest(ApiEndpoints.DELETE_MY_ACC, EMethods.DELETE, undefined, token);
       removeCookie(TOKEN_KEY, { path: '/' });
       setNotificationMsg(result.message);
     } catch (error) {

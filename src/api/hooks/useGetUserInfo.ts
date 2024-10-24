@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { IApiResponse, IApiResponseReturn, IUser, OPTIONS, fetcher } from '..';
+import { IApiResponse, IApiResponseReturn, IUser, fetcher } from '..';
 import { ApiEndpoints, EFetchErrors, TOKEN_KEY } from '@/utils';
 import { useCookies } from 'react-cookie';
 
@@ -13,10 +13,10 @@ const useGetUserInfo = (): IApiResponseReturn<IUser> => {
     token ? [ApiEndpoints.GET_PERSONAL_DATA, token] : null,
     ([url, token]: [string, string]) => tokenFetcher(url, token),
     {
-      ...OPTIONS,
-      refreshInterval: 50000,
-      revalidateOnMount: true,
+      revalidateOnFocus: true,
+      refreshInterval: 100000,
       dedupingInterval: 1000,
+      revalidateIfStale: true,
     }
   );
 
