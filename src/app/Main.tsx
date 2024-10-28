@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import {
   CurratedCollection,
   LatestRecipes,
@@ -8,18 +9,29 @@ import {
   Slider,
   SuperDelicious,
 } from '@/components/sections';
+import { FRONT_URL } from '@/utils';
 
 const MainPage: React.FC = () => {
   return (
-    <main>
-      <Slider />
-      <PopularCategories />
-      <SuperDelicious />
-      <ShareYourRecipe />
-      <CurratedCollection />
-      <LatestRecipes />
-      <MailingList />
-    </main>
+    <>
+      <Helmet>
+        <title>TasteBite</title>
+        <meta
+          name="description"
+          content="Explore our curated collection of recipes, discover popular categories, and get inspired to share your favorite dishes."
+        />
+        <link rel="canonical" href={FRONT_URL} />
+      </Helmet>
+      <main>
+        <Slider />
+        <PopularCategories />
+        <SuperDelicious />
+        <ShareYourRecipe />
+        <CurratedCollection />
+        <LatestRecipes />
+        <MailingList />
+      </main>
+    </>
   );
 };
 
