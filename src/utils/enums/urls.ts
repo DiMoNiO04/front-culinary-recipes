@@ -7,4 +7,6 @@ export enum EUrls {
   SEARCH = '/search',
   CATEGORY = '/category',
   RECIPE = '/recipe',
+  ADMIN = '/admin',
+  MANAGER = '/manager',
 }
