@@ -4,7 +4,7 @@ import {
   CurratedCollection,
   LatestRecipes,
   MailingList,
-  PopularCategories,
+  ThroughCategories,
   ShareYourRecipe,
   Slider,
   SuperDelicious,
@@ -24,7 +24,7 @@ const MainPage: React.FC = () => {
       </Helmet>
       <main>
         <Slider />
-        <PopularCategories />
+        <ThroughCategories />
         <SuperDelicious />
         <ShareYourRecipe />
         <CurratedCollection />

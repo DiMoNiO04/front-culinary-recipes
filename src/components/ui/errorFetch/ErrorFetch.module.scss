@@ -9,14 +9,14 @@
 
 @media (max-width: $tablet) {
   .text {
-      @include bold24Playfair;
-      padding: 32px;
-    }
+    @include bold24Playfair;
+    padding: 32px;
+  }
 }
 
 @media (max-width: $mob) {
   .text {
-      @include bold18Playfair;
-      padding: 20px;
-    }
+    @include bold18Playfair;
+    padding: 20px;
+  }
 }
