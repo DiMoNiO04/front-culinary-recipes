@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import { Socials } from '@/components/ui';
 import { LogoIcon } from '@/components/icons';
 import styles from './Footer.module.scss';
+import { EUrls } from '@/utils';
 
 const menuBlocksData = [
   {
     title: 'Tastebite',
     links: [
-      { text: 'About us', href: '#' },
-      { text: 'Careers', href: '#' },
-      { text: 'Contact Us', href: '#' },
-      { text: 'Feedback', href: '#' },
+      { text: 'About us', href: EUrls.ABOUT },
+      { text: 'Categories', href: EUrls.CATEGORIES },
     ],
   },
   {

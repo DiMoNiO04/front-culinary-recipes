@@ -1,19 +1,30 @@
 import React from 'react';
-import { TitleSection } from '@/components/ui';
+import { ErrorFetch, Loading, NothingMessage, TitleSection } from '@/components/ui';
 import { CategorieCard } from '@/components/cards';
-import { categories } from '@/data';
+import { useGetCategories } from '@/api/hooks';
 import styles from './PopularCategories.module.scss';
+import { EUrls } from '@/utils';
 
 const PopularCategories: React.FC = () => {
+  const { data: categories, isLoading, isError } = useGetCategories();
+
+  if (isLoading) return <Loading />;
+
   return (
     <section>
       <div className="container">
-        <TitleSection title="Popular Categories" />
-        <div className={styles.cards}>
-          {categories.slice(0, 6).map((categorie) => (
-            <CategorieCard {...categorie} key={categorie.id} />
-          ))}
-        </div>
+        <TitleSection title="Popular Categories" linkTxt="View All" link={EUrls.CATEGORIES} />
+        {isError && <ErrorFetch />}
+
+        {categories && categories.length > 0 ? (
+          <div className={styles.cards}>
+            {categories.map((categorie) => (
+              <CategorieCard key={categorie.id} name={categorie.name} image={categorie.image} />
+            ))}
+          </div>
+        ) : (
+          <NothingMessage text="No categories available at the moment. Please check back later!" />
+        )}
       </div>
     </section>
   );

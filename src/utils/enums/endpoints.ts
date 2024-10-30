@@ -7,5 +7,5 @@ export const ApiEndpoints = {
   CHANGE_PASSWORD: `${API_URL}/users/self/change-password`,
   GET_PERSONAL_DATA: `${API_URL}/users/self/personal-data`,
   UPDATE_PERSONAL_DATA: `${API_URL}/users/self/update-profile`,
-  GET_CATEGORIES: `${API_URL}/categories/getAll`,
+  GET_CATEGORIES: `${API_URL}/categories/getAllCategories`,
 } as const;

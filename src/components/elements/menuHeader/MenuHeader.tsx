@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowDownIcon } from '@/components/icons';
 import { Link } from 'react-router-dom';
 import styles from './MenuHeader.module.scss';
+import { EUrls } from '@/utils';
 
 const MenuHeader: React.FC = () => {
   const [openMenus, setOpenMenus] = useState<number[]>([]);
@@ -17,21 +18,26 @@ const MenuHeader: React.FC = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.menu}>
-        {[...Array(3)].map((_, index) => (
-          <li key={index} className={`${styles.menuItem} ${isMenuOpen(index) ? styles.open : ''}`}>
-            <Link to="#" onClick={() => toggleMenu(index)}>
-              Menu Item {index + 1} <ArrowDownIcon className={styles.icon} />
-            </Link>
-            <ul className={`${styles.dropdown} ${isMenuOpen(index) ? styles.dropdownOpen : ''}`}>
-              <li>
-                <Link to="#">Submenu 1</Link>
-              </li>
-              <li>
-                <Link to="#">Submenu 2</Link>
-              </li>
-            </ul>
-          </li>
-        ))}
+        <li className={styles.menuItem}>
+          <Link to={EUrls.ABOUT}>About us</Link>
+        </li>
+        <li className={styles.menuItem}>
+          <Link to={EUrls.CATEGORIES}>Categories</Link>
+        </li>
+
+        {/* <li className={`${styles.menuItem} ${isMenuOpen(0) ? styles.open : ''}`}>
+          <Link to="#" onClick={() => toggleMenu(0)}>
+            Menu Item 1 <ArrowDownIcon className={styles.icon} />
+          </Link>
+          <ul className={`${styles.dropdown} ${isMenuOpen(0) ? styles.dropdownOpen : ''}`}>
+            <li>
+              <Link to="#">Submenu 1.1</Link>
+            </li>
+            <li>
+              <Link to="#">Submenu 1.2</Link>
+            </li>
+          </ul>
+        </li> */}
       </ul>
     </nav>
   );
