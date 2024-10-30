@@ -54,6 +54,13 @@ export interface IUser {
   roles: IRole[];
 }
 
+export interface ICategorie {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
+
 export const OPTIONS = {
   revalidateOnFocus: false,
   refreshInterval: 500000,
