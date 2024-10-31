@@ -8,4 +8,5 @@ export const ApiEndpoints = {
   GET_PERSONAL_DATA: `${API_URL}/users/self/personal-data`,
   UPDATE_PERSONAL_DATA: `${API_URL}/users/self/update-profile`,
   GET_CATEGORIES: `${API_URL}/categories/getAllCategories`,
+  GET_CATEGORY: `${API_URL}/categories/getCategory/`,
 } as const;

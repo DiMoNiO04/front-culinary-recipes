@@ -2,11 +2,11 @@ import useSWR from 'swr';
 import { fetcher, IApiResponse, IApiResponseReturn, ICategory, OPTIONS } from '..';
 import { ApiEndpoints, EFetchErrors } from '@/utils';
 
-const useGetCategories = (): IApiResponseReturn<ICategory[]> => {
-  const { data, error } = useSWR<IApiResponse<ICategory[]>>(ApiEndpoints.GET_CATEGORIES, fetcher, OPTIONS);
+const useGetCategory = (name: string): IApiResponseReturn<ICategory> => {
+  const { data, error } = useSWR<IApiResponse<ICategory>>(`${ApiEndpoints.GET_CATEGORY}${name}`, fetcher, OPTIONS);
 
   if (error) {
-    console.error(EFetchErrors.GET_CATEGORIES, error);
+    console.error(EFetchErrors.GET_CATEGORY, error);
   }
 
   return {
@@ -18,4 +18,4 @@ const useGetCategories = (): IApiResponseReturn<ICategory[]> => {
   };
 };
 
-export default useGetCategories;
+export default useGetCategory;

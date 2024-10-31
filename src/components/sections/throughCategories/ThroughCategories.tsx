@@ -8,23 +8,25 @@ import { EUrls } from '@/utils';
 const ThroughCategories: React.FC = () => {
   const { data: categories, isLoading, isError } = useGetCategories();
 
-  if (isLoading) return <Loading />;
-
   return (
     <section>
       <div className="container">
         <TitleSection title="Categories" linkTxt="View All" link={EUrls.CATEGORIES} />
+
+        {isLoading && <Loading />}
         {isError && <ErrorFetch />}
 
-        {categories && categories.length > 0 ? (
-          <div className={styles.cards}>
-            {categories.map((categorie) => (
-              <CategorieCard key={categorie.id} name={categorie.name} image={categorie.image} />
-            ))}
-          </div>
-        ) : (
-          <NothingMessage text="No categories available at the moment. Please check back later!" />
-        )}
+        {!isLoading &&
+          !isError &&
+          (categories && categories.length > 0 ? (
+            <div className={styles.cards}>
+              {categories.map((categorie) => (
+                <CategorieCard key={categorie.id} name={categorie.name} image={categorie.image} />
+              ))}
+            </div>
+          ) : (
+            <NothingMessage text="No categories available at the moment. Please check back later!" />
+          ))}
       </div>
     </section>
   );

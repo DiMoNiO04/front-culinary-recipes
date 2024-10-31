@@ -3,4 +3,5 @@ export enum EFetchErrors {
   ERROR_FETCH = 'Error fetch: ',
   GET_USER_INFO = 'Error loading personal data: ',
   GET_CATEGORIES = 'Error loading categories',
+  GET_CATEGORY = 'Error loading category',
 }

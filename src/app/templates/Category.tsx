@@ -2,20 +2,23 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { CategoryTemplate } from '@/components/sections';
 import { EUrls, FRONT_URL } from '@/utils';
+import { useParams } from 'react-router-dom';
+import { useGetCategory } from '@/api/hooks';
+import { capitalizeFirstLetter, getDescriptionCategory } from '@/utils/functions';
 
 const CategoryPage: React.FC = () => {
+  const { name } = useParams<{ name: string }>();
+  const { data: category, isLoading, isError } = useGetCategory(String(name));
+
   return (
     <>
       <Helmet>
-        <title>Category | TasteBite</title>
-        <meta
-          name="description"
-          content="Discover a variety of delicious recipes in this category. Browse through our collection and find your next favorite dish!"
-        />
-        <link rel="canonical" href={`${FRONT_URL}${EUrls.CATEGORY}`} />
+        <title>{`${capitalizeFirstLetter(name!)} | TasteBite`}</title>
+        <meta name="description" content={getDescriptionCategory(category || undefined)} />
+        <link rel="canonical" href={`${FRONT_URL}${EUrls.CATEGORIES}/${name}`} />
       </Helmet>
       <main>
-        <CategoryTemplate />
+        <CategoryTemplate isError={isError} isLoading={isLoading} category={category} />
       </main>
     </>
   );

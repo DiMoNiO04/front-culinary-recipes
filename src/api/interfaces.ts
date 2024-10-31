@@ -54,11 +54,31 @@ export interface IUser {
   roles: IRole[];
 }
 
-export interface ICategorie {
+export interface ICategory {
   id: number;
   name: string;
   description: string;
   image: string;
+  countrecipes: number;
+  recipes?: IRecipe[];
+}
+
+export interface IRecipe {
+  id: number;
+  title: string;
+  shortDescription: string;
+  cookingTime: number;
+  calories: number;
+  image: string;
+  createdAt: string;
+  author?: IAuthorRecipe;
+}
+
+export interface IAuthorRecipe {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 export const OPTIONS = {

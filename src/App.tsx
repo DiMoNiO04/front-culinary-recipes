@@ -24,8 +24,8 @@ const App: React.FC = () => {
         <Route path={EUrls.MAIN} element={<MainPage />} />
         <Route path={EUrls.ABOUT} element={<AboutPage />} />
         <Route path={EUrls.CATEGORIES} element={<CategoriesPage />} />
+        <Route path={`${EUrls.CATEGORIES}/:name`} element={<CategoryPage />} />
         <Route path={EUrls.SEARCH} element={<SearchPage />} />
-        <Route path={EUrls.CATEGORY} element={<CategoryPage />} />
         <Route path={EUrls.RECIPE} element={<RecipePage />} />
         <Route path={EUrls.FAVORITES} element={<ProtectedUser element={<FavoritesPage />} />} />
         <Route path={EUrls.PROFILE} element={<ProtectedUser element={<ProfilePage />} />} />
