@@ -6,6 +6,7 @@ export enum EUrls {
   PROFILE = '/profile',
   SEARCH = '/search',
   CATEGORY = '/category',
+  RECIPES = '/recipes',
   RECIPE = '/recipe',
   ADMIN = '/admin',
   MANAGER = '/manager',
