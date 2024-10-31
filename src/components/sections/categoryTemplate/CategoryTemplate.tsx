@@ -5,6 +5,8 @@ import { ICategory } from '@/api';
 import { RecipesCardsList } from '@/components/elements';
 import { useSortRecipes } from '@/hooks';
 import { sortRecipes } from '@/data';
+import { useGetCategoryRecipes } from '@/api/hooks';
+import { useParams } from 'react-router-dom';
 
 interface CategoryTemplateProps {
   category: ICategory | null;
@@ -13,7 +15,14 @@ interface CategoryTemplateProps {
 }
 
 const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ category, isError, isLoading }) => {
-  const { sortOption, handleSortChange, sortedRecipes } = useSortRecipes(category?.recipes || []);
+  const { name } = useParams<{ name: string }>();
+  const {
+    data: recipes,
+    isError: isErrorRecipes,
+    isLoading: isLoadingRecipes,
+    message: messageRecipes,
+  } = useGetCategoryRecipes(String(name));
+  const { sortOption, handleSortChange, sortedRecipes } = useSortRecipes(recipes || []);
 
   return (
     <>
@@ -37,16 +46,21 @@ const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ category, isError, 
                 <div className={styles.titles}>
                   <div className={styles.titleBlock}>
                     <h1 className={styles.title}>{category.name}</h1>
-                    <span>({category.countrecipes} Recipes)</span>
+                    <span>({recipes?.length || 0} Recipes)</span>
                   </div>
                   <div className={styles.subtitle}>{category.description}</div>
                 </div>
-                {category.recipes && category.recipes.length > 1 && (
+                {recipes && recipes.length > 1 && (
                   <Select name="sort" value={sortOption} onChange={handleSortChange} options={sortRecipes} />
                 )}
               </div>
 
-              <RecipesCardsList cards={sortedRecipes()} />
+              <RecipesCardsList
+                cards={sortedRecipes()}
+                isLoading={isLoadingRecipes}
+                isError={isErrorRecipes}
+                msg={messageRecipes}
+              />
             </>
           ) : (
             !isLoading && !isError && <NothingMessage text="Category not found." />

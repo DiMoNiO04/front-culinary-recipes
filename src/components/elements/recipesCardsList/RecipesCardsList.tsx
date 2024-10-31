@@ -8,14 +8,15 @@ interface IRecipesCardsList {
   cards: IRecipe[] | undefined;
   isLoading?: boolean;
   isError?: boolean;
+  msg?: string | null;
 }
 
-const RecipesCardsList: React.FC<IRecipesCardsList> = ({ cards, isLoading, isError }) => {
+const RecipesCardsList: React.FC<IRecipesCardsList> = ({ cards, isLoading, isError, msg }) => {
   if (isLoading) return <Loading />;
-  if (isError) return <ErrorFetch />;
+  if (isError) return <ErrorFetch message={msg} />;
 
   if (!cards || cards.length === 0) {
-    return <NothingMessage text="There are no recipes in this category" />;
+    return <NothingMessage text={msg!} />;
   }
 
   return (

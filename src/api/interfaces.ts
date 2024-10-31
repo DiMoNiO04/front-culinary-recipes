@@ -61,7 +61,6 @@ export interface ICategory {
   description: string;
   image: string;
   countrecipes: number;
-  recipes?: IRecipe[];
 }
 
 export interface IRecipe {

@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from './ErrorFetch.module.scss';
 
-const ErrorFetch: React.FC = () => {
-  return <div className={styles.text}>Error loading. Please try again later.</div>;
+interface IErrorFetch {
+  message?: string | null;
+}
+
+const ErrorFetch: React.FC<IErrorFetch> = ({ message }) => {
+  return <div className={styles.text}>{message || 'Error loading. Please try again later.'}</div>;
 };
 
 export default ErrorFetch;
