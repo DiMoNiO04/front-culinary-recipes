@@ -1,50 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from '@/components/elements';
+import { IRecipe } from '@/api';
+import { EUrls } from '@/utils';
+import { formatDate } from '@/utils/functions';
 import styles from './SuperDeliciousCard.module.scss';
 
-interface ISuperDeliciousCard {
-  img: string;
-  link: string;
-  name: string;
-  author: {
-    img: string | null;
-    name: string;
-  };
-  date: string;
-  comments: number | null;
-  rating: number;
-}
-
-const SuperDeliciousCard: React.FC<ISuperDeliciousCard> = ({ img, comments, link, name, rating, author, date }) => {
+const SuperDeliciousCard: React.FC<IRecipe> = ({ id, title, author, createdAt, image }) => {
   return (
-    <Link to={link} className={styles.card}>
+    <Link to={`${EUrls.RECIPE}/${id}`} className={styles.card}>
       <div className={styles.img}>
-        <img src={img} alt={name} width={348} height={265} />
+        <img src={image} alt={title} width={348} height={265} />
       </div>
       <div className={styles.info}>
         <div className={styles.content}>
-          <Rating rating={rating} />
-          <div className={styles.name}>{name}</div>
+          <Rating />
+          <div className={styles.name}>{title}</div>
           <div className={styles.author}>
             <div className={styles.authorIcon}>
-              {author.img ? (
-                <img src={author.img} alt={author.name} width={32} height={32} />
-              ) : (
-                <img src="/img/templates/profile.svg" alt="Default Profile" width={32} height={32} />
-              )}
+              <img src="/icons/profile.svg" alt="" width={32} height={32} />
             </div>
-            <div className={styles.authorName}>{author.name}</div>
+            <div className={styles.authorName}>
+              {author?.firstName} {author?.lastName}
+            </div>
           </div>
         </div>
         <div className={styles.block}>
           <div className={styles.blockItem}>
             <img src="/icons/calendar.svg" alt="Calendar Icon" width={16} height={18} />
-            {date}
-          </div>
-          <div className={styles.blockItem}>
-            <img src="/icons/comments.svg" alt="Comments Icon" width={16} height={18} />
-            {comments}
+            {formatDate(createdAt)}
           </div>
         </div>
       </div>

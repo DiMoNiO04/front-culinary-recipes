@@ -3,10 +3,10 @@ import { StarIcon } from '@/components/icons';
 import styles from './Rating.module.scss';
 
 interface IRating {
-  rating: number;
+  rating?: number;
 }
 
-const Rating: React.FC<IRating> = ({ rating }) => {
+const Rating: React.FC<IRating> = ({ rating = 5 }) => {
   return (
     <div className={styles.rating}>
       {Array.from({ length: 5 }).map((_, index) => (
