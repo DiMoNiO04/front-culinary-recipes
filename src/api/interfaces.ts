@@ -55,6 +55,7 @@ export interface IUser {
 }
 
 export interface ICategory {
+  length: number;
   id: number;
   name: string;
   description: string;

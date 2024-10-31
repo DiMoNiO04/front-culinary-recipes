@@ -6,4 +6,5 @@ export * from './enums/statusCode';
 export * from './enums/fetchErrors';
 export * from './enums/endpoints';
 export * from './enums/methods';
+export * from './enums/sortOptions';
 export * from './consts';

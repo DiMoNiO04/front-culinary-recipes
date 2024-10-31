@@ -2,8 +2,7 @@
 
 .container {
   position: relative;
-  width: fit-content;
-  min-width: 140px;
+  width: 200px;
 }
 
 .label {
@@ -50,6 +49,7 @@
 }
 
 .optionsContainer {
+  @include noScrollLine;
   position: absolute;
   margin-top: 7px;
   width: 100%;

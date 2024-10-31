@@ -1,26 +1,29 @@
 import React from 'react';
 import { RecipeCard } from '@/components/cards';
-import { recipesCards } from '@/data';
+import { NothingMessage, Loading, ErrorFetch } from '@/components/ui';
+import { IRecipe } from '@/api';
 import styles from './RecipesCardsList.module.scss';
 
 interface IRecipesCardsList {
-  cards: typeof recipesCards;
-  msg?: string;
+  cards: IRecipe[] | undefined;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
-const RecipesCardsList: React.FC<IRecipesCardsList> = ({ cards, msg }) => {
+const RecipesCardsList: React.FC<IRecipesCardsList> = ({ cards, isLoading, isError }) => {
+  if (isLoading) return <Loading />;
+  if (isError) return <ErrorFetch />;
+
+  if (!cards || cards.length === 0) {
+    return <NothingMessage text="There are no recipes in this category" />;
+  }
+
   return (
-    <>
-      {cards.length > 0 ? (
-        <div className={styles.cards}>
-          {cards.map((card) => (
-            <RecipeCard {...card} key={card.id} />
-          ))}
-        </div>
-      ) : (
-        <div className={styles.nothing}>{msg}</div>
-      )}
-    </>
+    <div className={styles.cards}>
+      {cards.map((card) => (
+        <RecipeCard {...card} key={card.id} />
+      ))}
+    </div>
   );
 };
 
