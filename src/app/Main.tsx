@@ -1,14 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import {
-  CurratedCollection,
-  LatestRecipes,
-  MailingList,
-  ThroughCategories,
-  ShareYourRecipe,
-  Slider,
-  SuperDelicious,
-} from '@/components/sections';
+import { LatestRecipes, ThroughCategories, ShareYourRecipe, Slider, SuperDelicious } from '@/components/sections';
 import { FRONT_URL } from '@/utils';
 
 const MainPage: React.FC = () => {
@@ -27,9 +19,7 @@ const MainPage: React.FC = () => {
         <ThroughCategories />
         <SuperDelicious />
         <ShareYourRecipe />
-        <CurratedCollection />
         <LatestRecipes />
-        <MailingList />
       </main>
     </>
   );

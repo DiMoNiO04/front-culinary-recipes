@@ -1,8 +1,6 @@
 export { default as Slider } from './slider/Slider';
 export { default as ThroughCategories } from './throughCategories/ThroughCategories';
 export { default as LatestRecipes } from './latestRecipes/LatestRecipes';
-export { default as CurratedCollection } from './curratedCollection/CurratedCollection';
-export { default as MailingList } from './mailingList/MailingList';
 export { default as SuperDelicious } from './superDelicious/SuperDelicious';
 export { default as ShareYourRecipe } from './shareYourRecipe/ShareYourRecipe';
 export { default as CategoriesContent } from './categoriesContent/CategoriesContent';

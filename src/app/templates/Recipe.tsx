@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { AlsoLike, MailingList, RecipeContent } from '@/components/sections';
+import { AlsoLike, RecipeContent } from '@/components/sections';
 import { EUrls, FRONT_URL } from '@/utils';
 
 const RecipePage: React.FC = () => {
@@ -17,7 +17,6 @@ const RecipePage: React.FC = () => {
       <main>
         <RecipeContent />
         <AlsoLike />
-        <MailingList />
       </main>
     </>
   );
