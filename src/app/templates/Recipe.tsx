@@ -5,12 +5,13 @@ import { EUrls, FRONT_URL } from '@/utils';
 import { useParams } from 'react-router-dom';
 import { useGetRecipe } from '@/api/hooks';
 import { capitalizeFirstLetter, getDescriptionRecipe } from '@/utils/functions';
+import NotFoundPage from '../NotFound';
 
 const RecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data: recipe, isLoading, isError } = useGetRecipe(Number(id));
 
-  if (!recipe) return;
+  if (!recipe) return <NotFoundPage />;
 
   return (
     <>

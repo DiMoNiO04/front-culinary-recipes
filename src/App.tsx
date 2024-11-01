@@ -14,6 +14,7 @@ import ProfilePage from './app/Profile';
 import { ProtectedUser, ScrollToTop } from './components';
 import AdminPage from './app/AdminPage';
 import ManagerPage from './app/ManagerPage';
+import NotFoundPage from './app/NotFound';
 
 const App: React.FC = () => {
   return (
@@ -31,7 +32,7 @@ const App: React.FC = () => {
         <Route path={EUrls.PROFILE} element={<ProtectedUser element={<ProfilePage />} />} />
         <Route path={EUrls.ADMIN} element={<ProtectedUser element={<AdminPage />} />} />
         <Route path={EUrls.MANAGER} element={<ProtectedUser element={<ManagerPage />} />} />
-        <Route path="*" element={<MainPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
       <ScrollBtn />

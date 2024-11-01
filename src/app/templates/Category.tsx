@@ -5,12 +5,13 @@ import { EUrls, FRONT_URL } from '@/utils';
 import { useParams } from 'react-router-dom';
 import { useGetCategory } from '@/api/hooks';
 import { capitalizeFirstLetter, getDescriptionCategory } from '@/utils/functions';
+import NotFoundPage from '../NotFound';
 
 const CategoryPage: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const { data: category, isLoading, isError } = useGetCategory(String(name));
 
-  if (!category) return;
+  if (!category) return <NotFoundPage />;
 
   return (
     <>
