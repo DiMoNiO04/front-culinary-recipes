@@ -22,7 +22,7 @@ const RecipePage: React.FC = () => {
       </Helmet>
       <main>
         <RecipeContent isError={isError} isLoading={isLoading} recipe={recipe} />
-        <AlsoLike category={recipe.category?.name || ''} />
+        <AlsoLike idRecipe={recipe.id} category={recipe.category?.name || ''} />
       </main>
     </>
   );

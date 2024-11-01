@@ -39,9 +39,12 @@ const SearchResults: React.FC = () => {
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
-          <span>{`(${searchResults ? searchResults.length : 0} recipes)`}</span>
-
-          {searchResults && <Select name="sort" value={sortOption} onChange={handleSortChange} options={sortRecipes} />}
+          <div className={styles.sortContainer}>
+            <span>{`(${searchResults ? searchResults.length : 0} recipes)`}</span>
+            {searchResults && (
+              <Select name="sort" value={sortOption} onChange={handleSortChange} options={sortRecipes} />
+            )}
+          </div>
         </div>
 
         {isError && <ErrorFetch />}

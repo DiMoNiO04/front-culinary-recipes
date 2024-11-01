@@ -4,11 +4,14 @@ import { RecipesCardsList } from '@/components/elements';
 import { useGetCategoryRecipes } from '@/api/hooks';
 
 interface IAlsoLike {
+  idRecipe: number;
   category: string;
 }
 
-const AlsoLike: React.FC<IAlsoLike> = ({ category }) => {
+const AlsoLike: React.FC<IAlsoLike> = ({ idRecipe, category }) => {
   const { data: recipes, isError, isLoading, message } = useGetCategoryRecipes(String(category));
+
+  const filteredRecipes = recipes?.filter((recipe) => recipe.id !== idRecipe) || [];
 
   return (
     <section>
@@ -18,8 +21,8 @@ const AlsoLike: React.FC<IAlsoLike> = ({ category }) => {
         {isLoading && <Loading />}
         {isError && <ErrorFetch />}
 
-        {!isLoading && !isError && recipes ? (
-          <RecipesCardsList cards={recipes.slice(0, 7)} isLoading={isLoading} isError={isError} msg={message} />
+        {!isLoading && !isError && filteredRecipes.length > 0 ? (
+          <RecipesCardsList cards={filteredRecipes.slice(0, 7)} isLoading={isLoading} isError={isError} msg={message} />
         ) : (
           !isLoading && !isError && <NothingMessage text={message!} />
         )}

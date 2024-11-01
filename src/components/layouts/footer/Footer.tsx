@@ -11,6 +11,7 @@ const menuBlocksData = [
     links: [
       { text: 'About us', href: EUrls.ABOUT },
       { text: 'Categories', href: EUrls.CATEGORIES },
+      { text: 'Recipes', href: EUrls.RECIPES },
     ],
   },
   {

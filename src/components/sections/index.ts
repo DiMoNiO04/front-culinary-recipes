@@ -16,3 +16,4 @@ export { default as AlsoLike } from './alsoLike/AlsoLike';
 export { default as RecipeContent } from './recipeContent/RecipeContent';
 export { default as RecipeTop } from './recipeTop/RecipeTop';
 export { default as NotFound } from './notFound/NotFound';
+export { default as RecipesContent } from './recipesContent/RecipesContent';

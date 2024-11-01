@@ -11,7 +11,7 @@
 }
 
 .block {
-  @include flexCenterBetween;
+@include flexCenterBetween;
   margin-bottom: 48px;
   padding-bottom: 18px;
   border-bottom: 1px solid $black;
@@ -22,13 +22,19 @@
     color: $black;
     border: none;
     background-color: transparent;
-    width: 100%;
+    flex-shrink: 0;
   }
 
   span {
     @include regular16Inter;
     flex-shrink: 0;
   }
+}
+
+.sortContainer {
+  @include flexCenterBetween;
+  column-gap: 32px;
+  flex-shrink: 0;
 }
 
 @media (max-width: $tablet) {
@@ -56,4 +62,20 @@
     @include bold30Playfair;
     margin-bottom: 24px;
   }
+
+    .block {
+      flex-wrap: 0;
+      margin-bottom: 24px;
+      row-gap: 12px;
+      flex-direction: column;
+  
+      input {
+        width: 100%;
+      }
+    }
+  
+    .sortContainer {
+      width: 100%;
+      justify-content: flex-end;
+    }
 }

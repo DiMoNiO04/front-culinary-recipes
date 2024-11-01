@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { EUrls, FRONT_URL } from '@/utils';
+import { RecipesContent } from '@/components/sections';
 
 const RecipesPage: React.FC = () => {
   return (
@@ -13,7 +14,9 @@ const RecipesPage: React.FC = () => {
         />
         <link rel="canonical" href={`${FRONT_URL}${EUrls.RECIPES}`} />
       </Helmet>
-      <main></main>
+      <main>
+        <RecipesContent />
+      </main>
     </>
   );
 };

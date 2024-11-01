@@ -56,6 +56,7 @@ const SearchPanel: React.FC<ISearchPanel> = ({ onClose, isOpen }) => {
                 typeBtn={EButtonType.BUTTON}
                 isLink={true}
                 linkUrl={linkUrl}
+                handle={onClose}
               />
             </div>
           )}
