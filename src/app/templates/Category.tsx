@@ -10,11 +10,13 @@ const CategoryPage: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const { data: category, isLoading, isError } = useGetCategory(String(name));
 
+  if (!category) return;
+
   return (
     <>
       <Helmet>
         <title>{`${capitalizeFirstLetter(name!)} | TasteBite`}</title>
-        <meta name="description" content={getDescriptionCategory(category || undefined)} />
+        <meta name="description" content={getDescriptionCategory(category)} />
         <link rel="canonical" href={`${FRONT_URL}${EUrls.CATEGORIES}/${name}`} />
       </Helmet>
       <main>

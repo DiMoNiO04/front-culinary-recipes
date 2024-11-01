@@ -12,4 +12,5 @@ export const ApiEndpoints = {
   GET_CATEGORY_RECIPES: `${API_URL}/recipes/getPublishedRecipesByCategory/`,
   GET_RECIPES: `${API_URL}/recipes/getPublished`,
   SEARCH: `${API_URL}/recipes/search`,
+  GET_RECIPE: `${API_URL}/recipes/getOne/`,
 } as const;
