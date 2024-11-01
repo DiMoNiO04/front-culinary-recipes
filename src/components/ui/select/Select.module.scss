@@ -3,6 +3,7 @@
 .container {
   position: relative;
   width: 200px;
+  flex-shrink: 0
 }
 
 .label {

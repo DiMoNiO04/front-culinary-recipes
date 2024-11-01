@@ -1,13 +1,5 @@
 @import '../../../styles/utils/index.scss';
 
-.card {
-  @include hover {
-    img {
-      transform: scale(1.05);
-    }
-  }
-}
-
 .img {
   margin-bottom: 10px;
 

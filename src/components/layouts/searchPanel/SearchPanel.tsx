@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui';
 import { CloseIcon } from '@/components/icons';
 import { ErrorFetch, NothingMessage } from '@/components/ui';
-import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
+import { EButtonClass, EButtonSize, EButtonType, EUrls } from '@/utils';
 import { useSearch } from '@/api/hooks';
 import { SearchPanelCard } from '@/components/cards';
 import { useDebounce } from '@/hooks';
@@ -19,6 +19,8 @@ const SearchPanel: React.FC<ISearchPanel> = ({ onClose, isOpen }) => {
   const { data: searchResults, isLoading, isError } = useSearch(debouncedSearchQuery);
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(event.target.value);
+
+  const linkUrl: string = debouncedSearchQuery ? `${EUrls.SEARCH}?title=${debouncedSearchQuery}` : `${EUrls.SEARCH}`;
 
   return (
     <div className={`${styles.panel} ${isOpen && styles.open}`}>
@@ -53,7 +55,7 @@ const SearchPanel: React.FC<ISearchPanel> = ({ onClose, isOpen }) => {
                 size={EButtonSize.SM}
                 typeBtn={EButtonType.BUTTON}
                 isLink={true}
-                linkUrl="#"
+                linkUrl={linkUrl}
               />
             </div>
           )}
