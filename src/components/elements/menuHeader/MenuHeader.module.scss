@@ -24,51 +24,6 @@
       }
     }
   }
-
-  .icon {
-    @include sizes(16px, 16px);
-    @include transition(transform);
-    color: $black;
-  }
-
-  .dropdown {
-    @include hidden;
-    z-index: -2;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: $white;
-    list-style: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
-
-    li {
-      padding: 8px 12px;
-
-      a {
-        @include medium14Inter;
-        @include transition(color);
-        text-decoration: none;
-        color: $black;
-        display: block;
-        text-wrap: nowrap;
-
-        @include hover {
-          color: $grey;
-        }
-      }
-    }
-  }
-
-  @include hover {
-    .dropdown {
-      @include visible;
-      z-index: 2;
-    }
-  }
 }
 
 @media (max-width: $tablet) {
@@ -85,41 +40,6 @@
     row-gap: 24px;
     width: 100%;
     align-items: flex-start;
-  }
-
-  .menuItem {
-    .dropdown {
-      @include hidden;
-      @include flexColumn;
-      row-gap: 8px;
-      padding: 0 0 0 16px;
-      background-color: transparent;
-      position: static;
-      box-shadow: none;
-      max-height: 0;
-      transition:
-        max-height 0.3s ease,
-        opacity 0.3s ease,
-        padding 0.3s ease;
-
-      li {
-        padding: 0;
-      }
-    }
-
-    &.open .dropdown {
-      @include visible;
-      max-height: 500px;
-      padding-top: 12px;
-    }
-
-    .icon {
-      transition: transform 0.3s ease;
-    }
-
-    &.open .icon {
-      transform: rotate(180deg);
-    }
   }
 }
 
