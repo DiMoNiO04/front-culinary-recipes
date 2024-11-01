@@ -72,6 +72,7 @@ export interface IRecipe {
   image: string;
   createdAt: string;
   author?: IAuthorRecipe;
+  category?: ICategory;
 }
 
 export interface IAuthorRecipe {

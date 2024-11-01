@@ -1,24 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IRecipe } from '@/api';
+import { EUrls } from '@/utils';
 import styles from './SearchPanelCard.module.scss';
 
-interface ISearchPanelCard {
-  name: string;
-  img: string;
-  link: string;
-  category: string | null;
-  isCategory: boolean;
-}
-
-const SearchPanelCard: React.FC<ISearchPanelCard> = ({ name, img, link, category, isCategory }) => {
+const SearchPanelCard: React.FC<IRecipe> = ({ id, title, image, category }) => {
   return (
-    <Link to={link} className={`${styles.card} ${isCategory ? styles.categoryCard : ''}`}>
+    <Link to={`${EUrls.RECIPE}/${id}`} className={`${styles.card}`}>
       <div className={styles.img}>
-        <img src={img} alt={name} width={65} height={65} />
+        <img src={image} alt="" width={65} height={65} />
       </div>
       <div className={styles.info}>
-        <p className={styles.name}>{name}</p>
-        <p className={styles.category}>{category || 'category'}</p>
+        <p className={styles.name}>{title}</p>
+        <p className={styles.category}>{category?.name}</p>
       </div>
     </Link>
   );
