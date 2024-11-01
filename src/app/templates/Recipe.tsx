@@ -21,7 +21,7 @@ const RecipePage: React.FC = () => {
       </Helmet>
       <main>
         <RecipeContent />
-        <AlsoLike />
+        <AlsoLike category={recipe.category?.name || ''} />
       </main>
     </>
   );
