@@ -20,7 +20,7 @@ const RecipePage: React.FC = () => {
         <link rel="canonical" href={`${FRONT_URL}${EUrls.RECIPE}/${id}`} />
       </Helmet>
       <main>
-        <RecipeContent />
+        <RecipeContent isError={isError} isLoading={isLoading} recipe={recipe} />
         <AlsoLike category={recipe.category?.name || ''} />
       </main>
     </>

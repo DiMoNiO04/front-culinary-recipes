@@ -80,6 +80,24 @@
   }
 }
 
+.category {
+  b {
+    @include regular14Inter;
+    color: $black;
+  }
+
+  a {
+    margin-left: 6px;
+    @include regular18Inter;
+    color: $grey;
+    @include transition(color);
+
+    @include hover {
+      color: $black;
+    }
+  }
+}
+
 @media (max-width: $tablet) {
   .panelBnts {
     column-gap: 34px;
@@ -144,6 +162,16 @@
 
     span {
       @include regular12Inter;
+    }
+  }
+
+  .category {
+    b {
+      @include regular12Inter;
+    }
+
+    a {
+      @include regular16Inter;
     }
   }
 

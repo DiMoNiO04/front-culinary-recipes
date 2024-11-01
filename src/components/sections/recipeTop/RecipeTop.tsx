@@ -1,18 +1,26 @@
 import React from 'react';
 import { LikeIcon, ShareIcon } from '@/components/icons';
 import { Rating } from '@/components/elements';
-import { EButtonType } from '@/utils';
+import { EButtonType, EUrls } from '@/utils';
 import styles from './RecipeTop.module.scss';
+import { IAuthorRecipe } from '@/api';
+import { Link } from 'react-router-dom';
 
-const RecipeTop: React.FC = () => {
+interface IRecipeTop {
+  title: string;
+  image: string;
+  shortDescription: string;
+  createdAt: string;
+  author: IAuthorRecipe | undefined;
+  category: string;
+}
+
+const RecipeTop: React.FC<IRecipeTop> = ({ title, category, author, createdAt, shortDescription, image }) => {
   return (
     <div className={styles.top}>
       <div className={styles.panel}>
-        <h1 className={styles.title}>Strawberry Cream Cheesecake</h1>
+        <h1 className={styles.title}>{title}</h1>
         <div className={styles.panelBnts}>
-          <button className={styles.btnLike} type={EButtonType.BUTTON}>
-            <ShareIcon />
-          </button>
           <button className={styles.btnLike} type={EButtonType.BUTTON}>
             <LikeIcon />
           </button>
@@ -20,21 +28,24 @@ const RecipeTop: React.FC = () => {
       </div>
       <div className={styles.desc}>
         <div className={styles.author}>
-          <img src="/img/templates/profile.svg" width={32} height={32} alt="Profile" />
-          <span>Tricia Albert</span>
+          <img src="/icons/profile.svg" width={32} height={32} alt="Profile" />
+          <span>
+            {author?.firstName} {author?.lastName}
+          </span>
         </div>
         <div className={styles.calendar}>
           <img src="/icons/calendar.svg" width={16} height={16} alt="Calendar" />
-          <span>Yesterday</span>
+          <span>{new Date(createdAt).toLocaleDateString()}</span>
         </div>
         <Rating rating={5} />
+        <div className={styles.category}>
+          <b>Category:</b>
+          <Link to={`${EUrls.CATEGORIES}/${category}`}>{category}</Link>
+        </div>
       </div>
-      <p className={styles.description}>
-        One thing I learned living in the Canarsie section of Brooklyn, NY was how to cook a good Italian meal. Here is
-        a recipe I created after having this dish in a restaurant. Enjoy!
-      </p>
+      <p className={styles.description}>{shortDescription}</p>
       <div className={styles.img}>
-        <img src="/img/recipes/blueberryCarrotCake.webp" width={1100} height={630} alt="Blueberry Carrot Cake" />
+        <img src={image} width={1100} height={630} alt={title} />
       </div>
     </div>
   );

@@ -67,6 +67,8 @@ export interface IRecipe {
   id: number;
   title: string;
   shortDescription: string;
+  ingredients: string;
+  instructions: string;
   cookingTime: number;
   calories: number;
   image: string;

@@ -8,13 +8,13 @@ import { sortRecipes } from '@/data';
 import { useGetCategoryRecipes } from '@/api/hooks';
 import { useParams } from 'react-router-dom';
 
-interface CategoryTemplateProps {
+interface ICategoryTemplate {
   category: ICategory | null;
   isError: boolean;
   isLoading: boolean;
 }
 
-const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ category, isError, isLoading }) => {
+const CategoryTemplate: React.FC<ICategoryTemplate> = ({ category, isError, isLoading }) => {
   const { name } = useParams<{ name: string }>();
   const {
     data: recipes,
