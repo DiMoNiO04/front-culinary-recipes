@@ -1,4 +1,5 @@
 import React from 'react';
+import { splitBySemicolon } from '@/utils/functions';
 import styles from './Insruction.module.scss';
 
 interface IInstruction {
@@ -8,7 +9,7 @@ interface IInstruction {
 const Insruction: React.FC<IInstruction> = ({ instructions }) => {
   if (!instructions) return null;
 
-  const instructionList = instructions.split(';').map((item) => item.trim());
+  const instructionList = splitBySemicolon(instructions);
 
   return (
     <div className={styles.block}>

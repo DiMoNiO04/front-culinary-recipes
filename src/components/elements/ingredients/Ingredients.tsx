@@ -1,4 +1,5 @@
 import React from 'react';
+import { splitBySemicolon } from '@/utils/functions';
 import styles from './Ingredients.module.scss';
 
 interface IIngredients {
@@ -8,7 +9,7 @@ interface IIngredients {
 const Ingredients: React.FC<IIngredients> = ({ ingredients }) => {
   if (!ingredients) return null;
 
-  const ingredientList = ingredients.split(';').map((ingredient) => ingredient.trim());
+  const ingredientList = splitBySemicolon(ingredients);
 
   return (
     <div className={styles.block}>
