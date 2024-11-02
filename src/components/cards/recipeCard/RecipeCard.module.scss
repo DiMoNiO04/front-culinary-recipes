@@ -3,6 +3,7 @@
 .card {
   @include flexColumn;
   row-gap: 8px;
+  position: relative;
 
   @include hover {
     .name {
@@ -12,6 +13,21 @@
     .img {
       transform: scale(1.03);
     }
+  }
+}
+
+.like {
+  @include sizes(32px, 32px);
+  @include flexCenter;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: $white;
+  border-radius: 4px;
+  z-index: 2;
+
+  svg {
+    @include sizes(24px, 24px);
   }
 }
 
