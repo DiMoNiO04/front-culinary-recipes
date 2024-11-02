@@ -13,4 +13,6 @@ export const ApiEndpoints = {
   GET_RECIPES: `${API_URL}/recipes/getPublished`,
   SEARCH: `${API_URL}/recipes/search`,
   GET_RECIPE: `${API_URL}/recipes/getOne/`,
+  GET_FAVORITES: `${API_URL}/favorites/get`,
+  DELETE_ALL_FAVORITES: `${API_URL}/favorites/remove-all`,
 } as const;

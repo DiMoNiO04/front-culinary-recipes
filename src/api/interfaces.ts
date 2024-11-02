@@ -86,6 +86,7 @@ export interface IAuthorRecipe {
 
 export const OPTIONS = {
   revalidateOnFocus: false,
-  refreshInterval: 500000,
-  dedupingInterval: 500000,
+  revalidateOnReconnect: true,
+  refreshInterval: 120000,
+  dedupingInterval: 1000,
 };

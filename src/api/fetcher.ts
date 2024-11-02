@@ -10,7 +10,6 @@ export const fetcher = async <T>(url: string, token?: string, mockData?: T): Pro
     }
 
     const response = await fetch(url, {
-      cache: 'force-cache',
       credentials: 'include',
       headers,
     });

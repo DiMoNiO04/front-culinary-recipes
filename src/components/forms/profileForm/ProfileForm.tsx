@@ -6,8 +6,7 @@ import { EmailIcon, UserIcon } from '@/components/icons';
 import { EButtonClass, EButtonSize, EButtonType, EInputType } from '@/utils';
 import styles from './ProfileForm.module.scss';
 import schemaProfile from './schema';
-import useGetUserInfo from '@/api/hooks/useGetUserInfo';
-import { useUpdateProfile } from '@/api/hooks';
+import { useGetUserInfo, useUpdateProfile } from '@/api/hooks';
 
 export interface IProfileInputs {
   firstName: string;

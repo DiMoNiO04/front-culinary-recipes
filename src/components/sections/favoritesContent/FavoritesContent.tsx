@@ -1,10 +1,33 @@
-import React from 'react';
-import { recipesCards } from '@/data';
+import React, { useEffect, useState } from 'react';
 import { RecipesCardsList } from '@/components/elements';
-import { Select } from '@/components/ui';
+import { ErrorFetch, Loading, NothingMessage, Notification } from '@/components/ui';
+import { useDeleteAllFavorites, useGetFavorites } from '@/api/hooks';
 import styles from './FavoritesContent.module.scss';
 
 const FavoritesContent: React.FC = () => {
+  const { data: favorites, isLoading, isError, message } = useGetFavorites();
+  const { executeDelete, isError: deleteError, notificationMsg: deleteNotificationMsg } = useDeleteAllFavorites();
+
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationSuccess, setNotificationSuccess] = useState(false);
+
+  const hasFavorites = favorites && favorites.length > 0;
+
+  const handleDeleteAll = async () => {
+    await executeDelete();
+    setNotificationSuccess(true);
+    setShowNotification(true);
+  };
+
+  useEffect(() => {
+    if (showNotification) {
+      const timer = setTimeout(() => {
+        setShowNotification(false);
+      }, 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [showNotification]);
+
   return (
     <section className={styles.section}>
       <div className="container">
@@ -14,26 +37,29 @@ const FavoritesContent: React.FC = () => {
               <img src="/icons/favoritesIcon.svg" alt="" width={44} height={44} />
               <h1>Favorites</h1>
             </div>
-            <Select
-              name="sort"
-              value={null}
-              options={[
-                { id: 1, name: 'Price' },
-                { id: 2, name: 'Popularity' },
-                { id: 3, name: 'Newest' },
-              ]}
-            />
-          </div>
-          <div className={styles.info}>
-            <button type="button" className={styles.btnDel}>
-              <img src="/icons/deleteIcon.svg" alt="" width={20} height={20} />
-              <span>Delete all</span>
-            </button>
-            <div className={styles.count}>{`(98 recipes)`}</div>
           </div>
         </div>
 
-        <RecipesCardsList cards={recipesCards} msg="Add recipes to favorites" />
+        {isLoading && <Loading />}
+        {isError && <ErrorFetch message={message} />}
+        {deleteError && <ErrorFetch message={deleteNotificationMsg} />}
+
+        {!isLoading && !isError && hasFavorites ? (
+          <>
+            <div className={styles.info}>
+              <button type="button" className={styles.btnDel} onClick={handleDeleteAll}>
+                <img src="/icons/deleteIcon.svg" alt="" width={20} height={20} />
+                <span>Delete all</span>
+              </button>
+              <div className={styles.count}>{`${favorites.length} recipes`}</div>
+            </div>
+            <RecipesCardsList cards={favorites} isLoading={isLoading} isError={isError} msg={message} />
+          </>
+        ) : (
+          !isLoading && !isError && <NothingMessage text={message || ''} />
+        )}
+
+        {showNotification && <Notification isSuccess={notificationSuccess} msg={deleteNotificationMsg} />}
       </div>
     </section>
   );

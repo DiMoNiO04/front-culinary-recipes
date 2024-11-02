@@ -5,6 +5,7 @@ import { Auth, ConfirmAction } from '@/components/modals';
 import { SUCCESS_AUTH, TOKEN_KEY, EUrls, EButtonClass, EButtonSize, EButtonType } from '@/utils';
 import { useLogout } from '@/hooks';
 import styles from './UserProfile.module.scss';
+import { Link } from 'react-router-dom';
 
 const UserProfile: React.FC = () => {
   const [cookies] = useCookies([TOKEN_KEY]);
@@ -36,10 +37,10 @@ const UserProfile: React.FC = () => {
   const renderProfileLinks = () => (
     <ul className={styles.dropdown}>
       <li>
-        <a href={EUrls.PROFILE}>Profile</a>
+        <Link to={EUrls.PROFILE}>Profile</Link>
       </li>
       <li>
-        <a href={EUrls.FAVORITES}>Favorites</a>
+        <Link to={EUrls.FAVORITES}>Favorites</Link>
       </li>
       <li>
         <a href={'#'}>Recipes</a>

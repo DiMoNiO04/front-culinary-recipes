@@ -16,7 +16,6 @@ const apiRequest = async (url: string, method: EMethods, body?: Record<string, a
     headers,
     body: body ? JSON.stringify(body) : undefined,
     credentials: 'include',
-    cache: 'force-cache',
   });
 
   if (!response.ok) {

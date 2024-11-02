@@ -4,10 +4,6 @@
   margin-top: 160px;
 }
 
-.block {
-  margin-bottom: 60px;
-}
-
 .titles {
   @include flexCenterBetween;
   column-gap: 48px;
@@ -34,6 +30,7 @@
 
 .info {
   @include flexCenterBetween;
+  margin-bottom: 60px;
 }
 
 .count {
@@ -66,7 +63,7 @@
     margin-top: 120px;
   }
 
-  .block {
+  .info {
     margin-bottom: 40px;
   }
 
@@ -89,7 +86,7 @@
     margin-top: 96px;
   }
 
-  .block {
+  .info {
     margin-bottom: 32px;
   }
 
