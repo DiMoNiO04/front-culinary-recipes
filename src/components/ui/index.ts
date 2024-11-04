@@ -8,3 +8,4 @@ export { default as ErrorFetch } from './errorFetch/ErrorFetch';
 export { default as Input } from './input/Input';
 export { default as NothingMessage } from './nothingMessage/NothingMessage';
 export { default as TitleLinkSection } from './titleSectionLink/TitleSectionLink';
+export { default as Textarea } from './textarea/Textarea';

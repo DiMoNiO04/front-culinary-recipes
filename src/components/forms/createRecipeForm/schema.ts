@@ -1,0 +1,18 @@
+import { EValidateForm } from '@/utils';
+import * as yup from 'yup';
+
+const schemaCreateRecipe = yup.object().shape({
+  title: yup.string().required(EValidateForm.REQUIRED_FIELD),
+  shortDescription: yup.string().required(EValidateForm.REQUIRED_FIELD),
+  cookingTime: yup.number().required(EValidateForm.REQUIRED_FIELD).positive().integer(),
+  calories: yup.number().required(EValidateForm.REQUIRED_FIELD).positive().integer(),
+  image: yup
+    .mixed<FileList>()
+    .test('required', EValidateForm.REQUIRED_FIELD, (value) => value && value.length > 0)
+    .required(EValidateForm.REQUIRED_FIELD),
+  ingredients: yup.string().required(EValidateForm.REQUIRED_FIELD),
+  instructions: yup.string().required(EValidateForm.REQUIRED_FIELD),
+  categoryId: yup.number().required(EValidateForm.REQUIRED_FIELD).positive().integer(),
+});
+
+export default schemaCreateRecipe;

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './RecipesUser.module.scss';
 import { useGetMyRecipes } from '@/api/hooks';
-import { ErrorFetch, Loading, NothingMessage } from '@/components/ui';
+import { Button, ErrorFetch, Loading, NothingMessage } from '@/components/ui';
 import { MyRecipeCard } from '@/components/cards';
+import { EButtonClass, EButtonSize, EButtonType, EUrls } from '@/utils';
 
 const RecipesUser: React.FC = () => {
   const { data: recipes, isLoading, isError } = useGetMyRecipes();
@@ -10,7 +11,17 @@ const RecipesUser: React.FC = () => {
   return (
     <section className={styles.section}>
       <div className="container">
-        <h1 className={styles.title}>My Recipes</h1>
+        <div className={styles.titles}>
+          <h1>My Recipes</h1>
+          <Button
+            text="Create new"
+            nameClass={EButtonClass.SEC}
+            size={EButtonSize.LG}
+            typeBtn={EButtonType.BUTTON}
+            isLink={true}
+            linkUrl={EUrls.CREATE_RECIPE}
+          />
+        </div>
 
         {isError && <ErrorFetch />}
         {isLoading && <Loading />}

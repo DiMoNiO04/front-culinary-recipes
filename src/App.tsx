@@ -17,6 +17,7 @@ import ManagerPage from './app/ManagerPage';
 import NotFoundPage from './app/NotFound';
 import RecipesPage from './app/Recipes';
 import RecipesUserPage from './app/RecipesUser';
+import CreateRecipePage from './app/CreateRecipe';
 
 const App: React.FC = () => {
   return (
@@ -34,6 +35,7 @@ const App: React.FC = () => {
         <Route path={EUrls.FAVORITES} element={<ProtectedUser element={<FavoritesPage />} />} />
         <Route path={EUrls.PROFILE} element={<ProtectedUser element={<ProfilePage />} />} />
         <Route path={EUrls.PROFILE_RECIPES} element={<ProtectedUser element={<RecipesUserPage />} />} />
+        <Route path={EUrls.CREATE_RECIPE} element={<ProtectedUser element={<CreateRecipePage />} />} />
         <Route path={EUrls.ADMIN} element={<ProtectedUser element={<AdminPage />} />} />
         <Route path={EUrls.MANAGER} element={<ProtectedUser element={<ManagerPage />} />} />
         <Route path="*" element={<NotFoundPage />} />
