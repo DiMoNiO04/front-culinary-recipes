@@ -1,0 +1,26 @@
+@import '../../../styles/utils/index.scss';
+
+.requiredNote {
+  @include regular18Inter;
+  font-style: italic;
+  color: $orange;
+  margin-bottom: 40px;
+  width: 100%;
+  text-align: right;
+}
+
+.btn {
+  margin-top: 60px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.form {
+  @include flexColumn;
+  row-gap: 48px;
+
+  div {
+    margin: 0;
+  }
+}

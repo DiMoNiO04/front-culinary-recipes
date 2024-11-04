@@ -10,6 +10,7 @@ interface ITextareaProps {
   name: string;
   errors?: any;
   rows?: number;
+  isLabelSemicolon?: boolean;
 }
 
 const Textarea: React.FC<ITextareaProps> = ({
@@ -20,6 +21,7 @@ const Textarea: React.FC<ITextareaProps> = ({
   isReadonly = false,
   isRequired = false,
   rows = 4,
+  isLabelSemicolon = false,
 }) => {
   const hasError = Boolean(errors[name]);
 
@@ -33,6 +35,7 @@ const Textarea: React.FC<ITextareaProps> = ({
         {...register(name)}
         className={styles.textarea}
       />
+      {isLabelSemicolon && <span className={styles.notice}>For a separating point, use the symbol ;</span>}
       {hasError && <span className={styles.error}>{errors[name].message}</span>}
     </div>
   );

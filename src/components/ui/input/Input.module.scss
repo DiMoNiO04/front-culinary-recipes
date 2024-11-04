@@ -61,6 +61,26 @@
   }
 }
 
+.fileInput {
+  display: none;
+}
+
+.fileInputLabel {
+  display: inline-block;
+  background-color: $grey;
+  color: $white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: grey;
+  }
+}
+
 @media (max-width: $mob) {
   .wrapper {
     @include mb(24px);

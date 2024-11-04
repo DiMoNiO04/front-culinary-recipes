@@ -3,14 +3,24 @@
 .textareaContainer {
   margin-bottom: 32px;
   position: relative;
+  @include flexColumn;
+  row-gap: 8px;
 
   &.errorTextarea {
-    border-color: $red;
+    .textarea {
+      border-color: $red;
+    }
 
     .error {
       color: $red;
     }
   }
+}
+
+.notice {
+  @include regular12Inter;
+  color: $black;
+  font-style: italic;
 }
 
 .textarea {
@@ -45,9 +55,5 @@
 @media (max-width: $mob) {
   .textareaContainer {
     @include mb(24px);
-  }
-
-  .textarea {
-    @include sizes(20px, 20px);
   }
 }

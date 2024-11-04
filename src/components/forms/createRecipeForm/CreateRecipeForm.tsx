@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { Button, Input, Textarea } from '@/components/ui';
+import { Button, Input, Textarea, SelectForm, ImageUpload } from '@/components/ui';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { EButtonClass, EButtonSize, EButtonType, EInputType } from '@/utils';
 import styles from './CreateRecipeForm.module.scss';
 import schemaCreateRecipe from './schema';
-import { convertImageToBase64 } from '@/utils/functions';
-import { useCreateRecipe } from '@/api/hooks';
+import { useCreateRecipe, useGetCategories } from '@/api/hooks';
+import { useFileInput } from '@/hooks';
 
 export interface ICreateRecipeInputs {
   title: string;
   shortDescription: string;
   cookingTime: number;
   calories: number;
-  image: FileList;
+  image: string;
   ingredients: string;
   instructions: string;
   categoryId: number;
@@ -24,6 +24,8 @@ const CreateRecipeForm: React.FC = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
+    trigger,
     formState: { errors, isValid },
   } = useForm<ICreateRecipeInputs>({
     mode: 'onChange',
@@ -31,6 +33,9 @@ const CreateRecipeForm: React.FC = () => {
   });
 
   const { createRecipe, notificationMsg, isError } = useCreateRecipe();
+  const { data: categories } = useGetCategories();
+
+  const { filePreview, handleFileSelect } = useFileInput(setValue, trigger);
 
   useEffect(() => {
     if (notificationMsg) {
@@ -39,12 +44,15 @@ const CreateRecipeForm: React.FC = () => {
   }, [notificationMsg, reset]);
 
   const handleCreateRecipe = async (data: ICreateRecipeInputs) => {
-    const imageBase64 = await convertImageToBase64(data.image[0]);
-    createRecipe({ ...data });
+    createRecipe({ ...data, image: filePreview || '' });
   };
+
+  const categoriesOptions = categories ? categories.map((category) => ({ id: category.id, name: category.name })) : [];
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(handleCreateRecipe)}>
+      <p className={styles.requiredNote}>* All fields required</p>
+
       <Input
         type={EInputType.TEXT}
         placeholder="Recipe Title"
@@ -69,7 +77,6 @@ const CreateRecipeForm: React.FC = () => {
         name="calories"
         errors={errors}
       />
-      <Input type={EInputType.FILE} isRequired register={register} name="image" errors={errors} />
       <Textarea
         placeholder="Short Description"
         isRequired
@@ -83,16 +90,28 @@ const CreateRecipeForm: React.FC = () => {
         register={register}
         name="ingredients"
         errors={errors}
+        isLabelSemicolon={true}
       />
-      <Textarea placeholder="Instructions" isRequired register={register} name="instructions" errors={errors} />
-      <Input
-        type={EInputType.NUMBER}
-        placeholder="Category ID"
+      <Textarea
+        placeholder="Instructions"
         isRequired
         register={register}
-        name="categoryId"
+        name="instructions"
         errors={errors}
+        isLabelSemicolon={true}
       />
+
+      <ImageUpload filePreview={filePreview} onFileSelect={handleFileSelect} />
+
+      <SelectForm
+        name="categoryId"
+        label="Select Category"
+        isRequired
+        register={register}
+        errors={errors}
+        options={categoriesOptions}
+      />
+
       <div className={styles.btn}>
         <Button
           text="Create Recipe"
