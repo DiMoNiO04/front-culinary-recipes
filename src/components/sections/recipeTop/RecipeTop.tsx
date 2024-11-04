@@ -1,12 +1,14 @@
-import React from 'react';
-import { LikeIcon, ShareIcon } from '@/components/icons';
+import React, { useState, useEffect } from 'react';
+import { LikeIcon } from '@/components/icons';
 import { Rating } from '@/components/elements';
 import { EButtonType, EUrls } from '@/utils';
 import styles from './RecipeTop.module.scss';
 import { IAuthorRecipe } from '@/api';
 import { Link } from 'react-router-dom';
+import { useAddFavorite, useGetFavorites, useRemoveFavorite } from '@/api/hooks';
 
 interface IRecipeTop {
+  id: number;
   title: string;
   image: string;
   shortDescription: string;
@@ -15,14 +17,41 @@ interface IRecipeTop {
   category: string;
 }
 
-const RecipeTop: React.FC<IRecipeTop> = ({ title, category, author, createdAt, shortDescription, image }) => {
+const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdAt, shortDescription, image }) => {
+  const [isLiked, setIsLiked] = useState(false);
+  const { data: favorites } = useGetFavorites();
+  const { handleAddFavorite, isError: isAddError } = useAddFavorite(String(id));
+  const { handleRemoveFavorite, isError: isRemoveError } = useRemoveFavorite(String(id));
+
+  useEffect(() => {
+    if (favorites && favorites.some((favorite) => favorite.id === id)) {
+      setIsLiked(true);
+    }
+  }, [favorites, id]);
+
+  const handleLikeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    if (isLiked) {
+      await handleRemoveFavorite();
+      if (!isRemoveError) {
+        setIsLiked(false);
+      }
+    } else {
+      await handleAddFavorite();
+      if (!isAddError) {
+        setIsLiked(true);
+      }
+    }
+  };
+
   return (
     <div className={styles.top}>
       <div className={styles.panel}>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.panelBnts}>
-          <button className={styles.btnLike} type={EButtonType.BUTTON}>
-            <LikeIcon />
+          <button type={EButtonType.BUTTON} className={styles.btnLike} onClick={handleLikeClick}>
+            <LikeIcon color={isLiked ? '#ff642f' : '#8B8D95'} />
           </button>
         </div>
       </div>

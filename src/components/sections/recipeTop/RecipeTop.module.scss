@@ -16,16 +16,6 @@
 .btnLike {
   @include sizes(32px, 32px);
   flex-shrink: 0;
-
-  svg path {
-    @include transition(fill);
-  }
-
-  @include hover {
-    svg path {
-      fill: $grey;
-    }
-  }
 }
 
 .title {

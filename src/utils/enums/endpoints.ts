@@ -15,4 +15,6 @@ export const ApiEndpoints = {
   GET_RECIPE: `${API_URL}/recipes/getOne/`,
   GET_FAVORITES: `${API_URL}/favorites/get`,
   DELETE_ALL_FAVORITES: `${API_URL}/favorites/remove-all`,
+  DELETE_FAVORITE: `${API_URL}/favorites/remove`,
+  ADD_FAVORITE: `${API_URL}/favorites/add`,
 } as const;

@@ -20,6 +20,7 @@ const RecipeContent: React.FC<IRecipeContent> = ({ recipe, isError, isLoading })
     <section className={styles.section}>
       <div className="container">
         <RecipeTop
+          id={recipe.id}
           title={recipe.title}
           shortDescription={recipe.shortDescription}
           image={recipe.image}
