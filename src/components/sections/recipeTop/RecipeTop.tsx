@@ -5,7 +5,8 @@ import { EButtonType, EUrls } from '@/utils';
 import styles from './RecipeTop.module.scss';
 import { IAuthorRecipe } from '@/api';
 import { Link } from 'react-router-dom';
-import { useAddFavorite, useGetFavorites, useRemoveFavorite } from '@/api/hooks';
+import useFavorite from '@/api/hooks/useFavorite';
+import { useGetFavorites } from '@/api/hooks';
 
 interface IRecipeTop {
   id: number;
@@ -20,8 +21,7 @@ interface IRecipeTop {
 const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdAt, shortDescription, image }) => {
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
-  const { handleAddFavorite, isError: isAddError } = useAddFavorite(String(id));
-  const { handleRemoveFavorite, isError: isRemoveError } = useRemoveFavorite(String(id));
+  const { handleFavorite, isError } = useFavorite(String(id));
 
   useEffect(() => {
     if (favorites && favorites.some((favorite) => favorite.id === id)) {
@@ -32,16 +32,11 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
   const handleLikeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    if (isLiked) {
-      await handleRemoveFavorite();
-      if (!isRemoveError) {
-        setIsLiked(false);
-      }
-    } else {
-      await handleAddFavorite();
-      if (!isAddError) {
-        setIsLiked(true);
-      }
+    const action = isLiked ? 'remove' : 'add';
+    await handleFavorite(action);
+
+    if (!isError) {
+      setIsLiked(!isLiked);
     }
   };
 

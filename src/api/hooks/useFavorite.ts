@@ -4,21 +4,26 @@ import { ApiEndpoints, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND } from '@/utils';
 import apiRequest from '../apiRequest';
 import { mutate } from 'swr';
 
-const useRemoveFavorite = (id: string) => {
+type FavoriteAction = 'add' | 'remove';
+
+const useFavorite = (id: string) => {
   const [cookies] = useCookies([TOKEN_KEY]);
   const [isError, setIsError] = useState<boolean>(false);
 
-  const handleRemoveFavorite = async () => {
+  const handleFavorite = async (action: FavoriteAction) => {
     setIsError(false);
 
     try {
       const token = cookies[TOKEN_KEY];
-
       if (!token) {
         throw new Error(TOKEN_NOT_FOUND);
       }
 
-      await apiRequest(`${ApiEndpoints.DELETE_FAVORITE}/${id}`, EMethods.DELETE, undefined, token);
+      const endpoint =
+        action === 'add' ? `${ApiEndpoints.ADD_FAVORITE}/${id}` : `${ApiEndpoints.DELETE_FAVORITE}/${id}`;
+      const method = action === 'add' ? EMethods.POST : EMethods.DELETE;
+
+      await apiRequest(endpoint, method, undefined, token);
       mutate([ApiEndpoints.GET_FAVORITES, token]);
     } catch (error) {
       console.error(error);
@@ -26,7 +31,7 @@ const useRemoveFavorite = (id: string) => {
     }
   };
 
-  return { handleRemoveFavorite, isError };
+  return { handleFavorite, isError };
 };
 
-export default useRemoveFavorite;
+export default useFavorite;

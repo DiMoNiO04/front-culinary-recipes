@@ -5,7 +5,6 @@ export { default as useUpdateProfile } from './useUpdateProfile';
 export { default as useFetchData } from './useFetchData';
 export { default as useFetchDataToken } from './useFetchDataToken';
 export { default as useDeleteAllFavorites } from './useDeleteAllFavorites';
-export { default as useAddFavorite } from './useAddFavorite';
-export { default as useRemoveFavorite } from './useRemoveFavorite';
+export { default as useFavorite } from './useFavorite';
 export * from './useGetDatas';
 export type { IAuthResponse, IErrorResponse, IAuthCallbacks } from '../interfaces';

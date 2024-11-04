@@ -4,13 +4,13 @@ import styles from './RecipeCard.module.scss';
 import { IRecipe } from '@/api';
 import { EButtonType, EUrls } from '@/utils';
 import { LikeIcon } from '@/components/icons';
-import { useAddFavorite, useGetFavorites, useRemoveFavorite } from '@/api/hooks';
+import useFavorite from '@/api/hooks/useFavorite';
+import { useGetFavorites } from '@/api/hooks';
 
 const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
-  const { handleAddFavorite, isError: isAddError } = useAddFavorite(String(id));
-  const { handleRemoveFavorite, isError: isRemoveError } = useRemoveFavorite(String(id));
+  const { handleFavorite, isError } = useFavorite(String(id));
 
   useEffect(() => {
     if (favorites && favorites.some((favorite) => favorite.id === id)) {
@@ -21,16 +21,11 @@ const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
   const handleLikeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    if (isLiked) {
-      await handleRemoveFavorite();
-      if (!isRemoveError) {
-        setIsLiked(false);
-      }
-    } else {
-      await handleAddFavorite();
-      if (!isAddError) {
-        setIsLiked(true);
-      }
+    const action = isLiked ? 'remove' : 'add';
+    await handleFavorite(action);
+
+    if (!isError) {
+      setIsLiked(!isLiked);
     }
   };
 
