@@ -43,7 +43,7 @@ const UserProfile: React.FC = () => {
         <Link to={EUrls.FAVORITES}>Favorites</Link>
       </li>
       <li>
-        <a href={'#'}>Recipes</a>
+        <a href={EUrls.PROFILE_RECIPES}>Recipes</a>
       </li>
       <li>
         <button type="button" onClick={toggleLogoutModal}>
