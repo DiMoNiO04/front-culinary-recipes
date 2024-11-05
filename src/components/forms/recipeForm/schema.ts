@@ -1,7 +1,7 @@
 import { EValidateForm } from '@/utils';
 import * as yup from 'yup';
 
-const schemaCreateRecipe = yup.object().shape({
+const schemaRecipe = yup.object().shape({
   title: yup.string().required(EValidateForm.REQUIRED_FIELD),
   shortDescription: yup.string().required(EValidateForm.REQUIRED_FIELD),
   cookingTime: yup.number().required(EValidateForm.REQUIRED_FIELD).positive().integer(),
@@ -12,4 +12,4 @@ const schemaCreateRecipe = yup.object().shape({
   categoryId: yup.number().required(EValidateForm.REQUIRED_FIELD),
 });
 
-export default schemaCreateRecipe;
+export default schemaRecipe;

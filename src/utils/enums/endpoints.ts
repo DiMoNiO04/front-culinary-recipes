@@ -20,4 +20,5 @@ export const ApiEndpoints = {
   GET_MY_RECIPES: `${API_URL}/recipes/myRecipes`,
   DELETE_RECIPE: `${API_URL}/recipes/delete`,
   CREATE_RECIPE: `${API_URL}/recipes/create`,
+  UPDATE_RECIPE: `${API_URL}/recipes/update`,
 } as const;

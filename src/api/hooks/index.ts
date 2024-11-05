@@ -6,7 +6,6 @@ export { default as useFetchData } from './useFetchData';
 export { default as useFetchDataToken } from './useFetchDataToken';
 export { default as useDeleteAllFavorites } from './useDeleteAllFavorites';
 export { default as useFavorite } from './useFavorite';
-export { default as useDeleteRecipe } from './useDeleteRecipe';
-export { default as useCreateRecipe } from './useCreateRecipe';
+export { default as useRecipe } from './useRecipe';
 export * from './useGetDatas';
 export type { IAuthResponse, IErrorResponse, IAuthCallbacks } from '../interfaces';

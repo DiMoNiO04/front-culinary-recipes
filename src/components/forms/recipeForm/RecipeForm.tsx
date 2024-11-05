@@ -3,13 +3,14 @@ import { Button, Input, Textarea, ImageUpload, Notification } from '@/components
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { EButtonClass, EButtonSize, EButtonType, EInputType, EUrls } from '@/utils';
-import styles from './CreateRecipeForm.module.scss';
-import schemaCreateRecipe from './schema';
-import { useCreateRecipe, useGetCategories } from '@/api/hooks';
+import schemaRecipe from './schema';
+import { useGetCategories, useRecipe } from '@/api/hooks';
 import { useFileInput } from '@/hooks';
 import { useNavigate } from 'react-router-dom';
+import styles from './RecipeForm.module.scss';
+import EActionType from '@/utils/enums/actionType';
 
-export interface ICreateRecipeInputs {
+export interface IRecipeInputs {
   title: string;
   shortDescription: string;
   cookingTime: number;
@@ -20,7 +21,7 @@ export interface ICreateRecipeInputs {
   categoryId: number;
 }
 
-const CreateRecipeForm: React.FC = () => {
+const RecipeForm: React.FC = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -29,12 +30,12 @@ const CreateRecipeForm: React.FC = () => {
     setValue,
     trigger,
     formState: { errors, isValid },
-  } = useForm<ICreateRecipeInputs>({
+  } = useForm<IRecipeInputs>({
     mode: 'onChange',
-    resolver: yupResolver(schemaCreateRecipe),
+    resolver: yupResolver(schemaRecipe),
   });
 
-  const { createRecipe, notificationMsg, isError } = useCreateRecipe();
+  const { submitRecipe: createRecipe, notificationMsg, isError } = useRecipe(EActionType.CREATE);
   const { data: categories } = useGetCategories();
 
   const { filePreview, handleFileSelect } = useFileInput(setValue, trigger);
@@ -63,7 +64,7 @@ const CreateRecipeForm: React.FC = () => {
     }
   }, [notificationMsg, reset, navigate, isError]);
 
-  const handleCreateRecipe = async (data: ICreateRecipeInputs) => {
+  const handleCreateRecipe = async (data: IRecipeInputs) => {
     createRecipe({ ...data, image: filePreview || '' });
   };
 
@@ -134,7 +135,7 @@ const CreateRecipeForm: React.FC = () => {
 
       <div className={styles.btn}>
         <Button
-          text="Create Recipe"
+          text="Submit"
           nameClass={EButtonClass.SEC}
           typeBtn={EButtonType.SUBMIT}
           size={EButtonSize.LG}
@@ -148,4 +149,4 @@ const CreateRecipeForm: React.FC = () => {
   );
 };
 
-export default CreateRecipeForm;
+export default RecipeForm;

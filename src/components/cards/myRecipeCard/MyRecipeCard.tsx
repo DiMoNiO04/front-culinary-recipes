@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { IRecipe } from '@/api';
 import { EButtonType, EUrls } from '@/utils';
 import { DeleteIcon, EditIcon } from '@/components/icons';
-import { useDeleteRecipe } from '@/api/hooks';
 import { ConfirmAction } from '@/components/modals';
 import { Notification } from '@/components/ui';
 import styles from './MyRecipeCard.module.scss';
+import { useRecipe } from '@/api/hooks';
+import EActionType from '@/utils/enums/actionType';
 
 const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id, isPublished }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const { handleDeleteRecipe, isError, notificationMsg } = useDeleteRecipe(id);
+  const { submitRecipe: deleteRecipe, isError, notificationMsg } = useRecipe(EActionType.DELETE, id);
 
   const openDeleteModal = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -19,7 +20,7 @@ const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id, isPublished }) => {
   const closeDeleteModal = () => setIsModalOpen(false);
 
   const handleConfirmDelete = async () => {
-    await handleDeleteRecipe();
+    await deleteRecipe();
     closeDeleteModal();
   };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CreateRecipe.module.scss';
-import { CreateRecipeForm } from '@/components/forms';
+import { RecipeForm } from '@/components/forms';
 
 const CreateRecipe: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const CreateRecipe: React.FC = () => {
       <div className="container">
         <h1 className={styles.title}>Create New Recipe</h1>
 
-        <CreateRecipeForm />
+        <RecipeForm />
       </div>
     </section>
   );
