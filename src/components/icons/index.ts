@@ -17,3 +17,4 @@ export { default as ShareIcon } from './Share';
 export { default as PrinterIcon } from './Printer';
 export { default as LikeIcon } from './Like';
 export { default as DeleteIcon } from './Delete';
+export { default as EditIcon } from './EditIcon';

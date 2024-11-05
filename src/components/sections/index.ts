@@ -19,3 +19,4 @@ export { default as NotFound } from './notFound/NotFound';
 export { default as RecipesContent } from './recipesContent/RecipesContent';
 export { default as RecipesUser } from './recipesUser/RecipesUser';
 export { default as CreateRecipe } from './createRecipe/CreateRecipe';
+export { default as UpdateRecipe } from './updateRecipe/UpdateRecipe';

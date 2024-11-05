@@ -28,12 +28,17 @@
       @include regular14Inter;
     }
 
-.like {
+    .btns {
+      position: absolute;
+        top: 12px;
+        right: 12px;
+        @include flexColumn;
+        row-gap: 12px;
+    }
+
+.btn {
   @include sizes(32px, 32px);
   @include flexCenter;
-  position: absolute;
-  top: 12px;
-  right: 12px;
   background-color: $white;
   border-radius: 4px;
   z-index: 2;

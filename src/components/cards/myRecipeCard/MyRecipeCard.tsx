@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IRecipe } from '@/api';
 import { EButtonType, EUrls } from '@/utils';
-import { DeleteIcon } from '@/components/icons';
+import { DeleteIcon, EditIcon } from '@/components/icons';
 import { useDeleteRecipe } from '@/api/hooks';
 import { ConfirmAction } from '@/components/modals';
 import { Notification } from '@/components/ui';
@@ -26,9 +26,14 @@ const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id, isPublished }) => {
   return (
     <>
       <Link to={`${EUrls.RECIPE}/${id}`} className={`${styles.card} ${!isPublished && styles.noPublish}`}>
-        <button type={EButtonType.BUTTON} className={styles.like} onClick={openDeleteModal}>
-          <DeleteIcon />
-        </button>
+        <div className={styles.btns}>
+          <button type={EButtonType.BUTTON} className={styles.btn} onClick={openDeleteModal}>
+            <DeleteIcon />
+          </button>
+          <Link to={`${EUrls.UPDATE_RECIPE}/${id}`} type={EButtonType.BUTTON} className={styles.btn}>
+            <EditIcon />
+          </Link>
+        </div>
         <div className={styles.img}>
           <img src={image} alt={title} width={350} height={265} />
         </div>
