@@ -1,5 +1,5 @@
 import { useFetchData, useFetchDataToken } from '.';
-import { ICategory, IRecipe, IUser } from '..';
+import { ICategory, IRecipe, IRole, IUser } from '..';
 import { ApiEndpoints } from '@/utils';
 
 export const useGetCategories = () => useFetchData<ICategory[]>(ApiEndpoints.GET_CATEGORIES);
@@ -13,3 +13,4 @@ export const useGetRecipe = (id: number | undefined) => useFetchData<IRecipe>(`$
 export const useGetFavorites = () => useFetchDataToken<IRecipe[]>(ApiEndpoints.GET_FAVORITES);
 export const useGetUserInfo = () => useFetchDataToken<IUser>(ApiEndpoints.GET_PERSONAL_DATA);
 export const useGetMyRecipes = () => useFetchDataToken<IRecipe[]>(ApiEndpoints.GET_MY_RECIPES);
+export const useGetRole = (value: string) => useFetchDataToken<IRole>(`${ApiEndpoints.GET_ROLE}${value.toUpperCase()}`);

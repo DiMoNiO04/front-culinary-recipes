@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { EActionType, EUrls, FRONT_URL } from '@/utils';
 import { useParams } from 'react-router-dom';
 import { RecipeForm } from '@/components/forms';
-import { RecipePageLayout } from '@/components/sections';
+import { RecipePageLayout } from '@/components/layouts';
 
 const UpdateRecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

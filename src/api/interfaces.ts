@@ -32,7 +32,7 @@ interface IUserRoles {
   userId: number;
 }
 
-interface IRole {
+export interface IRole {
   id: number;
   value: string;
   description: string;

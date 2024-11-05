@@ -8,4 +8,5 @@ export * from './enums/endpoints';
 export * from './enums/methods';
 export * from './enums/sortOptions';
 export * from './enums/actionType';
+export * from './enums/roles';
 export * from './consts';

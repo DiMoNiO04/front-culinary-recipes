@@ -1,47 +1,19 @@
-import React, { useState } from 'react';
-import styles from './AdminPanel.module.scss';
+import React from 'react';
 import { AdminRoles, AdminUsers } from '..';
+import { AdminModerMain } from '@/components/layouts';
 
 const AdminPanel: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('users');
+  const tabButtons = [
+    { label: 'Users', value: 'users' },
+    { label: 'Roles', value: 'roles' },
+  ];
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'users':
-        return <AdminUsers />;
-      case 'roles':
-        return <AdminRoles />;
-      default:
-        return null;
-    }
+  const tabContents = {
+    users: <AdminUsers />,
+    roles: <AdminRoles />,
   };
 
-  return (
-    <section className={styles.section}>
-      <div className="container">
-        <h1 className={styles.title}>Admin Panel</h1>
-
-        <div className={styles.content}>
-          <div className={styles.tabContainer}>
-            <button
-              className={`${styles.tabButton} ${activeTab === 'roles' ? styles.active : ''}`}
-              onClick={() => setActiveTab('roles')}
-            >
-              Roles
-            </button>
-            <button
-              className={`${styles.tabButton} ${activeTab === 'users' ? styles.active : ''}`}
-              onClick={() => setActiveTab('users')}
-            >
-              Users
-            </button>
-          </div>
-
-          <div className={styles.tabContent}>{renderContent()}</div>
-        </div>
-      </div>
-    </section>
-  );
+  return <AdminModerMain title="Admin Panel" role="ADMIN" tabContents={tabContents} tabButtons={tabButtons} />;
 };
 
 export default AdminPanel;
