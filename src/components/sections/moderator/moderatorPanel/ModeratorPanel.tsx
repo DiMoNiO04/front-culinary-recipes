@@ -22,22 +22,24 @@ const ModeratorPanel: React.FC = () => {
       <div className="container">
         <h1 className={styles.title}>Moderator Panel</h1>
 
-        <div className={styles.tabContainer}>
-          <button
-            className={`${styles.tabButton} ${activeTab === 'categories' ? styles.active : ''}`}
-            onClick={() => setActiveTab('categories')}
-          >
-            Categories
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === 'recipes' ? styles.active : ''}`}
-            onClick={() => setActiveTab('recipes')}
-          >
-            Recipes
-          </button>
-        </div>
+        <div className={styles.content}>
+          <div className={styles.tabContainer}>
+            <button
+              className={`${styles.tabButton} ${activeTab === 'categories' ? styles.active : ''}`}
+              onClick={() => setActiveTab('categories')}
+            >
+              Categories
+            </button>
+            <button
+              className={`${styles.tabButton} ${activeTab === 'recipes' ? styles.active : ''}`}
+              onClick={() => setActiveTab('recipes')}
+            >
+              Recipes
+            </button>
+          </div>
 
-        <div className={styles.tabContent}>{renderContent()}</div>
+          <div className={styles.tabContent}>{renderContent()}</div>
+        </div>
       </div>
     </section>
   );
