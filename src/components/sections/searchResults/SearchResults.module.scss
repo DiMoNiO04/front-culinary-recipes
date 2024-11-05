@@ -11,7 +11,7 @@
 }
 
 .block {
-@include flexCenterBetween;
+  @include flexCenterBetween;
   margin-bottom: 48px;
   padding-bottom: 18px;
   border-bottom: 1px solid $black;
@@ -63,19 +63,19 @@
     margin-bottom: 24px;
   }
 
-    .block {
-      flex-wrap: 0;
-      margin-bottom: 24px;
-      row-gap: 12px;
-      flex-direction: column;
-  
-      input {
-        width: 100%;
-      }
-    }
-  
-    .sortContainer {
+  .block {
+    flex-wrap: 0;
+    margin-bottom: 24px;
+    row-gap: 12px;
+    flex-direction: column;
+
+    input {
       width: 100%;
-      justify-content: flex-end;
     }
+  }
+
+  .sortContainer {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }

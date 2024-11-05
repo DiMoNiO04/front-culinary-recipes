@@ -18,16 +18,6 @@ const ShareYourRecipe: React.FC = () => {
               new creation, we want to hear about it! Share your culinary masterpieces and inspire others to cook up
               something amazing. Start your recipe journey with us today!
             </p>
-            <div className={styles.btn}>
-              <Button
-                text="Create new recipe"
-                nameClass={EButtonClass.SEC}
-                size={EButtonSize.LG}
-                typeBtn={EButtonType.BUTTON}
-                isLink={true}
-                linkUrl="#"
-              />
-            </div>
           </div>
         </div>
       </div>

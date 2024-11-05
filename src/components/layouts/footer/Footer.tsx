@@ -15,15 +15,6 @@ const menuBlocksData = [
     ],
   },
   {
-    title: 'Legal',
-    links: [
-      { text: 'Terms', href: '#' },
-      { text: 'Conditions', href: '#' },
-      { text: 'Cookies', href: '#' },
-      { text: 'Copyright', href: '#' },
-    ],
-  },
-  {
     title: 'Follow',
     links: [
       { text: 'Facebook', href: '#' },

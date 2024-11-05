@@ -90,4 +90,8 @@
   .toggleBtn {
     @include sizes(20px, 20px);
   }
+
+    .fileInputLabel {
+      padding: 6px 12px;
+    }
 }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { LikeIcon } from '@/components/icons';
 import { Rating } from '@/components/elements';
-import { EButtonType, EUrls } from '@/utils';
+import { EButtonType, EUrls, TOKEN_KEY } from '@/utils';
 import styles from './RecipeTop.module.scss';
 import { IAuthorRecipe } from '@/api';
 import { Link } from 'react-router-dom';
 import useFavorite from '@/api/hooks/useFavorite';
 import { useGetFavorites } from '@/api/hooks';
+import { useCookies } from 'react-cookie';
 
 interface IRecipeTop {
   id: number;
@@ -19,6 +20,7 @@ interface IRecipeTop {
 }
 
 const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdAt, shortDescription, image }) => {
+  const [cookies] = useCookies([TOKEN_KEY]);
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
   const { handleFavorite, isError } = useFavorite(String(id));
@@ -45,9 +47,11 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
       <div className={styles.panel}>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.panelBnts}>
-          <button type={EButtonType.BUTTON} className={styles.btnLike} onClick={handleLikeClick}>
-            <LikeIcon color={isLiked ? '#ff642f' : '#8B8D95'} />
-          </button>
+          {cookies[TOKEN_KEY] && (
+            <button type={EButtonType.BUTTON} className={styles.btnLike} onClick={handleLikeClick}>
+              <LikeIcon color={isLiked ? '#ff642f' : '#8B8D95'} />
+            </button>
+          )}
         </div>
       </div>
       <div className={styles.desc}>

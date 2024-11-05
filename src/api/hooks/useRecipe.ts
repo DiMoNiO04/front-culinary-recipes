@@ -27,7 +27,7 @@ const useRecipe = (actionType: EActionType, recipeId?: number) => {
         endpoint = ApiEndpoints.CREATE_RECIPE;
         method = EMethods.POST;
       } else if (actionType === EActionType.UPDATE) {
-        endpoint = ApiEndpoints.UPDATE_RECIPE;
+        endpoint = `${ApiEndpoints.UPDATE_RECIPE}/${recipeId}`;
         method = EMethods.PATCH;
       } else if (actionType === EActionType.DELETE) {
         if (!recipeId) {

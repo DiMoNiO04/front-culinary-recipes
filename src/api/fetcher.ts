@@ -2,6 +2,8 @@
 import { EFetchErrors, EStatusCode } from '../utils';
 
 export const fetcher = async <T>(url: string, token?: string, mockData?: T): Promise<T | null> => {
+  if (!(url && !url.includes('undefined'))) return null;
+
   try {
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
 

@@ -9,7 +9,6 @@ interface ITextareaProps {
   register: any;
   name: string;
   errors?: any;
-  rows?: number;
   isLabelSemicolon?: boolean;
 }
 
@@ -20,7 +19,6 @@ const Textarea: React.FC<ITextareaProps> = ({
   errors,
   isReadonly = false,
   isRequired = false,
-  rows = 4,
   isLabelSemicolon = false,
 }) => {
   const hasError = Boolean(errors[name]);
@@ -31,7 +29,7 @@ const Textarea: React.FC<ITextareaProps> = ({
         placeholder={isRequired ? `${placeholder}*` : placeholder}
         readOnly={isReadonly}
         required={isRequired}
-        rows={rows}
+        rows={10}
         {...register(name)}
         className={styles.textarea}
       />

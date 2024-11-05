@@ -1,7 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { EUrls, FRONT_URL } from '@/utils';
-import { CreateRecipe } from '@/components/sections';
+import { RecipeForm } from '@/components/forms';
+import EActionType from '@/utils/enums/actionType';
+import { RecipePageLayout } from '@/components/sections';
 
 const CreateRecipePage: React.FC = () => {
   return (
@@ -15,7 +17,9 @@ const CreateRecipePage: React.FC = () => {
         <link rel="canonical" href={`${FRONT_URL}${EUrls.CREATE_RECIPE}`} />
       </Helmet>
       <main>
-        <CreateRecipe />
+        <RecipePageLayout title="Create New Recipe">
+          <RecipeForm actionType={EActionType.CREATE} />
+        </RecipePageLayout>
       </main>
     </>
   );

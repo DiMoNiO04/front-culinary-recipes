@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Input, Textarea, ImageUpload, Notification } from '@/components/ui';
+import { Button, Input, Textarea, ImageUpload, Notification, Loading, ErrorFetch } from '@/components/ui';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { EButtonClass, EButtonSize, EButtonType, EInputType, EUrls } from '@/utils';
 import schemaRecipe from './schema';
-import { useGetCategories, useRecipe } from '@/api/hooks';
+import { useGetCategories, useGetRecipe, useRecipe } from '@/api/hooks';
 import { useFileInput } from '@/hooks';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './RecipeForm.module.scss';
 import EActionType from '@/utils/enums/actionType';
 
@@ -21,8 +21,16 @@ export interface IRecipeInputs {
   categoryId: number;
 }
 
-const RecipeForm: React.FC = () => {
+interface RecipeFormProps {
+  actionType: EActionType;
+}
+
+const RecipeForm: React.FC<RecipeFormProps> = ({ actionType }) => {
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const { data: recipeData, isLoading } = useGetRecipe(id ? Number(id) : undefined);
+  const isEditMode = actionType === EActionType.UPDATE;
+
   const {
     register,
     handleSubmit,
@@ -33,16 +41,23 @@ const RecipeForm: React.FC = () => {
   } = useForm<IRecipeInputs>({
     mode: 'onChange',
     resolver: yupResolver(schemaRecipe),
+    defaultValues: recipeData || {},
   });
 
-  const { submitRecipe: createRecipe, notificationMsg, isError } = useRecipe(EActionType.CREATE);
+  const { submitRecipe, notificationMsg, isError } = useRecipe(actionType, Number(id));
   const { data: categories } = useGetCategories();
-
-  const { filePreview, handleFileSelect } = useFileInput(setValue, trigger);
-
+  const { filePreview, handleFileSelect, setFilePreview } = useFileInput(setValue, trigger);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [notificationMsgState, setNotificationMsgState] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (recipeData) {
+      reset(recipeData);
+      setValue('image', recipeData.image || '');
+      setFilePreview(recipeData.image || null);
+    }
+  }, [recipeData, reset, setValue, setFilePreview]);
 
   useEffect(() => {
     if (notificationMsg) {
@@ -52,11 +67,9 @@ const RecipeForm: React.FC = () => {
       if (!isError) {
         setIsSuccess(true);
         const timer = setTimeout(() => {
+          reset();
           navigate(EUrls.PROFILE_RECIPES);
-        }, 2000);
-
-        reset();
-
+        }, 1500);
         return () => clearTimeout(timer);
       } else {
         setIsSuccess(false);
@@ -64,12 +77,13 @@ const RecipeForm: React.FC = () => {
     }
   }, [notificationMsg, reset, navigate, isError]);
 
-  const handleCreateRecipe = async (data: IRecipeInputs) => {
-    createRecipe({ ...data, image: filePreview || '' });
-  };
+  const handleFormSubmit = async (data: IRecipeInputs) => submitRecipe({ ...data, image: filePreview || '' });
+
+  if (isEditMode && isLoading) return <Loading />;
+  if (isError) return <ErrorFetch />;
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(handleCreateRecipe)}>
+    <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
       <p className={styles.requiredNote}>* All fields required</p>
 
       <Input

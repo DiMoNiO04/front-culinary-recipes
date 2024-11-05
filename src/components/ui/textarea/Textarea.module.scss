@@ -19,11 +19,12 @@
 
 .notice {
   @include regular12Inter;
-  color: $black;
+  color: $orange;
   font-style: italic;
 }
 
 .textarea {
+  @include noScrollLine;
   @include regular14Inter;
   width: 100%;
   color: $black;

@@ -22,7 +22,7 @@ const useUpdateProfile = () => {
       const body = { firstName, lastName };
       const result = await apiRequest(ApiEndpoints.UPDATE_PERSONAL_DATA, EMethods.PATCH, body, token);
 
-      mutate(ApiEndpoints.GET_PERSONAL_DATA, { ...result.data, firstName, lastName }, false);
+      mutate([ApiEndpoints.GET_PERSONAL_DATA, token]);
 
       setNotificationMsg(result.message);
     } catch (error) {

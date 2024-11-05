@@ -22,6 +22,7 @@ const useFileInput = (setValue: UseFormSetValue<any>, trigger: () => Promise<boo
   return {
     filePreview,
     handleFileSelect,
+    setFilePreview,
   };
 };
 

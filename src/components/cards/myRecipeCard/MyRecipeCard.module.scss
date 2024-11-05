@@ -16,25 +16,25 @@
   }
 }
 
-    .noPublish {
-      .img {
-        opacity: 0.5;
-      }
-    }
+.noPublish {
+  .img {
+    opacity: 0.5;
+  }
+}
 
-    .moder {
-      color: $orange;
-      font-style: italic;
-      @include regular14Inter;
-    }
+.moder {
+  color: $orange;
+  font-style: italic;
+  @include regular14Inter;
+}
 
-    .btns {
-      position: absolute;
-        top: 12px;
-        right: 12px;
-        @include flexColumn;
-        row-gap: 12px;
-    }
+.btns {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  @include flexColumn;
+  row-gap: 12px;
+}
 
 .btn {
   @include sizes(32px, 32px);
