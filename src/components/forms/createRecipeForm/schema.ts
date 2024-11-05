@@ -9,7 +9,7 @@ const schemaCreateRecipe = yup.object().shape({
   image: yup.string().required(EValidateForm.REQUIRED_FIELD),
   ingredients: yup.string().required(EValidateForm.REQUIRED_FIELD),
   instructions: yup.string().required(EValidateForm.REQUIRED_FIELD),
-  categoryId: yup.number().required(EValidateForm.REQUIRED_FIELD).positive().integer(),
+  categoryId: yup.number().required(EValidateForm.REQUIRED_FIELD),
 });
 
 export default schemaCreateRecipe;

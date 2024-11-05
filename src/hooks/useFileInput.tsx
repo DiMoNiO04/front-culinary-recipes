@@ -14,7 +14,7 @@ const useFileInput = (setValue: UseFormSetValue<any>, trigger: () => Promise<boo
       const preview = await convertImageToBase64(file);
       setFilePreview(preview);
 
-      setValue('image', preview); // Используем строку для имени поля
+      setValue('image', preview);
       await trigger();
     }
   };

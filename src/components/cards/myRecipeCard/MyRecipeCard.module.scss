@@ -16,6 +16,18 @@
   }
 }
 
+    .noPublish {
+      .img {
+        opacity: 0.5;
+      }
+    }
+
+    .moder {
+      color: $orange;
+      font-style: italic;
+      @include regular14Inter;
+    }
+
 .like {
   @include sizes(32px, 32px);
   @include flexCenter;

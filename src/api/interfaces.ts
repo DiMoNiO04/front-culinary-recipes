@@ -72,6 +72,7 @@ export interface IRecipe {
   cookingTime: number;
   calories: number;
   image: string;
+  isPublished?: boolean;
   createdAt: string;
   author?: IAuthorRecipe;
   category?: ICategory;

@@ -8,7 +8,7 @@ import { ConfirmAction } from '@/components/modals';
 import { Notification } from '@/components/ui';
 import styles from './MyRecipeCard.module.scss';
 
-const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
+const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id, isPublished }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { handleDeleteRecipe, isError, notificationMsg } = useDeleteRecipe(id);
 
@@ -25,7 +25,7 @@ const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
 
   return (
     <>
-      <Link to={`${EUrls.RECIPE}/${id}`} className={styles.card}>
+      <Link to={`${EUrls.RECIPE}/${id}`} className={`${styles.card} ${!isPublished && styles.noPublish}`}>
         <button type={EButtonType.BUTTON} className={styles.like} onClick={openDeleteModal}>
           <DeleteIcon />
         </button>
@@ -33,6 +33,7 @@ const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
           <img src={image} alt={title} width={350} height={265} />
         </div>
         <div className={styles.name}>{title}</div>
+        {!isPublished && <span className={styles.moder}>It is currently under moderation</span>}
       </Link>
 
       <ConfirmAction

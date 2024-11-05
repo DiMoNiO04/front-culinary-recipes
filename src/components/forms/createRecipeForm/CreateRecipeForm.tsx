@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import { Button, Input, Textarea, SelectForm, ImageUpload } from '@/components/ui';
+import React, { useEffect, useState } from 'react';
+import { Button, Input, Textarea, ImageUpload, Notification } from '@/components/ui';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { EButtonClass, EButtonSize, EButtonType, EInputType } from '@/utils';
+import { EButtonClass, EButtonSize, EButtonType, EInputType, EUrls } from '@/utils';
 import styles from './CreateRecipeForm.module.scss';
 import schemaCreateRecipe from './schema';
 import { useCreateRecipe, useGetCategories } from '@/api/hooks';
 import { useFileInput } from '@/hooks';
+import { useNavigate } from 'react-router-dom';
 
 export interface ICreateRecipeInputs {
   title: string;
@@ -20,6 +21,7 @@ export interface ICreateRecipeInputs {
 }
 
 const CreateRecipeForm: React.FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,17 +39,33 @@ const CreateRecipeForm: React.FC = () => {
 
   const { filePreview, handleFileSelect } = useFileInput(setValue, trigger);
 
+  const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+  const [notificationMsgState, setNotificationMsgState] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+
   useEffect(() => {
     if (notificationMsg) {
-      reset();
+      setNotificationMsgState(notificationMsg);
+      setIsNotificationVisible(true);
+
+      if (!isError) {
+        setIsSuccess(true);
+        const timer = setTimeout(() => {
+          navigate(EUrls.PROFILE_RECIPES);
+        }, 2000);
+
+        reset();
+
+        return () => clearTimeout(timer);
+      } else {
+        setIsSuccess(false);
+      }
     }
-  }, [notificationMsg, reset]);
+  }, [notificationMsg, reset, navigate, isError]);
 
   const handleCreateRecipe = async (data: ICreateRecipeInputs) => {
     createRecipe({ ...data, image: filePreview || '' });
   };
-
-  const categoriesOptions = categories ? categories.map((category) => ({ id: category.id, name: category.name })) : [];
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(handleCreateRecipe)}>
@@ -103,14 +121,16 @@ const CreateRecipeForm: React.FC = () => {
 
       <ImageUpload filePreview={filePreview} onFileSelect={handleFileSelect} />
 
-      <SelectForm
-        name="categoryId"
-        label="Select Category"
-        isRequired
-        register={register}
-        errors={errors}
-        options={categoriesOptions}
-      />
+      <select {...register('categoryId')} defaultValue="">
+        <option value="" disabled>
+          Select Category
+        </option>
+        {categories?.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.name}
+          </option>
+        ))}
+      </select>
 
       <div className={styles.btn}>
         <Button
@@ -122,7 +142,8 @@ const CreateRecipeForm: React.FC = () => {
           isDisabled={!isValid}
         />
       </div>
-      {isError && <p className={styles.error}>{notificationMsg}</p>}
+
+      {isNotificationVisible && <Notification isSuccess={isSuccess} msg={notificationMsgState} />}
     </form>
   );
 };
