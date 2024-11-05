@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { ApiEndpoints, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
+import { ApiEndpoints, EActionType, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
 import apiRequest from '../apiRequest';
 import { IRecipeInputs } from '@/components/forms/recipeForm/RecipeForm';
 import { mutate } from 'swr';
-import EActionType from '@/utils/enums/actionType';
 
 const useRecipe = (actionType: EActionType, recipeId?: number) => {
   const [cookies] = useCookies([TOKEN_KEY]);

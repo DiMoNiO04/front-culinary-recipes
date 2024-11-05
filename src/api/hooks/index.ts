@@ -4,7 +4,6 @@ export { default as useChangePassword } from './useChangePassword';
 export { default as useUpdateProfile } from './useUpdateProfile';
 export { default as useFetchData } from './useFetchData';
 export { default as useFetchDataToken } from './useFetchDataToken';
-export { default as useDeleteAllFavorites } from './useDeleteAllFavorites';
 export { default as useFavorite } from './useFavorite';
 export { default as useRecipe } from './useRecipe';
 export * from './useGetDatas';

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IRecipe } from '@/api';
-import { EButtonType, EUrls } from '@/utils';
+import { EActionType, EButtonType, EUrls } from '@/utils';
 import { DeleteIcon, EditIcon } from '@/components/icons';
 import { ConfirmAction } from '@/components/modals';
 import { Notification } from '@/components/ui';
 import styles from './MyRecipeCard.module.scss';
 import { useRecipe } from '@/api/hooks';
-import EActionType from '@/utils/enums/actionType';
 
 const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id, isPublished }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

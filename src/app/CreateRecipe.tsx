@@ -1,8 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { EUrls, FRONT_URL } from '@/utils';
+import { EActionType, EUrls, FRONT_URL } from '@/utils';
 import { RecipeForm } from '@/components/forms';
-import EActionType from '@/utils/enums/actionType';
 import { RecipePageLayout } from '@/components/sections';
 
 const CreateRecipePage: React.FC = () => {

@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { RecipesCardsList } from '@/components/elements';
 import { ErrorFetch, Loading, NothingMessage, Notification } from '@/components/ui';
-import { useDeleteAllFavorites, useGetFavorites } from '@/api/hooks';
+import { useGetFavorites } from '@/api/hooks';
 import styles from './FavoritesContent.module.scss';
+import useFavorites from '@/api/hooks/useFavorite';
+import { EFavoriteActionType } from '@/utils';
 
 const FavoritesContent: React.FC = () => {
   const { data: favorites, isLoading, isError, message } = useGetFavorites();
-  const { executeDelete, isError: deleteError, notificationMsg: deleteNotificationMsg } = useDeleteAllFavorites();
+  const {
+    executeFavoriteAction,
+    isError: deleteError,
+    notificationMsg: deleteNotificationMsg,
+  } = useFavorites(EFavoriteActionType.DELETE_ALL);
 
   const [showNotification, setShowNotification] = useState(false);
   const [notificationSuccess, setNotificationSuccess] = useState(false);
@@ -14,7 +20,7 @@ const FavoritesContent: React.FC = () => {
   const hasFavorites = favorites && favorites.length > 0;
 
   const handleDeleteAll = async () => {
-    await executeDelete();
+    await executeFavoriteAction();
     setNotificationSuccess(true);
     setShowNotification(true);
   };

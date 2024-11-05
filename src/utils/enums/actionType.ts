@@ -4,4 +4,10 @@ enum EActionType {
   DELETE = 'delete',
 }
 
-export default EActionType;
+enum EFavoriteActionType {
+  ADD = 'add',
+  REMOVE = 'remove',
+  DELETE_ALL = 'delete_all',
+}
+
+export { EActionType, EFavoriteActionType };

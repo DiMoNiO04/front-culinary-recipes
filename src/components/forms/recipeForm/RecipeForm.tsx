@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Button, Input, Textarea, ImageUpload, Notification, Loading, ErrorFetch } from '@/components/ui';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { EButtonClass, EButtonSize, EButtonType, EInputType, EUrls } from '@/utils';
+import { EActionType, EButtonClass, EButtonSize, EButtonType, EInputType, EUrls } from '@/utils';
 import schemaRecipe from './schema';
 import { useGetCategories, useGetRecipe, useRecipe } from '@/api/hooks';
 import { useFileInput } from '@/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './RecipeForm.module.scss';
-import EActionType from '@/utils/enums/actionType';
 
 export interface IRecipeInputs {
   title: string;

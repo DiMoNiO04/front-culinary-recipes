@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './RecipeCard.module.scss';
 import { IRecipe } from '@/api';
-import { EButtonType, EUrls, TOKEN_KEY } from '@/utils';
+import { EButtonType, EFavoriteActionType, EUrls, TOKEN_KEY } from '@/utils';
 import { LikeIcon } from '@/components/icons';
-import useFavorite from '@/api/hooks/useFavorite';
 import { useGetFavorites } from '@/api/hooks';
 import { useCookies } from 'react-cookie';
+import useFavorites from '@/api/hooks/useFavorite';
 
 const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
   const [cookies] = useCookies([TOKEN_KEY]);
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
-  const { handleFavorite, isError } = useFavorite(String(id));
+  const { executeFavoriteAction, isError } = useFavorites(
+    isLiked ? EFavoriteActionType.REMOVE : EFavoriteActionType.ADD,
+    String(id)
+  );
 
   useEffect(() => {
     if (favorites && favorites.some((favorite) => favorite.id === id)) {
@@ -22,9 +25,7 @@ const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
 
   const handleLikeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
-    const action = isLiked ? 'remove' : 'add';
-    await handleFavorite(action);
+    await executeFavoriteAction();
 
     if (!isError) {
       setIsLiked(!isLiked);

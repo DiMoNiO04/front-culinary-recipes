@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { ApiEndpoints, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND } from '@/utils';
+import { ApiEndpoints, EFavoriteActionType, EMethods, TOKEN_KEY, TOKEN_NOT_FOUND, TRY_AGAIN } from '@/utils';
 import apiRequest from '../apiRequest';
 import { mutate } from 'swr';
 
-type FavoriteAction = 'add' | 'remove';
-
-const useFavorite = (id: string) => {
+const useFavorites = (actionType: EFavoriteActionType, id?: string) => {
   const [cookies] = useCookies([TOKEN_KEY]);
   const [isError, setIsError] = useState<boolean>(false);
+  const [notificationMsg, setNotificationMsg] = useState<string>('');
 
-  const handleFavorite = async (action: FavoriteAction) => {
+  const executeFavoriteAction = async () => {
     setIsError(false);
+    setNotificationMsg('');
 
     try {
       const token = cookies[TOKEN_KEY];
@@ -19,19 +19,35 @@ const useFavorite = (id: string) => {
         throw new Error(TOKEN_NOT_FOUND);
       }
 
-      const endpoint =
-        action === 'add' ? `${ApiEndpoints.ADD_FAVORITE}/${id}` : `${ApiEndpoints.DELETE_FAVORITE}/${id}`;
-      const method = action === 'add' ? EMethods.POST : EMethods.DELETE;
+      let endpoint: string;
+      let method: EMethods;
 
-      await apiRequest(endpoint, method, undefined, token);
+      if (actionType === EFavoriteActionType.ADD) {
+        if (!id) throw new Error('ID is required for adding a favorite');
+        endpoint = `${ApiEndpoints.ADD_FAVORITE}/${id}`;
+        method = EMethods.POST;
+      } else if (actionType === EFavoriteActionType.REMOVE) {
+        if (!id) throw new Error('ID is required for removing a favorite');
+        endpoint = `${ApiEndpoints.DELETE_FAVORITE}/${id}`;
+        method = EMethods.DELETE;
+      } else if (actionType === EFavoriteActionType.DELETE_ALL) {
+        endpoint = ApiEndpoints.DELETE_ALL_FAVORITES;
+        method = EMethods.DELETE;
+      } else {
+        throw new Error('Invalid action type');
+      }
+
+      const result = await apiRequest(endpoint, method, undefined, token);
+      setNotificationMsg(result.message);
       mutate([ApiEndpoints.GET_FAVORITES, token]);
     } catch (error) {
       console.error(error);
       setIsError(true);
+      setNotificationMsg(TRY_AGAIN);
     }
   };
 
-  return { handleFavorite, isError };
+  return { executeFavoriteAction, isError, notificationMsg };
 };
 
-export default useFavorite;
+export default useFavorites;

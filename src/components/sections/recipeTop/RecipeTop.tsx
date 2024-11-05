@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { LikeIcon } from '@/components/icons';
 import { Rating } from '@/components/elements';
-import { EButtonType, EUrls, TOKEN_KEY } from '@/utils';
+import { EButtonType, EFavoriteActionType, EUrls, TOKEN_KEY } from '@/utils';
 import styles from './RecipeTop.module.scss';
 import { IAuthorRecipe } from '@/api';
 import { Link } from 'react-router-dom';
-import useFavorite from '@/api/hooks/useFavorite';
 import { useGetFavorites } from '@/api/hooks';
 import { useCookies } from 'react-cookie';
+import useFavorites from '@/api/hooks/useFavorite';
 
 interface IRecipeTop {
   id: number;
@@ -23,7 +23,10 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
   const [cookies] = useCookies([TOKEN_KEY]);
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
-  const { handleFavorite, isError } = useFavorite(String(id));
+  const { executeFavoriteAction, isError } = useFavorites(
+    isLiked ? EFavoriteActionType.REMOVE : EFavoriteActionType.ADD,
+    String(id)
+  );
 
   useEffect(() => {
     if (favorites && favorites.some((favorite) => favorite.id === id)) {
@@ -33,9 +36,7 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
 
   const handleLikeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
-    const action = isLiked ? 'remove' : 'add';
-    await handleFavorite(action);
+    await executeFavoriteAction();
 
     if (!isError) {
       setIsLiked(!isLiked);
