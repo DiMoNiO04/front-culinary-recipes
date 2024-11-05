@@ -13,12 +13,12 @@ import RecipePage from './app/templates/Recipe';
 import ProfilePage from './app/Profile';
 import { ProtectedUser, ScrollToTop } from './components';
 import AdminPage from './app/AdminPage';
-import ManagerPage from './app/ManagerPage';
 import NotFoundPage from './app/NotFound';
 import RecipesPage from './app/Recipes';
 import RecipesUserPage from './app/RecipesUser';
 import CreateRecipePage from './app/CreateRecipe';
 import UpdateRecipePage from './app/UpdateRecipe';
+import ModeratorPage from './app/ModeratorPage';
 
 const App: React.FC = () => {
   return (
@@ -41,7 +41,7 @@ const App: React.FC = () => {
         <Route path={`${EUrls.UPDATE_RECIPE}/:id`} element={<ProtectedUser element={<UpdateRecipePage />} />} />
 
         <Route path={EUrls.ADMIN} element={<ProtectedUser element={<AdminPage />} />} />
-        <Route path={EUrls.MANAGER} element={<ProtectedUser element={<ManagerPage />} />} />
+        <Route path={EUrls.MODERATOR} element={<ProtectedUser element={<ModeratorPage />} />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { ManagerCategories, ManagerRecipes } from '..';
-import styles from './ManagerPanel.module.scss';
+import styles from './ModeratorPanel.module.scss';
+import ModeratorCategories from '../moderatorCategories/ModeratorCategories';
+import ModeratorRecipes from '../moderatorRecipes/ModeratorRecipes';
 
-const AdminPanel: React.FC = () => {
+const ModeratorPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState('categories');
 
   const renderContent = () => {
     switch (activeTab) {
       case 'categories':
-        return <ManagerCategories />;
+        return <ModeratorCategories />;
       case 'recipes':
-        return <ManagerRecipes />;
+        return <ModeratorRecipes />;
       default:
         return null;
     }
@@ -19,7 +20,7 @@ const AdminPanel: React.FC = () => {
   return (
     <section className={styles.section}>
       <div className="container">
-        <h1 className={styles.title}>Manager Panel</h1>
+        <h1 className={styles.title}>Moderator Panel</h1>
 
         <div className={styles.tabContainer}>
           <button
@@ -42,4 +43,4 @@ const AdminPanel: React.FC = () => {
   );
 };
 
-export default AdminPanel;
+export default ModeratorPanel;

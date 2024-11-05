@@ -11,5 +11,5 @@ export enum EUrls {
   RECIPES = '/recipes',
   RECIPE = '/recipe',
   ADMIN = '/admin',
-  MANAGER = '/manager',
+  MODERATOR = '/moderator',
 }
