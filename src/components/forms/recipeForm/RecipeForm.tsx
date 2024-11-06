@@ -20,11 +20,11 @@ export interface IRecipeInputs {
   categoryId: number;
 }
 
-interface RecipeFormProps {
+interface IRecipeForm {
   actionType: EActionType;
 }
 
-const RecipeForm: React.FC<RecipeFormProps> = ({ actionType }) => {
+const RecipeForm: React.FC<IRecipeForm> = ({ actionType }) => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { data: recipeData, isLoading } = useGetRecipe(id ? Number(id) : undefined);

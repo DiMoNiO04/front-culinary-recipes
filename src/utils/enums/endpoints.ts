@@ -22,4 +22,7 @@ export const ApiEndpoints = {
   CREATE_RECIPE: `${API_URL}/recipes/create`,
   UPDATE_RECIPE: `${API_URL}/recipes/update`,
   GET_ROLE: `${API_URL}/roles/getRole/`,
+  CREATE_CATEGORIE: `${API_URL}/categories/createCategory`,
+  DELETE_CATEGORIE: `${API_URL}/categories/deleteCategory`,
+  UPDATE_CATEGORIE: `${API_URL}/categories/updateCategory`,
 } as const;

@@ -4,3 +4,4 @@ export { default as SuperDeliciousCard } from './superDeliciousCard/SuperDelicio
 export { default as SearchPanelCard } from './searchPanelCard/SearchPanelCard';
 export { default as TeamCard } from './teamCard/TeamCard';
 export { default as MyRecipeCard } from './myRecipeCard/MyRecipeCard';
+export { default as CategorieModerCard } from './categorieModerCard/CategorieModerCard';
