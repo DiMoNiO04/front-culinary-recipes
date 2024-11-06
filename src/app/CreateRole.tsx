@@ -4,15 +4,15 @@ import { EActionType, EUrls, FRONT_URL } from '@/utils';
 import { RecipeForm } from '@/components/forms';
 import { CreateUpdatePageLayout } from '@/components/layouts';
 
-const CreateRecipePage: React.FC = () => {
+const CreateRolePage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Create New Recipe | Tastebite</title>
-        <link rel="canonical" href={`${FRONT_URL}${EUrls.CREATE_RECIPE}`} />
+        <title>Create New Role | Tastebite</title>
+        <link rel="canonical" href={`${FRONT_URL}${EUrls.CREATE_ROLE}`} />
       </Helmet>
       <main>
-        <CreateUpdatePageLayout title="Create New Recipe">
+        <CreateUpdatePageLayout title="Create New Role">
           <RecipeForm actionType={EActionType.CREATE} />
         </CreateUpdatePageLayout>
       </main>
@@ -20,4 +20,4 @@ const CreateRecipePage: React.FC = () => {
   );
 };
 
-export default CreateRecipePage;
+export default CreateRolePage;

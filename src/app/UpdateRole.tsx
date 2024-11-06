@@ -5,17 +5,17 @@ import { useParams } from 'react-router-dom';
 import { RecipeForm } from '@/components/forms';
 import { CreateUpdatePageLayout } from '@/components/layouts';
 
-const UpdateRecipePage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+const UpdateRolePage: React.FC = () => {
+  const { value } = useParams<{ value: string }>();
 
   return (
     <>
       <Helmet>
         <title>Update Recipe | Tastebite</title>
-        <link rel="canonical" href={`${FRONT_URL}${EUrls.UPDATE_RECIPE}/${id}`} />
+        <link rel="canonical" href={`${FRONT_URL}${EUrls.UPDATE_ROLE}/${value}`} />
       </Helmet>
       <main>
-        <CreateUpdatePageLayout title={`Update Recipe №${id}`}>
+        <CreateUpdatePageLayout title={`Update Role ${name}`}>
           <RecipeForm actionType={EActionType.UPDATE} />
         </CreateUpdatePageLayout>
       </main>
@@ -23,4 +23,4 @@ const UpdateRecipePage: React.FC = () => {
   );
 };
 
-export default UpdateRecipePage;
+export default UpdateRolePage;

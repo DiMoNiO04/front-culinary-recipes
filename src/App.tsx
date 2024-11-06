@@ -21,6 +21,8 @@ import UpdateRecipePage from './app/UpdateRecipe';
 import ModeratorPage from './app/ModeratorPage';
 import CreateCategoriePage from './app/CreateCategorie';
 import UpdateCategoriePage from './app/UpdateCategorie';
+import CreateRolePage from './app/CreateRole';
+import UpdateRolePage from './app/UpdateRole';
 
 const App: React.FC = () => {
   return (
@@ -43,6 +45,8 @@ const App: React.FC = () => {
         <Route path={`${EUrls.UPDATE_RECIPE}/:id`} element={<ProtectedUser element={<UpdateRecipePage />} />} />
 
         <Route path={EUrls.ADMIN} element={<ProtectedUser element={<AdminPage />} />} />
+        <Route path={EUrls.CREATE_ROLE} element={<ProtectedUser element={<CreateRolePage />} />} />
+        <Route path={EUrls.UPDATE_ROLE} element={<ProtectedUser element={<UpdateRolePage />} />} />
 
         <Route path={EUrls.MODERATOR} element={<ProtectedUser element={<ModeratorPage />} />} />
         <Route path={EUrls.CREATE_CATEGORIE} element={<ProtectedUser element={<CreateCategoriePage />} />} />

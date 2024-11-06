@@ -11,6 +11,8 @@ export enum EUrls {
   RECIPES = '/recipes',
   RECIPE = '/recipe',
   ADMIN = '/admin',
+  CREATE_ROLE = '/admin/roles/create',
+  UPDATE_ROLE = '/admin/roles/update',
   MODERATOR = '/moderator',
   CREATE_CATEGORIE = '/moderator/categories/create',
   UPDATE_CATEGORIE = '/moderator/categories/update',
