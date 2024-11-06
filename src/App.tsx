@@ -46,7 +46,7 @@ const App: React.FC = () => {
 
         <Route path={EUrls.ADMIN} element={<ProtectedUser element={<AdminPage />} />} />
         <Route path={EUrls.CREATE_ROLE} element={<ProtectedUser element={<CreateRolePage />} />} />
-        <Route path={EUrls.UPDATE_ROLE} element={<ProtectedUser element={<UpdateRolePage />} />} />
+        <Route path={`${EUrls.UPDATE_ROLE}/:value`} element={<ProtectedUser element={<UpdateRolePage />} />} />
 
         <Route path={EUrls.MODERATOR} element={<ProtectedUser element={<ModeratorPage />} />} />
         <Route path={EUrls.CREATE_CATEGORIE} element={<ProtectedUser element={<CreateCategoriePage />} />} />

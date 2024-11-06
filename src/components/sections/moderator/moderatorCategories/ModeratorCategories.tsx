@@ -11,7 +11,7 @@ const ModeratorCategories: React.FC = () => {
   return (
     <article>
       <div className={styles.titles}>
-        <h2 className={styles.title}>Moderator Categories</h2>
+        <h2 className={styles.title}>Categories</h2>
         <Button
           text="Create new"
           nameClass={EButtonClass.SEC}

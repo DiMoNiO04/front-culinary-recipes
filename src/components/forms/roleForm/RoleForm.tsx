@@ -1,56 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Input, Textarea, ImageUpload, Notification, Loading, ErrorFetch } from '@/components/ui';
+import { Button, Input, Textarea, Notification, Loading, ErrorFetch } from '@/components/ui';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { EActionType, EButtonClass, EButtonSize, EButtonType, EInputType, EUrls } from '@/utils';
-import { useCategorie, useGetCategory } from '@/api/hooks';
-import { useFileInput } from '@/hooks';
+import { useGetRole, useRole } from '@/api/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from './CategorieForm.module.scss';
-import schemaCategorie from './schema';
+import styles from './RoleForm.module.scss';
+import schemaRole from './schema';
 
-export interface ICategorieInputs {
-  name: string;
+export interface IRoleInputs {
+  value: string;
   description: string;
-  image: string;
 }
 
-interface ICategoryForm {
+interface IRoleForm {
   actionType: EActionType;
 }
 
-const CategorieForm: React.FC<ICategoryForm> = ({ actionType }) => {
+const RoleForm: React.FC<IRoleForm> = ({ actionType }) => {
   const navigate = useNavigate();
-  const { name } = useParams<{ name: string }>();
-  const { data: categorieData, isLoading } = useGetCategory(name ? String(name) : undefined);
+  const { value } = useParams<{ value: string }>();
+  const { data: roleData, isLoading } = useGetRole(value ? String(value) : undefined);
   const isEditMode = actionType === EActionType.UPDATE;
 
   const {
     register,
     handleSubmit,
     reset,
-    setValue,
-    trigger,
     formState: { errors, isValid },
-  } = useForm<ICategorieInputs>({
+  } = useForm<IRoleInputs>({
     mode: 'onChange',
-    resolver: yupResolver(schemaCategorie),
-    defaultValues: categorieData || {},
+    resolver: yupResolver(schemaRole),
+    defaultValues: roleData || {},
   });
 
-  const { submitCategorie, notificationMsg, isError } = useCategorie(actionType, name);
-  const { filePreview, handleFileSelect, setFilePreview } = useFileInput(setValue, trigger);
+  const { submitRole, notificationMsg, isError } = useRole(actionType, roleData?.id);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [notificationMsgState, setNotificationMsgState] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    if (categorieData) {
-      reset(categorieData);
-      setValue('image', categorieData.image || '');
-      setFilePreview(categorieData.image || null);
+    if (roleData) {
+      reset(roleData);
     }
-  }, [categorieData, reset, setValue, setFilePreview]);
+  }, [roleData, reset]);
 
   useEffect(() => {
     if (notificationMsg) {
@@ -61,7 +54,7 @@ const CategorieForm: React.FC<ICategoryForm> = ({ actionType }) => {
         setIsSuccess(true);
         const timer = setTimeout(() => {
           reset();
-          navigate(EUrls.MODERATOR);
+          navigate(EUrls.ADMIN);
         }, 1500);
         return () => clearTimeout(timer);
       } else {
@@ -70,8 +63,8 @@ const CategorieForm: React.FC<ICategoryForm> = ({ actionType }) => {
     }
   }, [notificationMsg, reset, navigate, isError]);
 
-  const handleFormSubmit = async (data: ICategorieInputs) => {
-    await submitCategorie({ ...data, image: filePreview || '' });
+  const handleFormSubmit = async (data: IRoleInputs) => {
+    await submitRole({ ...data });
   };
 
   if (isEditMode && isLoading) return <Loading />;
@@ -83,15 +76,13 @@ const CategorieForm: React.FC<ICategoryForm> = ({ actionType }) => {
 
       <Input
         type={EInputType.TEXT}
-        placeholder="Category Name"
+        placeholder="Role Name"
         isRequired
         register={register}
-        name="name"
+        name="value"
         errors={errors}
       />
       <Textarea placeholder="Description" isRequired register={register} name="description" errors={errors} />
-
-      <ImageUpload filePreview={filePreview} onFileSelect={handleFileSelect} />
 
       <div className={styles.btn}>
         <Button
@@ -109,4 +100,4 @@ const CategorieForm: React.FC<ICategoryForm> = ({ actionType }) => {
   );
 };
 
-export default CategorieForm;
+export default RoleForm;

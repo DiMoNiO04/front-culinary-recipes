@@ -9,3 +9,5 @@ export { default as RecipeForm } from './recipeForm/RecipeForm';
 export type { IRecipeInputs } from './recipeForm/RecipeForm';
 export { default as CategorieForm } from './categorieForm/CategorieForm';
 export type { ICategorieInputs } from './categorieForm/CategorieForm';
+export { default as RoleForm } from './roleForm/RoleForm';
+export type { IRoleInputs } from './roleForm/RoleForm';

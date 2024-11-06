@@ -25,6 +25,7 @@ export const ApiEndpoints = {
   DELETE_CATEGORIE: `${API_URL}/categories/deleteCategory`,
   UPDATE_CATEGORIE: `${API_URL}/categories/updateCategory`,
   GET_ROLE: `${API_URL}/roles/getRole/`,
+  GET_ROLES: `${API_URL}/roles/get`,
   CREATE_ROLE: `${API_URL}/roles/create`,
   DELETE_ROLE: `${API_URL}/roles/delete`,
   UPDATE_ROLE: `${API_URL}/roles/update`,

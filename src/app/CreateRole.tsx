@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { EActionType, EUrls, FRONT_URL } from '@/utils';
-import { RecipeForm } from '@/components/forms';
+import { RoleForm } from '@/components/forms';
 import { CreateUpdatePageLayout } from '@/components/layouts';
 
 const CreateRolePage: React.FC = () => {
@@ -13,7 +13,7 @@ const CreateRolePage: React.FC = () => {
       </Helmet>
       <main>
         <CreateUpdatePageLayout title="Create New Role">
-          <RecipeForm actionType={EActionType.CREATE} />
+          <RoleForm actionType={EActionType.CREATE} />
         </CreateUpdatePageLayout>
       </main>
     </>

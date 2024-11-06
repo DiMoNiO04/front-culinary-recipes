@@ -1,0 +1,41 @@
+@import '../../../styles/utils/index.scss';
+
+.card {
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $grey;
+  @include flexStartBetween;
+  column-gap: 60px;
+}
+
+.btns {
+  display: flex;
+  column-gap: 20px;
+}
+
+.btn {
+  @include sizes(32px, 32px);
+  @include flexCenter;
+  @include transition(background-color);
+  background-color: $greyLight;
+  border-radius: 4px;
+  z-index: 2;
+
+  @include hover {
+    background-color: $white;
+  }
+
+  svg {
+    @include sizes(24px, 24px);
+  }
+}
+
+.title {
+  @include bold24Playfair;
+  margin-bottom: 12px;
+  font-style: italic
+}
+
+.desc {
+  @include regular18Inter;
+}
