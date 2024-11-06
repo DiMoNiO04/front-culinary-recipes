@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { EActionType, EUrls, FRONT_URL } from '@/utils';
 import { useParams } from 'react-router-dom';
 import { RecipeForm } from '@/components/forms';
-import { RecipePageLayout } from '@/components/layouts';
+import { RecipeCategoriePageLayout } from '@/components/layouts';
 
 const UpdateRecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,9 +19,9 @@ const UpdateRecipePage: React.FC = () => {
         <link rel="canonical" href={`${FRONT_URL}${EUrls.UPDATE_RECIPE}/${id}`} />
       </Helmet>
       <main>
-        <RecipePageLayout title={`Update Recipe №${id}`}>
+        <RecipeCategoriePageLayout title={`Update Recipe №${id}`}>
           <RecipeForm actionType={EActionType.UPDATE} />
-        </RecipePageLayout>
+        </RecipeCategoriePageLayout>
       </main>
     </>
   );

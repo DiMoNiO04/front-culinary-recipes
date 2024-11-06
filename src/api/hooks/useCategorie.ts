@@ -37,7 +37,7 @@ const useCategorie = (actionType: EActionType, categorieName?: string) => {
 
       const result = await apiRequest(endpoint, method, categorieData, token);
       setNotificationMsg(result.message);
-      mutate([ApiEndpoints.GET_CATEGORIES, token]);
+      mutate(ApiEndpoints.GET_CATEGORIES);
     } catch (error) {
       console.error(error);
       setIsError(true);

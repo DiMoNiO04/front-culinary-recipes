@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './RecipePageLayout.module.scss';
+import styles from './RecipeCategoriePageLayout.module.scss';
 
-interface IRecipePageLayout {
+interface IRecipeCategoriePageLayout {
   title: string;
   children: React.ReactNode;
 }
 
-const RecipePageLayout: React.FC<IRecipePageLayout> = ({ title, children }) => {
+const RecipeCategoriePageLayout: React.FC<IRecipeCategoriePageLayout> = ({ title, children }) => {
   return (
     <section className={styles.section}>
       <div className="container">
@@ -17,4 +17,4 @@ const RecipePageLayout: React.FC<IRecipePageLayout> = ({ title, children }) => {
   );
 };
 
-export default RecipePageLayout;
+export default RecipeCategoriePageLayout;
