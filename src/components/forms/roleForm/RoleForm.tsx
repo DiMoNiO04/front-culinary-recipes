@@ -54,7 +54,7 @@ const RoleForm: React.FC<IRoleForm> = ({ actionType }) => {
         setIsSuccess(true);
         const timer = setTimeout(() => {
           reset();
-          navigate(EUrls.ADMIN);
+          navigate(EUrls.ADMIN_ROLES);
         }, 1500);
         return () => clearTimeout(timer);
       } else {
@@ -81,6 +81,7 @@ const RoleForm: React.FC<IRoleForm> = ({ actionType }) => {
         register={register}
         name="value"
         errors={errors}
+        isReadonly={true}
       />
       <Textarea placeholder="Description" isRequired register={register} name="description" errors={errors} />
 

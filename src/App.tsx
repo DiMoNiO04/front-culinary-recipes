@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Footer, Header } from './components/layouts';
 import { ScrollBtn } from './components/elements';
 import { EUrls } from './utils';
+import { ProtectedUser, ScrollToTop } from './components';
 import MainPage from './app/Main';
 import AboutPage from './app/About';
 import CategoriesPage from './app/Categories';
@@ -11,18 +12,18 @@ import FavoritesPage from './app/Favorites';
 import CategoryPage from './app/templates/Category';
 import RecipePage from './app/templates/Recipe';
 import ProfilePage from './app/Profile';
-import { ProtectedUser, ScrollToTop } from './components';
-import AdminPage from './app/AdminPage';
 import NotFoundPage from './app/NotFound';
 import RecipesPage from './app/Recipes';
 import RecipesUserPage from './app/RecipesUser';
 import CreateRecipePage from './app/CreateRecipe';
 import UpdateRecipePage from './app/UpdateRecipe';
-import ModeratorPage from './app/ModeratorPage';
 import CreateCategoriePage from './app/CreateCategorie';
 import UpdateCategoriePage from './app/UpdateCategorie';
-import CreateRolePage from './app/CreateRole';
 import UpdateRolePage from './app/UpdateRole';
+import AdminRolesPage from './app/AdminRoles';
+import AdminUsersPage from './app/AdminUsers';
+import ModeratorCategoriesPage from './app/ModeratorCategories';
+import ModeratorRecipesPage from './app/ModeratorRecipes';
 
 const App: React.FC = () => {
   return (
@@ -44,11 +45,12 @@ const App: React.FC = () => {
         <Route path={EUrls.CREATE_RECIPE} element={<ProtectedUser element={<CreateRecipePage />} />} />
         <Route path={`${EUrls.UPDATE_RECIPE}/:id`} element={<ProtectedUser element={<UpdateRecipePage />} />} />
 
-        <Route path={EUrls.ADMIN} element={<ProtectedUser element={<AdminPage />} />} />
-        <Route path={EUrls.CREATE_ROLE} element={<ProtectedUser element={<CreateRolePage />} />} />
+        <Route path={EUrls.ADMIN_ROLES} element={<ProtectedUser element={<AdminRolesPage />} />} />
+        <Route path={EUrls.ADMIN_USERS} element={<ProtectedUser element={<AdminUsersPage />} />} />
         <Route path={`${EUrls.UPDATE_ROLE}/:value`} element={<ProtectedUser element={<UpdateRolePage />} />} />
 
-        <Route path={EUrls.MODERATOR} element={<ProtectedUser element={<ModeratorPage />} />} />
+        <Route path={EUrls.MODERATOR_CATEGORIES} element={<ProtectedUser element={<ModeratorCategoriesPage />} />} />
+        <Route path={EUrls.MODERATOR_RECIPES} element={<ProtectedUser element={<ModeratorRecipesPage />} />} />
         <Route path={EUrls.CREATE_CATEGORIE} element={<ProtectedUser element={<CreateCategoriePage />} />} />
         <Route path={`${EUrls.UPDATE_CATEGORIE}/:name`} element={<ProtectedUser element={<UpdateCategoriePage />} />} />
 

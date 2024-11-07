@@ -34,7 +34,7 @@ const RoleCard: React.FC<IRole> = ({ id, value, description }) => {
           <button type={EButtonType.BUTTON} className={styles.btn} onClick={openDeleteModal}>
             <DeleteIcon />
           </button>
-          <Link to={`${EUrls.UPDATE_ROLE}/${id}`} type={EButtonType.BUTTON} className={styles.btn}>
+          <Link to={`${EUrls.UPDATE_ROLE}/${value.toLowerCase()}`} type={EButtonType.BUTTON} className={styles.btn}>
             <EditIcon />
           </Link>
         </div>

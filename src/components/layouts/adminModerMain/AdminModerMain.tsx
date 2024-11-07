@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useGetRole } from '@/api/hooks';
 import styles from './AdminModerMain.module.scss';
 
@@ -15,7 +16,9 @@ interface IAdminModerMain {
 
 const AdminModerMain: React.FC<IAdminModerMain> = ({ title, role, tabContents, tabButtons }) => {
   const { data: roleData } = useGetRole(role);
-  const [activeTab, setActiveTab] = useState(tabButtons[0].value);
+  const location = useLocation();
+
+  const activeTab = tabButtons.find((tab) => location.pathname.endsWith(tab.value))?.value || tabButtons[0].value;
 
   const renderContent = () => {
     return tabContents[activeTab] || null;
@@ -32,13 +35,13 @@ const AdminModerMain: React.FC<IAdminModerMain> = ({ title, role, tabContents, t
         <div className={styles.content}>
           <div className={styles.tabContainer}>
             {tabButtons.map((tab) => (
-              <button
+              <Link
                 key={tab.value}
+                to={`/${role.toLocaleLowerCase()}/${tab.value}`}
                 className={`${styles.tabButton} ${activeTab === tab.value ? styles.active : ''}`}
-                onClick={() => setActiveTab(tab.value)}
               >
                 {tab.label}
-              </button>
+              </Link>
             ))}
           </div>
 

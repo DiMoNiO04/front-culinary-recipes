@@ -61,7 +61,7 @@ const CategorieForm: React.FC<ICategoryForm> = ({ actionType }) => {
         setIsSuccess(true);
         const timer = setTimeout(() => {
           reset();
-          navigate(EUrls.MODERATOR);
+          navigate(EUrls.MODERATOR_CATEGORIES);
         }, 1500);
         return () => clearTimeout(timer);
       } else {
