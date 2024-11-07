@@ -33,4 +33,6 @@ export const ApiEndpoints = {
   DELETE_ROLE: `${API_URL}/roles/delete`,
   UPDATE_ROLE: `${API_URL}/roles/update`,
   ASSIGN_ROLE: `${API_URL}/roles/assign`,
+  BAN_USER: `${API_URL}/banned-users/ban`,
+  UNBAN_USER: `${API_URL}/banned-users/unban`,
 } as const;

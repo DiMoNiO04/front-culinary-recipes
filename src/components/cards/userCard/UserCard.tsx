@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ConfirmAction } from '@/components/modals';
 import styles from './UserCard.module.scss';
 import { IUser, IRole } from '@/api';
-import { useAssignRole, useGetRoles } from '@/api/hooks';
+import { useAssignRole, useBanUser, useGetRoles } from '@/api/hooks';
 import { Button, Notification } from '@/components/ui';
 import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 
@@ -14,14 +14,21 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
   const [notificationMsg, setNotificationMsg] = useState<string | null>(null);
 
-  const { handleAssignRole, isError, notificationMsg: roleNotification } = useAssignRole();
   const { data: availableRoles, isError: rolesError } = useGetRoles();
+  const { handleAssignRole, isError, notificationMsg: roleNotification } = useAssignRole();
+  const { handleBanUser, isError: banError, notificationMsg: banNotification } = useBanUser();
 
   useEffect(() => {
     if (roleNotification) {
       setNotificationMsg(roleNotification);
     }
   }, [roleNotification]);
+
+  useEffect(() => {
+    if (banNotification) {
+      setNotificationMsg(banNotification);
+    }
+  }, [banNotification]);
 
   useEffect(() => {
     if (notificationMsg) {
@@ -39,17 +46,17 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
   const closeRoleModal = () => setIsRoleModalOpen(false);
 
   const handleConfirmBan = async () => {
-    // await updateUserBanStatus(id, banReason);
-    setIsBanned(true);
+    await handleBanUser(id, banReason, !isBanned);
+    setIsBanned(!isBanned);
     closeBanModal();
   };
 
   const handleConfirmRoleChange = async () => {
     try {
       await handleAssignRole(id, newRole.id);
-      setNotificationMsg('Role changed successfully');
+      setNotificationMsg(roleNotification);
     } catch (error) {
-      setNotificationMsg('Error changing role');
+      setNotificationMsg(roleNotification);
     }
     closeRoleModal();
   };
@@ -141,7 +148,7 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
         </div>
       </div>
 
-      {notificationMsg && <Notification isSuccess={!isError} msg={notificationMsg} />}
+      {notificationMsg && <Notification isSuccess={!isError && !banError} msg={notificationMsg} />}
 
       <ConfirmAction
         isModalOpen={isBanModalOpen}

@@ -10,5 +10,6 @@ export { default as useCategorie } from './useCategorie';
 export { default as useRole } from './useRole';
 export { default as useTogglePublishRecipe } from './useTogglePublishRecipe';
 export { default as useAssignRole } from './useAssignRole';
+export { default as useBanUser } from './useBanUser';
 export * from './useGetDatas';
 export type { IAuthResponse, IErrorResponse, IAuthCallbacks } from '../interfaces';
