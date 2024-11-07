@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ConfirmAction } from '@/components/modals';
 import styles from './UserCard.module.scss';
-import { IUser } from '@/api';
-import { useGetRoles } from '@/api/hooks';
-import { Button } from '@/components/ui';
+import { IUser, IRole } from '@/api';
+import { useAssignRole, useGetRoles } from '@/api/hooks';
+import { Button, Notification } from '@/components/ui';
 import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
 
 const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, roles, bannedId, bannedUser }) => {
   const [banReason, setBanReason] = useState('');
-  const [newRole, setNewRole] = useState(roles[0].value);
+  const [newRole, setNewRole] = useState<IRole>(roles[0]);
   const [isBanned, setIsBanned] = useState(Boolean(bannedId));
   const [isBanModalOpen, setIsBanModalOpen] = useState(false);
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
+  const [notificationMsg, setNotificationMsg] = useState<string | null>(null);
 
+  const { handleAssignRole, isError, notificationMsg: roleNotification } = useAssignRole();
   const { data: availableRoles, isError: rolesError } = useGetRoles();
+
+  useEffect(() => {
+    if (roleNotification) {
+      setNotificationMsg(roleNotification);
+    }
+  }, [roleNotification]);
+
+  useEffect(() => {
+    if (notificationMsg) {
+      const timer = setTimeout(() => {
+        setNotificationMsg(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notificationMsg]);
 
   const openBanModal = () => setIsBanModalOpen(true);
   const closeBanModal = () => setIsBanModalOpen(false);
@@ -28,8 +45,20 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
   };
 
   const handleConfirmRoleChange = async () => {
-    // await updateUserRole(id, newRole);
+    try {
+      await handleAssignRole(id, newRole.id);
+      setNotificationMsg('Role changed successfully');
+    } catch (error) {
+      setNotificationMsg('Error changing role');
+    }
     closeRoleModal();
+  };
+
+  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedRole = availableRoles?.find((role) => role.id === Number(e.target.value));
+    if (selectedRole) {
+      setNewRole(selectedRole);
+    }
   };
 
   return (
@@ -89,9 +118,9 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
 
         <div className={styles.roleSection}>
           {availableRoles ? (
-            <select value={newRole} onChange={(e) => setNewRole(e.target.value)} className={styles.roleSelect}>
+            <select value={newRole.id} onChange={handleRoleChange} className={styles.roleSelect}>
               {availableRoles.map((role) => (
-                <option key={role.id} value={role.value}>
+                <option key={role.id} value={role.id}>
                   {role.value}
                 </option>
               ))}
@@ -112,6 +141,8 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
         </div>
       </div>
 
+      {notificationMsg && <Notification isSuccess={!isError} msg={notificationMsg} />}
+
       <ConfirmAction
         isModalOpen={isBanModalOpen}
         onClose={closeBanModal}
@@ -123,7 +154,7 @@ const UserCard: React.FC<IUser> = ({ id, firstName, lastName, email, recipes, ro
         isModalOpen={isRoleModalOpen}
         onClose={closeRoleModal}
         onConfirm={handleConfirmRoleChange}
-        title={`Are you sure you want to change the role to "${newRole}"?`}
+        title={`Are you sure you want to change the role to "${newRole.value}"?`}
       />
     </div>
   );
