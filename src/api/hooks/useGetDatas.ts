@@ -8,6 +8,7 @@ export const useGetCategory = (name: string | undefined) =>
 export const useGetCategoryRecipes = (name: string) =>
   useFetchData<IRecipe[]>(`${ApiEndpoints.GET_CATEGORY_RECIPES}${name}`);
 export const useGetRecipes = () => useFetchData<IRecipe[]>(`${ApiEndpoints.GET_RECIPES}`);
+export const useGetAllRecipes = () => useFetchData<IRecipe[]>(`${ApiEndpoints.GET_ALL_RECIPES}`);
 export const useSearch = (name: string) => useFetchData<IRecipe[]>(`${ApiEndpoints.SEARCH}?title=${name}`);
 export const useGetRecipe = (id: number | undefined) => useFetchData<IRecipe>(`${ApiEndpoints.GET_RECIPE}${id}`);
 

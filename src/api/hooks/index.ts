@@ -8,5 +8,6 @@ export { default as useFavorite } from './useFavorite';
 export { default as useRecipe } from './useRecipe';
 export { default as useCategorie } from './useCategorie';
 export { default as useRole } from './useRole';
+export { default as useTogglePublishRecipe } from './useTogglePublishRecipe';
 export * from './useGetDatas';
 export type { IAuthResponse, IErrorResponse, IAuthCallbacks } from '../interfaces';

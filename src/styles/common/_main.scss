@@ -132,8 +132,15 @@ body {
   }
 }
 
+#root {
+  @include flexColumn;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
 main {
   flex: 1;
+  height: 100%;
 }
 
 .container {
