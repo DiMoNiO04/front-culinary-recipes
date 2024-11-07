@@ -47,11 +47,17 @@ export interface IUser {
   lastName: string;
   email: string;
   password: string;
-  banned: boolean;
-  banReasong: string | null;
+  bannedId: boolean;
   createdAt: string;
   updatedAt: string;
   roles: IRole[];
+  recipes: IRecipe[];
+  bannedUser: IBanUser;
+}
+
+export interface IBanUser {
+  email: string;
+  reason: string;
 }
 
 export interface ICategory {

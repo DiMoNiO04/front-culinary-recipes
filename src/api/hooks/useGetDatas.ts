@@ -18,3 +18,4 @@ export const useGetMyRecipes = () => useFetchDataToken<IRecipe[]>(ApiEndpoints.G
 export const useGetRole = (value: string | undefined) =>
   useFetchDataToken<IRole>(`${ApiEndpoints.GET_ROLE}${value?.toUpperCase()}`);
 export const useGetRoles = () => useFetchDataToken<IRole[]>(`${ApiEndpoints.GET_ROLES}`);
+export const useGetUsers = () => useFetchDataToken<IUser[]>(`${ApiEndpoints.GET_USERS}`);

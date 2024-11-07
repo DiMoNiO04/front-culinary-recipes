@@ -1,10 +1,10 @@
 @import '../../../styles/utils/index.scss';
 
 .card {
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid $grey;
+  @include mb(30px);
   @include flexStartBetween;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $grey;
   column-gap: 60px;
 }
 

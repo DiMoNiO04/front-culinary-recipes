@@ -6,3 +6,4 @@ export { default as searchPanelCards } from './searchPanelCards';
 export { default as recipesCards } from './recipesCards';
 export { default as team } from './team';
 export { default as sortRecipes } from './sortRecipes';
+export { default as sortUsers } from './sortUsers';

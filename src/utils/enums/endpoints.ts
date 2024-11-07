@@ -7,6 +7,7 @@ export const ApiEndpoints = {
   CHANGE_PASSWORD: `${API_URL}/users/self/change-password`,
   GET_PERSONAL_DATA: `${API_URL}/users/self/personal-data`,
   UPDATE_PERSONAL_DATA: `${API_URL}/users/self/update-profile`,
+  GET_USERS: `${API_URL}/users/get`,
   GET_FAVORITES: `${API_URL}/favorites/get`,
   DELETE_ALL_FAVORITES: `${API_URL}/favorites/remove-all`,
   DELETE_FAVORITE: `${API_URL}/favorites/remove`,

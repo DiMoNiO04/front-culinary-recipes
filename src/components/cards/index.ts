@@ -7,3 +7,4 @@ export { default as MyRecipeCard } from './myRecipeCard/MyRecipeCard';
 export { default as CategorieModerCard } from './categorieModerCard/CategorieModerCard';
 export { default as RoleCard } from './roleCard/RoleCard';
 export { default as ModerRecipeCard } from './moderRecipeCard/ModerRecipeCard';
+export { default as UserCard } from './userCard/UserCard';
