@@ -18,7 +18,9 @@ const AdminModerMain: React.FC<IAdminModerMain> = ({ title, role, tabContents, t
   const { data: roleData } = useGetRole(role);
   const location = useLocation();
 
-  const activeTab = tabButtons.find((tab) => location.pathname.endsWith(tab.value))?.value || tabButtons[0].value;
+  const activeTab =
+    tabButtons.find((tab) => location.pathname.endsWith(tab.value))?.value.split('/')[0] ||
+    tabButtons[0].value.split('/')[0];
 
   const renderContent = () => {
     return tabContents[activeTab] || null;
@@ -38,7 +40,7 @@ const AdminModerMain: React.FC<IAdminModerMain> = ({ title, role, tabContents, t
               <Link
                 key={tab.value}
                 to={`/${role.toLocaleLowerCase()}/${tab.value}`}
-                className={`${styles.tabButton} ${activeTab === tab.value ? styles.active : ''}`}
+                className={`${styles.tabButton} ${activeTab === tab.value.split('/')[0] ? styles.active : ''}`}
               >
                 {tab.label}
               </Link>

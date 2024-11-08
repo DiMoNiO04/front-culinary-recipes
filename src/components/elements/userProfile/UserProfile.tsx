@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 import { Button, Notification } from '@/components/ui';
 import { Auth, ConfirmAction } from '@/components/modals';
-import { SUCCESS_AUTH, TOKEN_KEY, EUrls, EButtonClass, EButtonSize, EButtonType } from '@/utils';
-import { useLogout } from '@/hooks';
+import { SUCCESS_AUTH, EUrls, EButtonClass, EButtonSize, EButtonType } from '@/utils';
+import { useAuthToken, useLogout } from '@/hooks';
 import styles from './UserProfile.module.scss';
 import { Link } from 'react-router-dom';
+import ERoles from '@/utils/enums/roles';
 
 const UserProfile: React.FC = () => {
-  const [cookies] = useCookies([TOKEN_KEY]);
+  const { token, role } = useAuthToken();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [notification, setNotification] = useState<{ isOpen: boolean; message: string }>({
@@ -19,10 +19,10 @@ const UserProfile: React.FC = () => {
   const { isAuth, handleLogout } = useLogout();
 
   useEffect(() => {
-    if (cookies[TOKEN_KEY] && !isAuth) {
+    if (token && !isAuth) {
       setNotification({ isOpen: true, message: SUCCESS_AUTH });
     }
-  }, [cookies, isAuth]);
+  }, [token, isAuth]);
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
   const toggleLogoutModal = () => setIsLogoutModalOpen((prev) => !prev);
@@ -39,12 +39,36 @@ const UserProfile: React.FC = () => {
       <li>
         <Link to={EUrls.PROFILE}>Profile</Link>
       </li>
-      <li>
-        <Link to={EUrls.FAVORITES}>Favorites</Link>
-      </li>
-      <li>
-        <a href={EUrls.PROFILE_RECIPES}>Recipes</a>
-      </li>
+      {role === ERoles.ADMIN && (
+        <>
+          <li>
+            <Link to={EUrls.ADMIN_USERS}>Admin Users</Link>
+          </li>
+          <li>
+            <Link to={EUrls.ADMIN_ROLES}>Admin Roles</Link>
+          </li>
+        </>
+      )}
+      {role === ERoles.MODERATOR && (
+        <>
+          <li>
+            <Link to={EUrls.MODERATOR_CATEGORIES}>Moderator Categories</Link>
+          </li>
+          <li>
+            <Link to={EUrls.MODERATOR_RECIPES}>Moderator Recipes</Link>
+          </li>
+        </>
+      )}
+      {role === ERoles.USER && (
+        <>
+          <li>
+            <Link to={EUrls.FAVORITES}>Favorites</Link>
+          </li>
+          <li>
+            <a href={EUrls.PROFILE_RECIPES}>Recipes</a>
+          </li>
+        </>
+      )}
       <li>
         <button type="button" onClick={toggleLogoutModal}>
           Logout

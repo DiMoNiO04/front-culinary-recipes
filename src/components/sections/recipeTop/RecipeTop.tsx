@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { LikeIcon } from '@/components/icons';
 import { Rating } from '@/components/elements';
-import { EButtonType, EFavoriteActionType, EUrls, TOKEN_KEY } from '@/utils';
+import { EButtonType, EFavoriteActionType, EUrls } from '@/utils';
 import styles from './RecipeTop.module.scss';
 import { IAuthorRecipe } from '@/api';
 import { Link } from 'react-router-dom';
 import { useGetFavorites } from '@/api/hooks';
-import { useCookies } from 'react-cookie';
 import useFavorites from '@/api/hooks/useFavorite';
+import { useAuthToken } from '@/hooks';
+import ERoles from '@/utils/enums/roles';
 
 interface IRecipeTop {
   id: number;
@@ -20,7 +21,7 @@ interface IRecipeTop {
 }
 
 const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdAt, shortDescription, image }) => {
-  const [cookies] = useCookies([TOKEN_KEY]);
+  const { token, role } = useAuthToken();
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
   const { executeFavoriteAction, isError } = useFavorites(
@@ -48,7 +49,7 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
       <div className={styles.panel}>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.panelBnts}>
-          {cookies[TOKEN_KEY] && (
+          {token && role === ERoles.USER && (
             <button type={EButtonType.BUTTON} className={styles.btnLike} onClick={handleLikeClick}>
               <LikeIcon color={isLiked ? '#ff642f' : '#8B8D95'} />
             </button>

@@ -6,8 +6,8 @@ import { EUrls } from '@/utils';
 
 const AdminPanel: React.FC = () => {
   const tabButtons = [
-    { label: 'Users', value: 'users' },
-    { label: 'Roles', value: 'roles' },
+    { label: 'Users', value: 'users/' },
+    { label: 'Roles', value: 'roles/' },
   ];
 
   const tabContents = {

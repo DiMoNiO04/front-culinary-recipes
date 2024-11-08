@@ -5,3 +5,4 @@ export { default as useSortRecipes } from './useSortRecipes';
 export { default as useDebounce } from './useDebounce';
 export { default as useFileInput } from './useFileInput';
 export { default as useSortUsers } from './useSortUsers';
+export { default as useAuthToken } from './useAuthToken';

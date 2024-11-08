@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './RecipeCard.module.scss';
 import { IRecipe } from '@/api';
-import { EButtonType, EFavoriteActionType, EUrls, TOKEN_KEY } from '@/utils';
+import { EButtonType, EFavoriteActionType, EUrls } from '@/utils';
 import { LikeIcon } from '@/components/icons';
 import { useGetFavorites } from '@/api/hooks';
-import { useCookies } from 'react-cookie';
 import useFavorites from '@/api/hooks/useFavorite';
+import { useAuthToken } from '@/hooks';
+import ERoles from '@/utils/enums/roles';
 
 const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
-  const [cookies] = useCookies([TOKEN_KEY]);
+  const { token, role } = useAuthToken();
   const [isLiked, setIsLiked] = useState(false);
   const { data: favorites } = useGetFavorites();
   const { executeFavoriteAction, isError } = useFavorites(
@@ -34,7 +35,7 @@ const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
 
   return (
     <Link to={`${EUrls.RECIPE}/${id}`} className={styles.card}>
-      {cookies[TOKEN_KEY] && (
+      {token && role === ERoles.USER && (
         <button
           type={EButtonType.BUTTON}
           className={`${styles.like} ${isLiked ? styles.liked : ''}`}

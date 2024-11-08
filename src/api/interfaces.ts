@@ -1,6 +1,7 @@
 export interface IAuthResponse {
   token: string;
   message: string;
+  role: string;
 }
 
 export interface IErrorResponse {

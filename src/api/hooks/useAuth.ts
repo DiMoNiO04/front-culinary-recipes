@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { ApiEndpoints, EMethods, TOKEN_KEY, TRY_AGAIN } from '@/utils';
+import { ApiEndpoints, EMethods, ROLE_KEY, TOKEN_KEY, TRY_AGAIN } from '@/utils';
 import { ILoginInputs } from '@/components/forms';
 import { ISignupInputs } from '@/components/forms/signUpForm/SignUpForm';
 import { IAuthCallbacks, IAuthResponse, IErrorResponse } from '..';
@@ -36,6 +36,12 @@ const useAuth = ({ onSuccess }: IAuthCallbacks) => {
       const result: IAuthResponse = await response.json();
       if (isLogin) {
         setCookie(TOKEN_KEY, result.token, {
+          path: '/',
+          maxAge: 24 * 60 * 60,
+          secure: true,
+          sameSite: 'strict',
+        });
+        setCookie(ROLE_KEY, result.role, {
           path: '/',
           maxAge: 24 * 60 * 60,
           secure: true,

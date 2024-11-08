@@ -7,8 +7,8 @@ import { EUrls } from '@/utils';
 
 const ModeratorPanel: React.FC = () => {
   const tabButtons = [
-    { label: 'Categories', value: 'categories' },
-    { label: 'Recipes', value: 'recipes' },
+    { label: 'Categories', value: 'categories/' },
+    { label: 'Recipes', value: 'recipes/' },
   ];
 
   const tabContents = {
