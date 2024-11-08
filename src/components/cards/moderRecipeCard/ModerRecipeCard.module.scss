@@ -43,13 +43,13 @@
 .publishButton {
   @include transition(background-color);
   position: absolute;
-    right: 12px;
-    top: 12px;
-    @include regular18Inter;
-    border-radius: 4px;
-    padding: 4px 8px;
-    color: $white;
-    z-index: 2;
+  right: 12px;
+  top: 12px;
+  @include regular18Inter;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: $white;
+  z-index: 2;
 }
 
 .unpublishButton {
@@ -65,6 +65,15 @@
 
   @include hover {
     background-color: green;
+  }
+}
+
+@media (max-width: $tablet) {
+  .unpublishButton,
+  .publishButton {
+    right: 10px;
+    top: 10px;
+    @include regular16Inter;
   }
 }
 

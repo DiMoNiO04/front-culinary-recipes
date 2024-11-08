@@ -47,6 +47,27 @@
   .searchSortContainer {
     padding-bottom: 10px;
     margin-bottom: 30px;
+    flex-direction: column;
+    row-gap: 12px;
+    justify-content: space-between;
+
+    & > div,
+    input {
+      width: 100%;
+    }
+  }
+
+  .block {
+    @include mb(40px);
+  }
+
+  .titleBlock {
+    margin-bottom: 16px;
+  }
+
+  .cards {
+    @include grid(2);
+    grid-gap: 32px;
   }
 }
 
@@ -65,5 +86,15 @@
   .sortContainer {
     width: 100%;
     justify-content: flex-end;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .block {
+    @include mb(32px);
+  }
+
+  .cards {
+    grid-gap: 20px;
   }
 }

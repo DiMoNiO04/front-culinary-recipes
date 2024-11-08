@@ -33,9 +33,62 @@
 .title {
   @include bold24Playfair;
   margin-bottom: 12px;
-  font-style: italic
+  font-style: italic;
 }
 
 .desc {
   @include regular18Inter;
+}
+
+@media (max-width: $tablet) {
+  .card {
+    @include mb(24px);
+    padding-bottom: 16px;
+    column-gap: 40px;
+  }
+
+  .btns {
+    column-gap: 16px;
+  }
+
+  .btn {
+    @include sizes(28px, 28px);
+
+    svg {
+      @include sizes(20px, 20px);
+    }
+  }
+
+  .desc {
+    @include regular16Inter;
+  }
+}
+
+@media (max-width: $mob) {
+  .card {
+    @include mb(20px);
+    padding-bottom: 12px;
+    column-gap: 32px;
+  }
+
+  .btns {
+    column-gap: 12px;
+  }
+
+  .btn {
+    @include sizes(24px, 24px);
+
+    svg {
+      @include sizes(16px, 16px);
+    }
+  }
+
+  .desc {
+    @include regular14Inter;
+  }
+
+  .title {
+    @include bold18Playfair;
+    margin-bottom: 8px;
+  }
 }
