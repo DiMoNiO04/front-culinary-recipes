@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, TitleSection } from '@/components/ui';
-import { EButtonClass, EButtonSize, EButtonType } from '@/utils';
+import { TitleSection } from '@/components/ui';
 import styles from './ShareYourRecipe.module.scss';
 
 const ShareYourRecipe: React.FC = () => {
