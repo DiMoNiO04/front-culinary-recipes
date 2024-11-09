@@ -25,7 +25,7 @@ const CategorieModerCard: React.FC<ICategory> = ({ name, image, countrecipes }) 
 
   return (
     <>
-      <Link to={`${EUrls.CATEGORIES}/${name.toLowerCase()}`} className={styles.card}>
+      <Link to={`${EUrls.CATEGORIES}/${name.toLowerCase()}/`} className={styles.card}>
         <div className={styles.img}>
           <img src={image} alt={name} width={255} height={255} />
         </div>

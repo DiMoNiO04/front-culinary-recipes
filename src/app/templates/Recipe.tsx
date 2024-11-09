@@ -21,14 +21,14 @@ const RecipePage: React.FC = () => {
   }, []);
 
   if (isDelayed) return null;
-  if (!recipe && !isLoading) return <NotFoundPage />;
+  if ((!recipe && !isLoading) || !recipe?.isPublished) return <NotFoundPage />;
 
   return (
     <>
       <Helmet>
         <title>{`${capitalizeFirstLetter(recipe?.title ?? '')} | TasteBite`}</title>
         <meta name="description" content={getDescriptionRecipe(recipe!)} />
-        <link rel="canonical" href={`${FRONT_URL}${EUrls.RECIPE}/${id}`} />
+        <link rel="canonical" href={`${FRONT_URL}${EUrls.RECIPE}/${id}/`} />
       </Helmet>
       <main>
         {recipe && (

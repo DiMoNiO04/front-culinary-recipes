@@ -1,7 +1,7 @@
 export enum EUrls {
   MAIN = '/',
   ABOUT = '/about/',
-  CATEGORIES = '/categories/',
+  CATEGORIES = '/categories',
   FAVORITES = '/favorites/',
   PROFILE = '/profile/',
   PROFILE_RECIPES = '/profile/recipes/',
@@ -9,7 +9,7 @@ export enum EUrls {
   UPDATE_RECIPE = '/profile/recipes/update',
   SEARCH = '/search',
   RECIPES = '/recipes/',
-  RECIPE = '/recipe/',
+  RECIPE = '/recipe',
   ADMIN_ROLES = '/admin/roles/',
   ADMIN_USERS = '/admin/users/',
   CREATE_ROLE = '/admin/roles/create/',

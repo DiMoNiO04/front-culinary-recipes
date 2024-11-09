@@ -25,7 +25,7 @@ const MyRecipeCard: React.FC<IRecipe> = ({ title, image, id, isPublished }) => {
 
   return (
     <>
-      <Link to={`${EUrls.RECIPE}/${id}`} className={`${styles.card} ${!isPublished && styles.noPublish}`}>
+      <Link to={`${EUrls.RECIPE}/${id}/`} className={`${styles.card} ${!isPublished && styles.noPublish}`}>
         <div className={styles.btns}>
           <button type={EButtonType.BUTTON} className={styles.btn} onClick={openDeleteModal}>
             <DeleteIcon />

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { slides } from '@/data';
@@ -13,9 +12,9 @@ import styles from './Slider.module.scss';
 
 const Slider: React.FC = () => {
   const renderSlides = () =>
-    slides.map(({ id, title, description, link, img }) => (
+    slides.map(({ id, title, description, img }) => (
       <SwiperSlide key={id} className={styles.slide}>
-        <Link to={link}>
+        <div>
           <div className={styles.img}>
             <img src={img} alt={title} width={1440} height={634} />
           </div>
@@ -26,7 +25,7 @@ const Slider: React.FC = () => {
             </div>
             {id === 1 ? <h1 className={styles.title}>{title}</h1> : <h2 className={styles.title}>{title}</h2>}
           </div>
-        </Link>
+        </div>
       </SwiperSlide>
     ));
 

@@ -34,7 +34,7 @@ const RecipeCard: React.FC<IRecipe> = ({ title, image, id }) => {
   };
 
   return (
-    <Link to={`${EUrls.RECIPE}/${id}`} className={styles.card}>
+    <Link to={`${EUrls.RECIPE}/${id}/`} className={styles.card}>
       {token && role === ERoles.USER && (
         <button
           type={EButtonType.BUTTON}

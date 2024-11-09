@@ -44,7 +44,12 @@ const Input: React.FC<IInputProps> = ({
           className={styles.field}
         />
         {type === EInputType.PASSWORD && (
-          <button type={EButtonType.BUTTON} onClick={togglePasswordVisibility} className={styles.toggleBtn}>
+          <button
+            type={EButtonType.BUTTON}
+            tabIndex={-1}
+            onClick={togglePasswordVisibility}
+            className={styles.toggleBtn}
+          >
             {showPassword ? (
               <img src="/icons/passwordHide.svg" alt="Hide" width={24} height={24} />
             ) : (

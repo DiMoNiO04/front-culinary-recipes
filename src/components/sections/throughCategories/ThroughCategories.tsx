@@ -20,7 +20,7 @@ const ThroughCategories: React.FC = () => {
           !isError &&
           (categories && categories.length > 0 ? (
             <div className={styles.cards}>
-              {categories.map((categorie) => (
+              {categories.slice(0, 6).map((categorie) => (
                 <CategorieCard key={categorie.id} name={categorie.name} image={categorie.image} />
               ))}
             </div>

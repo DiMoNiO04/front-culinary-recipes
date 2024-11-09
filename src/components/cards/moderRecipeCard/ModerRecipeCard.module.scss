@@ -39,17 +39,34 @@
   color: $black;
 }
 
+.actions {
+  @include flexCenterBetween;
+  position: absolute;
+  right: 12px;
+  left: 12px;
+  top: 12px;
+  z-index: 2;
+}
+
+.deleteButton {
+  @include sizes(32px, 32px);
+  @include flexCenter;
+  background-color: $white;
+  border-radius: 4px;
+  z-index: 2;
+
+  svg {
+    @include sizes(24px, 24px);
+  }
+}
+
 .unpublishButton,
 .publishButton {
   @include transition(background-color);
-  position: absolute;
-  right: 12px;
-  top: 12px;
   @include regular18Inter;
   border-radius: 4px;
   padding: 4px 8px;
   color: $white;
-  z-index: 2;
 }
 
 .unpublishButton {
@@ -71,14 +88,39 @@
 @media (max-width: $tablet) {
   .unpublishButton,
   .publishButton {
-    right: 10px;
-    top: 10px;
     @include regular16Inter;
+  }
+
+  .actions {
+    right: 10px;
+    left: 10px;
+    top: 10px;
+  }
+
+  .deleteButton {
+    @include sizes(28px, 28px);
   }
 }
 
 @media (max-width: $mob) {
   .name {
     @include semibold14Inter;
+  }
+
+  .actions {
+    @include flexCenterBetween;
+    position: absolute;
+    right: 12px;
+    left: 12px;
+    top: 12px;
+    z-index: 2;
+  }
+
+  .deleteButton {
+    @include sizes(24px, 24px);
+
+    svg {
+      @include sizes(16px, 16px);
+    }
   }
 }

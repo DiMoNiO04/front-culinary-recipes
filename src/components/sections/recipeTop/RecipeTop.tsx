@@ -57,12 +57,14 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
         </div>
       </div>
       <div className={styles.desc}>
-        <div className={styles.author}>
-          <img src="/icons/profile.svg" width={32} height={32} alt="Profile" />
-          <span>
-            {author?.firstName} {author?.lastName}
-          </span>
-        </div>
+        {author && (
+          <div className={styles.author}>
+            <img src="/icons/profile.svg" width={32} height={32} alt="Profile" />
+            <span>
+              {author?.firstName} {author?.lastName}
+            </span>
+          </div>
+        )}
         <div className={styles.calendar}>
           <img src="/icons/calendar.svg" width={16} height={16} alt="Calendar" />
           <span>{new Date(createdAt).toLocaleDateString()}</span>
@@ -70,7 +72,7 @@ const RecipeTop: React.FC<IRecipeTop> = ({ id, title, category, author, createdA
         <Rating rating={5} />
         <div className={styles.category}>
           <b>Category:</b>
-          <Link to={`${EUrls.CATEGORIES}/${category}`}>{category}</Link>
+          <Link to={`${EUrls.CATEGORIES}/${category.toLowerCase()}/`}>{category}</Link>
         </div>
       </div>
       <p className={styles.description}>{shortDescription}</p>

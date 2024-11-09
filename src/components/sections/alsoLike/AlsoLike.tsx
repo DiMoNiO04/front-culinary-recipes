@@ -13,6 +13,8 @@ const AlsoLike: React.FC<IAlsoLike> = ({ idRecipe, category }) => {
 
   const filteredRecipes = recipes?.filter((recipe) => recipe.id !== idRecipe) || [];
 
+  if (filteredRecipes.length < 0) return null;
+
   return (
     <section>
       <div className="container">
