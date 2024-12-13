@@ -1,14 +1,14 @@
 @import '../../../styles/utils/index.scss';
 
 .footer {
-  background-color: $whiteDark;
+  background-color: $greyLight;
   padding: 100px 0 40px;
 }
 
 .top {
   @include flexStartBetween;
   padding-bottom: 90px;
-  border-bottom: 2px solid $greyLight;
+  border-bottom: 2px solid $whiteDark;
 }
 
 .bottom {

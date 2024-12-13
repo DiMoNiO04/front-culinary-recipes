@@ -33,6 +33,7 @@
   border-radius: 4px;
   resize: vertical;
   resize: none;
+  background-color: transparent;
 
   &:read-only {
     color: $greyLight;

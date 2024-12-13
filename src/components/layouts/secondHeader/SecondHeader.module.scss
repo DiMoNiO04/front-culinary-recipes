@@ -6,11 +6,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: $white;
+  background-color: $whiteDark;
   z-index: 100;
 
   &.scroll {
-    background-color: $whiteDark;
+    background-color: $greyLight;
   }
 }
 
@@ -35,10 +35,10 @@
 @media (max-width: $tablet) {
   .header {
     @include transition(background-color);
-    background-color: $white;
+    background-color: $greyLight;
 
     &.open {
-      background-color: $whiteDark;
+      background-color: $greyLight;
       .content {
         transform: translateY(0);
       }
@@ -79,7 +79,7 @@
   }
 
   .contentContainer {
-    background-color: $whiteDark;
+    background-color: $greyLight;
     padding: 24px 0;
   }
 

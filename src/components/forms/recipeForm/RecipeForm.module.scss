@@ -27,17 +27,17 @@
 
 @media (max-width: $tablet) {
   .requiredNote {
-      @include regular16Inter;
-      margin-bottom: 32px;
-    }
-  
-    .btn {
-      margin-top: 40px;
-    }
-  
-    .form {
-      row-gap: 36px;
-    }
+    @include regular16Inter;
+    margin-bottom: 32px;
+  }
+
+  .btn {
+    margin-top: 40px;
+  }
+
+  .form {
+    row-gap: 36px;
+  }
 }
 
 @media (max-width: $mob) {

@@ -37,9 +37,10 @@
   padding: 0;
   margin: 0;
   border: none;
+  background-color: transparent;
 
   &:read-only {
-    color: $greyLight;
+    color: $grey;
     cursor: default;
   }
 }
@@ -91,7 +92,7 @@
     @include sizes(20px, 20px);
   }
 
-    .fileInputLabel {
-      padding: 6px 12px;
-    }
+  .fileInputLabel {
+    padding: 6px 12px;
+  }
 }

@@ -28,24 +28,23 @@
   }
 }
 
-
 @media (max-width: $tablet) {
   .fileInput {
-      column-gap: 32px;
-    }
-  
-    .filePreview {
-      @include sizes(200px, 200px);
-    }
+    column-gap: 32px;
+  }
+
+  .filePreview {
+    @include sizes(200px, 200px);
+  }
 }
 
 @media (max-width: $mob) {
   .fileInput {
-      row-gap: 24px;
-      @include flexColumn;
-    }
-  
-    .filePreview {
-      @include fullSize;
-    }
+    row-gap: 24px;
+    @include flexColumn;
+  }
+
+  .filePreview {
+    @include fullSize;
+  }
 }
